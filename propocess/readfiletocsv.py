@@ -11,10 +11,18 @@ def read_file_to_csv(filename, csvfilename):
                 x_coordinates = info[2]
                 y_coordinates = info[3]
                 speed = info[4]
-                if id.isdigit():
-                    csvf.writelines(str(id) + ',' + str(time) + ',' + str(x_coordinates) + ',' + str(y_coordinates) + ',' + str(speed))
-                    csvf.writelines('\n')
+                if float(speed) != 0:
+                    if id.isdigit():
+                        linedata = str(id) + ',' + str(time) + ',' + str(x_coordinates) + ',' + str(y_coordinates) + ',' + str(speed)
+                        if linedata.count(',') == 4:
+                            csvf.writelines(linedata)
+                            csvf.writelines('\n')
 
+
+if __name__ == '__main__':
+    ORIGIN_FILE_NAME = '../../koln.tr/koln.tr'
+    CSV_FILE_NAME = '../../koln.tr/readfiledata.csv'
+    read_file_to_csv(ORIGIN_FILE_NAME, CSV_FILE_NAME)
 
 # def init_csv(filename):
 #

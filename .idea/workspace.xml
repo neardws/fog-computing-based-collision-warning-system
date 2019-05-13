@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d6d4d26-8c02-44c8-aca0-047c84e0ef83" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/propocess/chunkfiletocsv.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/propocess/dropcsv.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/propocess/showcsv.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/propocess/filetocsv.py" beforeDir="false" afterPath="$PROJECT_DIR$/propocess/filetocsv.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/propocess/getorder.py" beforeDir="false" afterPath="$PROJECT_DIR$/propocess/getorder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/propocess/readfiletocsv.py" beforeDir="false" afterPath="$PROJECT_DIR$/propocess/readfiletocsv.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/propocess/showcsv.py" beforeDir="false" afterPath="$PROJECT_DIR$/propocess/showcsv.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/propocess/test.csv" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,10 +15,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/fog_computing_based_collision_warning_system$getorder.coverage" NAME="getorder Coverage Results" MODIFIED="1557370929036" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/propocess" />
-    <SUITE FILE_PATH="coverage/fog_computing_based_collision_warning_system$showcsv.coverage" NAME="showcsv Coverage Results" MODIFIED="1557371097035" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/propocess" />
+    <SUITE FILE_PATH="coverage/fog_computing_based_collision_warning_system$getorder.coverage" NAME="getorder Coverage Results" MODIFIED="1557473703146" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/propocess" />
+    <SUITE FILE_PATH="coverage/fog_computing_based_collision_warning_system$showcsv.coverage" NAME="showcsv Coverage Results" MODIFIED="1557372246899" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/propocess" />
     <SUITE FILE_PATH="coverage/fog_computing_based_collision_warning_system$chunkfiletocsv.coverage" NAME="chunkfiletocsv Coverage Results" MODIFIED="1557368956535" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/propocess" />
     <SUITE FILE_PATH="coverage/fog_computing_based_collision_warning_system$filetocsv.coverage" NAME="filetocsv Coverage Results" MODIFIED="1557321324219" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/propocess" />
+    <SUITE FILE_PATH="coverage/fog_computing_based_collision_warning_system$readfiletocsv.coverage" NAME="readfiletocsv Coverage Results" MODIFIED="1557476081550" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/propocess" />
     <SUITE FILE_PATH="coverage/fog_computing_based_collision_warning_system$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1557317550143" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/propocess" />
     <SUITE FILE_PATH="coverage/fog_computing_based_collision_warning_system$dropcsv.coverage" NAME="dropcsv Coverage Results" MODIFIED="1557370780949" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/propocess" />
   </component>
@@ -37,24 +37,24 @@
         <counts>
           <entry key="csv" value="12" />
           <entry key="pstat" value="1" />
-          <entry key="py" value="15" />
+          <entry key="py" value="17" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="PLAIN_TEXT" value="12" />
           <entry key="Profiler Session" value="1" />
-          <entry key="Python" value="15" />
+          <entry key="Python" value="17" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="2541" />
+          <entry key="py" value="2941" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="2541" />
+          <entry key="Python" value="2941" />
         </counts>
       </usages-collector>
     </session>
@@ -64,8 +64,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/propocess/chunkfiletocsv.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="43" column="45" lean-forward="true" selection-end-line="83" selection-end-column="10" />
+            <state relative-caret-position="221">
+              <caret line="40" selection-start-line="40" selection-end-line="44" selection-end-column="41" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
                 <marker date="1557368936308" expanded="true" signature="408:503" ph="..." />
@@ -78,21 +78,21 @@
         <entry file="file://C:/ProgramData/Anaconda3/Lib/multiprocessing/pool.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="247">
-              <caret line="663" column="45" lean-forward="true" selection-start-line="663" selection-start-column="45" selection-end-line="663" selection-end-column="45" />
+              <caret line="663" column="45" selection-start-line="663" selection-start-column="45" selection-end-line="663" selection-end-column="45" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/propocess/getorder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+            <state relative-caret-position="189">
+              <caret line="18" column="31" lean-forward="true" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
-                <marker date="1557369631016" expanded="true" signature="39:41" ph="..." />
-                <marker date="1557369631016" expanded="true" signature="64:69" ph="..." />
-                <marker date="1557369631016" expanded="true" signature="450:481" ph="..." />
+                <marker date="1557710331884" expanded="true" signature="39:41" ph="..." />
+                <marker date="1557710331884" expanded="true" signature="88:93" ph="..." />
+                <marker date="1557710331884" expanded="true" signature="670:701" ph="..." />
               </folding>
             </state>
           </provider>
@@ -110,20 +110,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/propocess/test.csv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-7604">
-              <caret line="36" column="15" selection-start-line="36" selection-start-column="15" selection-end-line="36" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/propocess/showcsv.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="29" column="109" selection-start-line="29" selection-start-column="109" selection-end-line="29" selection-end-column="109" />
+            <state relative-caret-position="-525">
+              <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
+              <folding>
+                <marker date="1557372246838" expanded="true" signature="441:470" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -131,8 +125,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/propocess/filetocsv.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-182">
-              <caret line="9" column="16" lean-forward="true" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+            <state relative-caret-position="19">
+              <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
               <folding>
                 <marker date="1557321319605" expanded="true" signature="149:898" ph="..." />
                 <marker date="1557321319605" expanded="true" signature="482:871" ph="..." />
@@ -144,12 +138,24 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/propocess/readfiletocsv.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="15" selection-end-column="41" />
+            <state relative-caret-position="238">
+              <caret line="14" column="36" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
               <folding>
-                <marker date="1557317500321" expanded="true" signature="236:241" ph="..." />
-                <marker date="1557317500321" expanded="true" signature="740:742" ph="..." />
-                <marker date="1557317500321" expanded="true" signature="767:768" ph="..." />
+                <marker date="1557476081236" expanded="true" signature="236:241" ph="..." />
+                <marker date="1557476081236" expanded="true" signature="895:1079" ph="..." />
+                <marker date="1557476081236" expanded="true" signature="1104:1105" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/propocess/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" selection-start-line="4" selection-end-line="6" selection-end-column="53" />
+              <folding>
+                <marker date="1557317549853" expanded="true" signature="56:205" ph="..." />
               </folding>
             </state>
           </provider>
@@ -170,13 +176,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/propocess/readfiletocsv.py" />
         <option value="$PROJECT_DIR$/propocess/__init__.py" />
         <option value="$PROJECT_DIR$/propocess/filetocsv.py" />
         <option value="$PROJECT_DIR$/propocess/chunkfiletocsv.py" />
-        <option value="$PROJECT_DIR$/propocess/getorder.py" />
         <option value="$PROJECT_DIR$/propocess/dropcsv.py" />
         <option value="$PROJECT_DIR$/propocess/showcsv.py" />
+        <option value="$PROJECT_DIR$/propocess/readfiletocsv.py" />
+        <option value="$PROJECT_DIR$/propocess/getorder.py" />
       </list>
     </option>
   </component>
@@ -186,11 +192,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="230" />
-    <option name="y" value="15" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="154" />
+    <option name="y" value="64" />
     <option name="width" value="1502" />
-    <option name="height" value="1056" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -235,7 +241,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.showcsv">
+  <component name="RunManager" selected="Python.readfiletocsv">
     <configuration name="chunkfiletocsv" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="fog-computing-based-collision-warning-system" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -280,28 +286,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="filetocsv" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="fog-computing-based-collision-warning-system" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/propocess" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/propocess/filetocsv.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="getorder" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="fog-computing-based-collision-warning-system" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -316,6 +300,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/propocess/getorder.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="readfiletocsv" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="fog-computing-based-collision-warning-system" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/propocess" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/propocess/readfiletocsv.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -348,18 +354,18 @@
     </configuration>
     <list>
       <item itemvalue="Python.getorder" />
-      <item itemvalue="Python.filetocsv" />
       <item itemvalue="Python.chunkfiletocsv" />
       <item itemvalue="Python.showcsv" />
       <item itemvalue="Python.dropcsv" />
+      <item itemvalue="Python.readfiletocsv" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.showcsv" />
+        <item itemvalue="Python.readfiletocsv" />
         <item itemvalue="Python.getorder" />
+        <item itemvalue="Python.showcsv" />
         <item itemvalue="Python.dropcsv" />
         <item itemvalue="Python.chunkfiletocsv" />
-        <item itemvalue="Python.filetocsv" />
       </list>
     </recent_temporary>
   </component>
@@ -386,15 +392,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="230" y="15" width="1502" height="1056" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17198336" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13219616" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32899022" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.55266017" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49930653" visible="true" weight="0.53745925" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -402,7 +408,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5006935" side_tool="true" weight="0.41776314" />
       <window_info anchor="bottom" id="Terminal" order="11" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -444,13 +450,6 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/propocess/koln.csv" />
-    <entry file="file://$PROJECT_DIR$/propocess/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/ProgramData/Anaconda3/Lib/multiprocessing/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
@@ -475,54 +474,14 @@
     <entry file="file://C:/ProgramData/Anaconda3/Lib/multiprocessing/pool.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
-          <caret line="663" column="45" lean-forward="true" selection-start-line="663" selection-start-column="45" selection-end-line="663" selection-end-column="45" />
+          <caret line="663" column="45" selection-start-line="663" selection-start-column="45" selection-end-line="663" selection-end-column="45" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/propocess/readfiletocsv.py">
+    <entry file="file://$PROJECT_DIR$/propocess/test.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="15" selection-end-column="41" />
-          <folding>
-            <marker date="1557317500321" expanded="true" signature="236:241" ph="..." />
-            <marker date="1557317500321" expanded="true" signature="740:742" ph="..." />
-            <marker date="1557317500321" expanded="true" signature="767:768" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/propocess/chunkfiletocsv.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="43" column="45" lean-forward="true" selection-end-line="83" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-            <marker date="1557368936308" expanded="true" signature="408:503" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/propocess/getorder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-            <marker date="1557369631016" expanded="true" signature="39:41" ph="..." />
-            <marker date="1557369631016" expanded="true" signature="64:69" ph="..." />
-            <marker date="1557369631016" expanded="true" signature="450:481" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/propocess/filetocsv.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-182">
-          <caret line="9" column="16" lean-forward="true" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
-          <folding>
-            <marker date="1557321319605" expanded="true" signature="149:898" ph="..." />
-            <marker date="1557321319605" expanded="true" signature="482:871" ph="..." />
-          </folding>
+        <state relative-caret-position="284">
+          <caret line="500" lean-forward="true" selection-start-line="500" selection-end-line="500" />
         </state>
       </provider>
     </entry>
@@ -536,17 +495,77 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/propocess/showcsv.py">
+    <entry file="file://$USER_HOME$/.PyCharm2018.2/system/python_stubs/-313451744/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="29" column="109" selection-start-line="29" selection-start-column="109" selection-end-line="29" selection-end-column="109" />
+        <state relative-caret-position="128">
+          <caret line="3704" column="8" selection-start-line="3704" selection-start-column="8" selection-end-line="3704" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/propocess/test.csv">
+    <entry file="file://$PROJECT_DIR$/propocess/chunkfiletocsv.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7604">
-          <caret line="36" column="15" selection-start-line="36" selection-start-column="15" selection-end-line="36" selection-end-column="15" />
+        <state relative-caret-position="221">
+          <caret line="40" selection-start-line="40" selection-end-line="44" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+            <marker date="1557368936308" expanded="true" signature="408:503" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/propocess/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" selection-start-line="4" selection-end-line="6" selection-end-column="53" />
+          <folding>
+            <marker date="1557317549853" expanded="true" signature="56:205" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/propocess/showcsv.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-525">
+          <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
+          <folding>
+            <marker date="1557372246838" expanded="true" signature="441:470" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/propocess/filetocsv.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+          <folding>
+            <marker date="1557321319605" expanded="true" signature="149:898" ph="..." />
+            <marker date="1557321319605" expanded="true" signature="482:871" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/propocess/readfiletocsv.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="36" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
+          <folding>
+            <marker date="1557476081236" expanded="true" signature="236:241" ph="..." />
+            <marker date="1557476081236" expanded="true" signature="895:1079" ph="..." />
+            <marker date="1557476081236" expanded="true" signature="1104:1105" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/propocess/getorder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="18" column="31" lean-forward="true" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+            <marker date="1557710331884" expanded="true" signature="39:41" ph="..." />
+            <marker date="1557710331884" expanded="true" signature="88:93" ph="..." />
+            <marker date="1557710331884" expanded="true" signature="670:701" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

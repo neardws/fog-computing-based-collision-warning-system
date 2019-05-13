@@ -3,20 +3,24 @@ import pandas as pd
 
 
 def read_csv(fliename):
-    df = pd.read_csv(fliename, error_bad_lines=False)
-    print("Data example:")
-    print(df.head(10))
-    print("Data shape:")
-    print(df.shape)
-    print("Data describe")
-    print(df.describe())
-    groups = df.drop_duplicates().sort_values(by=['time']).groupby('vehicleID')
-    for group in groups:
-        pass
+    chunksize = 6 ** 10
+    for chunk in pd.read_csv(fliename, error_bad_lines=False, chunksize=chunksize):
+        print("Data example:")
+        print(chunk.head(10))
+        print("Data shape:")
+        print(chunk.shape)
+        print("Data describe")
+        print(chunk.describe())
+        groups = chunk.drop_duplicates().sort_values(by=['time']).groupby('vehicleID')
+        i = 1
+        for group in groups:
+            if i <= 1:
+             with open('../../koln.tr/data_process.csv', 'a+') as f:
+                 f.write(group)
 
 
 def main():
-    CSV_FILE_NAME = '../../koln.tr/data_process.csv'
+    CSV_FILE_NAME = '../../koln.tr/withspeed.csv'
     read_csv(CSV_FILE_NAME)
 
 
