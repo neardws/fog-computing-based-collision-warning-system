@@ -29,13 +29,13 @@ x_test = x_test.reshape((len(x_test), np.prod(x_test.shape[1:])))
 print(x_train.shape)
 print(x_test.shape)
 
-autoencoder.compile(optimizer='adadelta', loss='binary_crossentropy')
-
-autoencoder.fit(x_train, x_train,
-                nb_epoch=50,
-                batch_size=256,
-                shuffle=True,
-                validation_data=(x_test, x_test))
+# autoencoder.compile(optimizer='adadelta', loss='binary_crossentropy')
+#
+# autoencoder.fit(x_train, x_train,
+#                 nb_epoch=50,
+#                 batch_size=256,
+#                 shuffle=True,
+#                 validation_data=(x_test, x_test))
 
 
 # def main():
