@@ -18,8 +18,12 @@ autoencoder = Model(input=input_img, output=decoded)
 
 (x_train, _), (x_test, _) = mnist.load_data()
 
+# print(x_train.shape)
+# print(x_test.shpae)
 x_train = x_train.astype('float32') / 255.
 x_test = x_test.astype('float32') / 255.
+print(x_train.shape)
+print(x_test.shape)
 x_train = x_train.reshape((len(x_train), np.prod(x_train.shape[1:])))
 x_test = x_test.reshape((len(x_test), np.prod(x_test.shape[1:])))
 print(x_train.shape)
@@ -34,9 +38,9 @@ autoencoder.fit(x_train, x_train,
                 validation_data=(x_test, x_test))
 
 
-def main():
-    pass
-
-
-if __name__ == '__main__':
-    main()
+# def main():
+#     pass
+#
+#
+# if __name__ == '__main__':
+#     main()
