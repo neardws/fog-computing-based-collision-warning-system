@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d6d4d26-8c02-44c8-aca0-047c84e0ef83" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/training/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/training/get_random_train_set.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/training/training_by_hohmm.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/train_autoencoder/autoencoder_t.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/train_data/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/train_hmm/__init__.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/visualization/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
@@ -17,17 +17,15 @@
       <change beforePath="$PROJECT_DIR$/propocess/dropcsv.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/propocess/getorder.py" beforeDir="false" afterPath="$PROJECT_DIR$/propocess/getorder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/propocess/showcsv.py" beforeDir="false" afterPath="$PROJECT_DIR$/visualization/showcsv.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/training/autoencoder.py" beforeDir="false" afterPath="$PROJECT_DIR$/training/autoencoder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/training/get_autoencoder_train_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/training/get_autoencoder_train_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/training/get_train_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/training/get_train_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/training/hmmlearn/_utils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/training/hmmlearn/base.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/training/hmmlearn/hmm.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/training/hmmlearn/stats.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/training/hmmlearn/utils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/training/taining_by_autoencoder.py" beforeDir="false" afterPath="$PROJECT_DIR$/training/taining_by_autoencoder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/training/training_by_hmmlearn.py" beforeDir="false" afterPath="$PROJECT_DIR$/training/training_by_hmmlearn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/training/trainning.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/training/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_autoencoder/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/training/autoencoder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/training/get_autoencoder_train_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_autoencoder/get_autoencoder_train_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/training/get_random_train_set.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_data/get_random_train_set.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/training/get_train_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_data/get_train_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/training/gettraindata.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/training/taining_by_autoencoder.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_autoencoder/taining_by_autoencoder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/training/training_by_hmmlearn.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_hmm/training_by_hmmlearn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/training/training_by_hohmm.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_hmm/training_by_hohmm.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,10 +45,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/training/get_autoencoder_train_data.py">
+        <entry file="file://$PROJECT_DIR$/train_autoencoder/get_autoencoder_train_data.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="652">
-              <caret line="95" column="33" lean-forward="true" selection-start-line="95" selection-start-column="33" selection-end-line="95" selection-end-column="33" />
+              <caret line="95" column="33" selection-start-line="95" selection-start-column="33" selection-end-line="95" selection-end-column="33" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -58,13 +56,61 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/training/taining_by_autoencoder.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/train_autoencoder/taining_by_autoencoder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="62" column="60" selection-start-line="62" selection-start-column="60" selection-end-line="62" selection-end-column="60" />
+            <state relative-caret-position="80">
+              <caret line="7" column="55" selection-start-line="7" selection-start-column="55" selection-end-line="7" selection-end-column="55" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/train_data/get_train_data.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/train_autoencoder/autoencoder_t.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="452">
+              <caret line="47" column="36" lean-forward="true" selection-start-line="47" selection-start-column="36" selection-end-line="47" selection-end-column="36" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/train_data/get_random_train_set.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="18" column="22" lean-forward="true" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/train_hmm/training_by_hmmlearn.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="640">
+              <caret line="32" column="57" selection-start-line="32" selection-start-column="57" selection-end-line="32" selection-end-column="57" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -115,7 +161,10 @@
         <option value="$PROJECT_DIR$/training/get_random_train_set.py" />
         <option value="$PROJECT_DIR$/training/autoencoder.py" />
         <option value="$PROJECT_DIR$/training/get_autoencoder_train_data.py" />
+        <option value="$PROJECT_DIR$/training/test_autoencoder.py" />
         <option value="$PROJECT_DIR$/training/taining_by_autoencoder.py" />
+        <option value="$PROJECT_DIR$/training/autoencoder_t.py" />
+        <option value="$PROJECT_DIR$/train_hmm.py" />
       </list>
     </option>
   </component>
@@ -144,21 +193,6 @@
               <item name="fog-computing-based-collision-warning-system" type="b2602c69:ProjectViewProjectNode" />
               <item name="fog-computing-based-collision-warning-system" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="fog-computing-based-collision-warning-system" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fog-computing-based-collision-warning-system" type="462c0819:PsiDirectoryNode" />
-              <item name="propocess" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fog-computing-based-collision-warning-system" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fog-computing-based-collision-warning-system" type="462c0819:PsiDirectoryNode" />
-              <item name="training" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fog-computing-based-collision-warning-system" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fog-computing-based-collision-warning-system" type="462c0819:PsiDirectoryNode" />
-              <item name="visualization" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -175,9 +209,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\user4\PycharmProjects\fog-computing-based-collision-warning-system\train_hmm" />
+      <recent name="C:\Users\user4\PycharmProjects\fog-computing-based-collision-warning-system\train_autoencoder" />
+      <recent name="C:\Users\user4\PycharmProjects\fog-computing-based-collision-warning-system\train_data" />
       <recent name="C:\Users\user4\PycharmProjects\fog-computing-based-collision-warning-system\training" />
       <recent name="C:\Users\user4\PycharmProjects\fog-computing-based-collision-warning-system\hmmlearn" />
-      <recent name="C:\Users\user4\PycharmProjects\fog-computing-based-collision-warning-system\visualization" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -192,7 +228,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.taining_by_autoencoder">
+  <component name="RunManager" selected="Python.autoencoder_t">
     <configuration name="autoencoder" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="fog-computing-based-collision-warning-system" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -214,6 +250,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="autoencoder_t" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="fog-computing-based-collision-warning-system" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/training" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\Users\user4\PycharmProjects\fog-computing-based-collision-warning-system\train_autoencoder\autoencoder_t.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="get_autoencoder_train_data" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="fog-computing-based-collision-warning-system" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -226,49 +283,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/training/get_autoencoder_train_data.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="get_random_train_set" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="fog-computing-based-collision-warning-system" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/training" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/training/get_random_train_set.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="get_train_data" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="fog-computing-based-collision-warning-system" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/training" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/training/get_train_data.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\user4\PycharmProjects\fog-computing-based-collision-warning-system\train_autoencoder\get_autoencoder_train_data.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -289,7 +304,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/training/taining_by_autoencoder.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\user4\PycharmProjects\fog-computing-based-collision-warning-system\train_autoencoder\taining_by_autoencoder.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -298,13 +313,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="pytest in C:/Users/user4/PycharmProjects/fog-computing-based-collision-warning-system/training/test_autoencoder.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="fog-computing-based-collision-warning-system" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/training" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/training/test_autoencoder.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.autoencoder_t" />
         <item itemvalue="Python.taining_by_autoencoder" />
+        <item itemvalue="Python tests.pytest in C:/Users/user4/PycharmProjects/fog-computing-based-collision-warning-system/training/test_autoencoder.py" />
         <item itemvalue="Python.get_autoencoder_train_data" />
         <item itemvalue="Python.autoencoder" />
-        <item itemvalue="Python.get_random_train_set" />
-        <item itemvalue="Python.get_train_data" />
       </list>
     </recent_temporary>
   </component>
@@ -321,6 +351,38 @@
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="pytest_in_test_autoencoder_py - 2019.05.28 at 11h 58m 18s.xml">
+      <configuration name="pytest in test_autoencoder.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_autoencoder_py - 2019.05.28 at 11h 58m 39s.xml">
+      <configuration name="pytest in test_autoencoder.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_autoencoder_py - 2019.05.28 at 12h 00m 49s.xml">
+      <configuration name="pytest in test_autoencoder.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_autoencoder_py - 2019.05.28 at 12h 05m 30s.xml">
+      <configuration name="pytest in test_autoencoder.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_autoencoder_py - 2019.05.28 at 12h 06m 52s.xml">
+      <configuration name="pytest in test_autoencoder.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_autoencoder_py - 2019.05.28 at 12h 07m 21s.xml">
+      <configuration name="pytest in test_autoencoder.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_autoencoder_py - 2019.05.28 at 12h 10m 04s.xml">
+      <configuration name="pytest in test_autoencoder.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_autoencoder_py - 2019.05.28 at 12h 10m 58s.xml">
+      <configuration name="pytest in test_autoencoder.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_autoencoder_py - 2019.05.28 at 12h 11m 09s.xml">
+      <configuration name="pytest in test_autoencoder.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_autoencoder_py - 2019.05.28 at 12h 11m 19s.xml">
+      <configuration name="pytest in test_autoencoder.py" configurationId="tests" />
+    </history-entry>
+  </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
@@ -332,13 +394,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10115912" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1406744" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32899022" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6564805" visible="true" weight="0.5845987" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6564805" weight="0.55748373" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -385,8 +448,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/propocess/koln.csv" />
-    <entry file="file://C:/ProgramData/Anaconda3/Lib/multiprocessing/__init__.py" />
     <entry file="file://C:/ProgramData/Anaconda3/Lib/multiprocessing/context.py" />
     <entry file="file://C:/ProgramData/Anaconda3/Lib/multiprocessing/reduction.py" />
     <entry file="file://C:/ProgramData/Anaconda3/Lib/multiprocessing/pool.py" />
@@ -619,32 +680,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/training/gettraindata.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
-          <caret line="47" column="42" lean-forward="true" selection-start-line="47" selection-start-column="42" selection-end-line="47" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/training/training_by_hohmm.py">
+    <entry file="file://$PROJECT_DIR$/train_hmm/training_by_hohmm.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="36" column="30" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/training/training_by_hmmlearn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="489">
-          <caret line="32" column="57" selection-start-line="32" selection-start-column="57" selection-end-line="32" selection-end-column="57" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -663,36 +704,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/training/get_train_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="35" column="11" lean-forward="true" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/training/get_random_train_set.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="21" column="38" selection-start-line="20" selection-end-line="22" selection-end-column="75" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/training/autoencoder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="632">
-          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.conda/envs/py3/Lib/site-packages/pandas/io/parsers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
@@ -700,22 +711,98 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/training/get_autoencoder_train_data.py">
+    <entry file="file://$PROJECT_DIR$/train_hmm/training_by_hmmlearn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="652">
-          <caret line="95" column="33" lean-forward="true" selection-start-line="95" selection-start-column="33" selection-end-line="95" selection-end-column="33" />
+        <state relative-caret-position="640">
+          <caret line="32" column="57" selection-start-line="32" selection-start-column="57" selection-end-line="32" selection-end-column="57" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/training/test_autoencoder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="39" column="42" lean-forward="true" selection-start-line="39" selection-start-column="42" selection-end-line="39" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/training/autoencoder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_autoencoder/taining_by_autoencoder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="7" column="55" selection-start-line="7" selection-start-column="55" selection-end-line="7" selection-end-column="55" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/training/taining_by_autoencoder.py">
+    <entry file="file://$PROJECT_DIR$/training/gettraindata.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="62" column="60" selection-start-line="62" selection-start-column="60" selection-end-line="62" selection-end-column="60" />
+        <state relative-caret-position="332">
+          <caret line="47" column="42" selection-start-line="47" selection-start-column="42" selection-end-line="47" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_data/get_train_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_autoencoder/get_autoencoder_train_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="652">
+          <caret line="95" column="33" selection-start-line="95" selection-start-column="33" selection-end-line="95" selection-end-column="33" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_data/get_random_train_set.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="18" column="22" lean-forward="true" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_hmm.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/training/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_autoencoder/autoencoder_t.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="452">
+          <caret line="47" column="36" lean-forward="true" selection-start-line="47" selection-start-column="36" selection-end-line="47" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
