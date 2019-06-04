@@ -4,12 +4,12 @@ from keras.models import Model
 from keras.layers import Dense,Input
 
 
-AUTOENCODER_TRAIN_CSV = r'E:\NearXu\autoencoder\all.csv'
-AUTOENCODER_TEST_CSV = r'E:\NearXu\autoencoder\train_28.csv'
+AUTOENCODER_TRAIN_CSV = r'E:\NearXu\autoencoder\train_all\all.csv'
+# AUTOENCODER_TEST_CSV = r'E:\NearXu\autoencoder\train_28.csv'
 
-AUTOENCODER_MODEL = r'E:\NearXu\autoencoder\autoencoder2.h5'
-ENCODER_MODEL = r'E:\NearXu\autoencoder\encoder2.h5'
-DECODER_MODEL = r'E:\NearXu\autoencoder\decoder2.h5'
+AUTOENCODER_MODEL = r'E:\NearXu\autoencoder\autoencoder.h5'
+ENCODER_MODEL = r'E:\NearXu\autoencoder\encoder.h5'
+DECODER_MODEL = r'E:\NearXu\autoencoder\decoder.h5'
 
 
 def main():
@@ -19,10 +19,10 @@ def main():
     train = (train.astype('float32') + 30.0)/ 60.
     print(train.shape)
     # 测试数据集
-    df_test = pd.read_csv(AUTOENCODER_TEST_CSV)
-    test = np.array(df_test)
-    test = (test.astype('float32') + 30.0)/ 60.
-    print(test.shape)
+    # df_test = pd.read_csv(AUTOENCODER_TEST_CSV)
+    # test = np.array(df_test)
+    # test = (test.astype('float32') + 30.0)/ 60.
+    # print(test.shape)
 
     #压缩特征到1维
     encoding_dim = 1
@@ -41,9 +41,9 @@ def main():
     decoded = Dense(encoding_dim * 10, activation='relu')(decoded)
     decoded = Dense(2, activation='tanh')(decoded)
 
+
     # 构建自编码器
     autoencoder = Model(inputs= input_two_dim, outputs= decoded)
-
     # 构建编码模型
     encoder = Model(inputs= input_two_dim, outputs= encoded)
 
@@ -59,13 +59,14 @@ def main():
 
     # 编译模型
     autoencoder.compile(optimizer='adagrad', loss='mse')
+    encoder.compile(optimizer='adagrad', loss='mse')
+    decoder.compile(optimizer='adagrad', loss='mse')
 
-    autoencoder.fit(train, train, epochs=10, batch_size=256, shuffle=True, validation_data=(test, test))
+    autoencoder.fit(train, train, epochs=10, batch_size=16, shuffle=True)
 
     autoencoder.save(AUTOENCODER_MODEL)
     encoder.save(ENCODER_MODEL)
     decoder.save(DECODER_MODEL)
-
 
 
 if __name__ == '__main__':

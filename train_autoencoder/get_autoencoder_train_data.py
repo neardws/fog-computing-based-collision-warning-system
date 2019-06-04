@@ -9,15 +9,15 @@ AUTOENCODER_TRAIN_CSV = r'E:\NearXu\autoencoder2\train.csv'
 AUTOENCODER_TEST_CSV = r'E:\NearXu\autoencoder2\test.csv'
 
 
-global train_csv_file
-train_csv_file = open(AUTOENCODER_TRAIN_CSV, 'a+', encoding='utf-8')
-global test_csv_file
-test_csv_file = open(AUTOENCODER_TEST_CSV, 'a+', encoding='utf-8')
+# global train_csv_file
+# train_csv_file = open(AUTOENCODER_TRAIN_CSV, 'a+', encoding='utf-8')
+# global test_csv_file
+# test_csv_file = open(AUTOENCODER_TEST_CSV, 'a+', encoding='utf-8')
 
 
 def merge_file():
-    Folder_Path = r'E:\NearXu\autoencoder2'  # 要拼接的文件夹及其完整路径，注意不要包含中文
-    SaveFile_Path = r'E:\NearXu\autoencoder2'  # 拼接后要保存的文件路径
+    Folder_Path = r'E:\NearXu\autoencoder\train_'  # 要拼接的文件夹及其完整路径，注意不要包含中文
+    SaveFile_Path = r'E:\NearXu\autoencoder\train_all'  # 拼接后要保存的文件路径
     SaveFile_Name = r'all.csv'  # 合并后要保存的文件名
 
     # 修改当前工作目录
@@ -32,7 +32,7 @@ def merge_file():
     df.to_csv(SaveFile_Path + '\\' + SaveFile_Name, encoding="utf_8_sig", index=False)
 
     # 循环遍历列表中各个CSV文件名，并追加到合并后的文件
-    for i in range(1, len(file_list) - 1):
+    for i in range(1, len(file_list)):
         df = pd.read_csv(Folder_Path + '\\' + file_list[i])
         df.to_csv(SaveFile_Path + '\\' + SaveFile_Name, encoding="utf_8_sig", index=False, header=False, mode='a+')
 
@@ -98,17 +98,17 @@ def process_random(trace_id):
 
 
 def main():
-    pool = mp.Pool(processes=1)
-    jobs = []
-    for i in range(29):
-        trace_id = []
-        trace_id.append(i)
-        jobs.append(pool.apply_async(process_random, trace_id))
-    for job in jobs:
-        job.get()
-    pool.close()
+    # pool = mp.Pool(processes=1)
+    # jobs = []
+    # for i in range(29):
+    #     trace_id = []
+    #     trace_id.append(i)
+    #     jobs.append(pool.apply_async(process_random, trace_id))
+    # for job in jobs:
+    #     job.get()
+    # pool.close()
 
-    # merge_file()
+    merge_file()
 
 
 if __name__ == '__main__':

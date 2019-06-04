@@ -4,11 +4,11 @@ from keras.layers import Input
 import numpy as np
 import pandas as pd
 
-AUTOENCODER_TEST_CSV = r'E:\NearXu\autoencoder\train_0.csv'
+AUTOENCODER_TEST_CSV = r'E:\NearXu\autoencoder\test.csv'
 
-AUTOENCODER_MODEL = r'E:\NearXu\autoencoder\model2\autoencoder.h5'
-ENCODER_MODEL = r'E:\NearXu\autoencoder\model2\encoder.h5'
-DECODER_MODEL = r'E:\NearXu\autoencoder\model2\decoder.h5'
+AUTOENCODER_MODEL = r'E:\NearXu\autoencoder\model3\autoencoder.h5'
+ENCODER_MODEL = r'E:\NearXu\autoencoder\model3\encoder.h5'
+DECODER_MODEL = r'E:\NearXu\autoencoder\model3\decoder.h5'
 
 # encoding_dim = 1
 #
@@ -37,21 +37,42 @@ autoencoder = load_model(AUTOENCODER_MODEL)
 encoder = load_model(ENCODER_MODEL)
 decoder = load_model(DECODER_MODEL)
 
-autoencoder.compile(optimizer='adagrad', loss='mse')
+# encoder.compile(optimizer='adagrad', loss='mse')
 
 test_df = pd.read_csv(AUTOENCODER_TEST_CSV)
 test_input = np.array(test_df)
 test_normal = (test_input.astype('float32') + 30.0 ) / 60.0
 print(test_input.shape)
-predict_auto = autoencoder.predict(test_normal)
+# predict_auto = autoencoder.predict(test_normal)
+# predict_auto_origin = (predict_auto.astype('float32') * 60.0)  - 30.0
 
-for i in range(test_input.shape[0]):
-    print(test_input[i])
-    print(test_normal[i])
+print(test_input[0:1])
+input_data = test_normal[0:1]
+print(input_data)
+print(input_data.shape)
+data_encoder = encoder.predict(input_data)
+print(data_encoder)
+print(data_encoder[0][0])
+data_decoder = decoder.predict(data_encoder)
+print(data_decoder)
+data_decoder = (data_decoder.astype('float32') * 60.0) - 30.0
+print(data_decoder)
+# for i in range(test_input.shape[0]):
+#     print(test_input[i])
+#     input_data = test_normal[i].reshape(2,)
+#     print(input_data)
+#     print(input_data.shape)
+#     print(autoencoder.predict(input_data))
+    # encoder_data = encoder.predict(input_data)
+    # print(encoder_data)
+    # decoder_data = decoder.predict(encoder_data)
+    # print(decoder_data)
+    # input_decoder = (decoder_data.astype('float32') * 60.0) - 30.0
+    # print(input_decoder)
     # print(test_normal[i].shape)
-    print(predict_auto[i])
-    print(predict_auto[i] * 30.0)
-    print('\n')
+    # print(predict_auto[i])
+    # print(predict_auto_origin[i])
+    # print('\n')
 
     # for line in test_file:
     #     test_input = np.array(line)
