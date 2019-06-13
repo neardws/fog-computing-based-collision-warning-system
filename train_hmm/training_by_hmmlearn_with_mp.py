@@ -17,6 +17,7 @@ MultinomialHMM：观测状态是离散的
 """
 train_file = TRAIN_DATA + '0' + '.txt'
 chunk_lines = 5000
+be_big = 10000
 
 
 def read_distributed(*lines):
@@ -44,9 +45,9 @@ def main():
     print(count)
     print(number)
 
-    pool = mp.Pool(processes=10)
+    pool = mp.Pool(processes=5)
     jobs = []
-    for i in range(10):
+    for i in range(5):
         jobs.append(pool.apply_async(read_distributed, line_cache[i * chunk_lines : i * chunk_lines + chunk_lines]))
     # jobs.append(pool.apply_async(read_distributed, line_cache[number * chunk_lines : count]))
     for job in jobs:
@@ -59,13 +60,14 @@ def main():
 
     x = x[:, np.newaxis]
     x = x.astype(np.float64)
+    x = x * be_big
     print(x)
     print(len(x))
     print(x_len)
-    number_of_status = 322
+    number_of_status = 100
     print('￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥')
     print('Start Training')
-    model = hmm.GaussianHMM(n_components=number_of_status, n_iter=1, tol=0.01, covariance_type="tied")
+    model = hmm.GaussianHMM(n_components=number_of_status, n_iter=10, tol=0.001, covariance_type='diag')
     model.fit(x, x_len)
     # print(model.score(x,x_len))
     print('**************************************')
