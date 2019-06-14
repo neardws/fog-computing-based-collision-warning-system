@@ -7,7 +7,7 @@ import multiprocessing as mp
 import linecache
 import pickle
 TRAIN_DATA = r'E:\NearXu\hmm_train_data\train_'
-MODEL_PATH = r'E:\NearXu\model\model_'
+MODEL_PATH = r'E:\NearXu\model\model_2dim'
 
 """
 hmmlearn 有三种隐马尔可夫模型：
@@ -16,7 +16,7 @@ GMMHMM：观测状态是连续状态，且符合混合高斯分布
 MultinomialHMM：观测状态是离散的
 """
 train_file = TRAIN_DATA + '2dim' + '.txt'
-chunk_lines = 500
+chunk_lines = 1250
 
 
 def read_distributed(*lines):
@@ -77,9 +77,9 @@ def main():
     print(count)
     print(number)
 
-    pool = mp.Pool(processes=5)
+    pool = mp.Pool(processes=20)
     jobs = []
-    for i in range(5):
+    for i in range(20):
         jobs.append(pool.apply_async(read_distributed, line_cache[i * chunk_lines : i * chunk_lines + chunk_lines]))
     # jobs.append(pool.apply_async(read_distributed, line_cache[number * chunk_lines : count]))'
     first = 0
@@ -94,28 +94,26 @@ def main():
             X = np.vstack((X, job.get()[0]))
             X_len = np.append(X_len, job.get()[1])
     pool.close()
-
+    X = X.astype('float32')
+    X = (X + 30.0) / 60.
     print("X IS\n")
     print(X)
     print("X_len is\n")
     print(X_len)
     print(len(X))
     print(sum(X_len))
-    # x = x.astype(np.float64)
-    # print(x)
-    # print(len(x))
-    # print(x_len)
-    # number_of_status = 100
-    # print('￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥')
-    # print('Start Training')
-    # model = hmm.GaussianHMM(n_components=number_of_status, n_iter=10, tol=0.001, covariance_type='diag')
-    # model.fit(x, x_len)
-    # # print(model.score(x,x_len))
-    # print('**************************************')
-    # print(model.transmat_)
-    # model_name = MODEL_PATH +'.pkl'
-    # with open(model_name, 'wb') as model_file:
-    #     pickle.dump(model, model_file)
+
+    number_of_status = 100
+    print('￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥')
+    print('Start Training')
+    model = hmm.GaussianHMM(n_components=number_of_status, n_iter=10, tol=0.001, covariance_type='tied')
+    model.fit(X, X_len)
+    # print(model.score(x,x_len))
+    print('**************************************')
+    print(model.transmat_)
+    model_name = MODEL_PATH +'.pkl'
+    with open(model_name, 'wb') as model_file:
+        pickle.dump(model, model_file)
 
 
 def test():
