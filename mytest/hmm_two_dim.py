@@ -15,7 +15,7 @@ model = pickle.load(model_file)
 
 # print(model.get_stationary_distribution())
 # print(len(model.get_stationary_distribution()))
-# print(model.transmat_)
+print(model.transmat_)
 
 with open(TEST_FILE, 'a+', encoding='utf-8') as file:
     file.write(np.array2string(model.transmat_))
