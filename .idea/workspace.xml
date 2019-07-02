@@ -5,10 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d6d4d26-8c02-44c8-aca0-047c84e0ef83" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/train_hmm/training_by_hmmlearn_multionmial_with_mp.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/train_hmm/traning_by_hmmlearn_multionmial_with_mp_small_data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mytest/hmm_fit.py" beforeDir="false" afterPath="$PROJECT_DIR$/mytest/hmm_fit.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mytest/hmm_two_dim.py" beforeDir="false" afterPath="$PROJECT_DIR$/mytest/hmm_two_dim.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_hmm/training_by_hmmlearn_multionmial_with_mp.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_hmm/training_by_hmmlearn_multionmial_with_mp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_hmm/training_by_hmmlearn_with_mp.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_hmm/training_by_hmmlearn_with_mp.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train_hmm/training_by_hmmlearn_with_mp_two_dim.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_hmm/training_by_hmmlearn_with_mp_two_dim.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/visualization/drawcsv.py" beforeDir="false" afterPath="$PROJECT_DIR$/visualization/drawcsv.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,10 +32,13 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/train_hmm/training_by_hmmlearn.py">
+        <entry file="file://$PROJECT_DIR$/train_hmm/training_by_hmmlearn_with_mp.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1180">
-              <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+            <state relative-caret-position="220">
+              <caret line="62" column="18" lean-forward="true" selection-start-line="62" selection-start-column="18" selection-end-line="62" selection-end-column="18" />
+              <folding>
+                <element signature="e#15#39#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -39,10 +46,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/train_hmm/training_by_hmmlearn_multionmial_with_mp.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="105" column="96" selection-start-line="105" selection-start-column="84" selection-end-line="105" selection-end-column="96" />
+            <state relative-caret-position="202">
+              <caret line="114" column="51" lean-forward="true" selection-end-line="123" selection-end-column="10" />
               <folding>
                 <element signature="e#15#19#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/train_hmm/traning_by_hmmlearn_multionmial_with_mp_small_data.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="28" column="23" lean-forward="true" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
+              <folding>
+                <element signature="e#15#48#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/visualization/drawcsv.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="35" column="37" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="37" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+                <marker date="1561946451336" expanded="true" signature="701:752" ph="..." />
               </folding>
             </state>
           </provider>
@@ -51,17 +83,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/.conda/envs/py3/Lib/site-packages/sklearn/preprocessing/label.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-8">
-              <caret line="243" column="43" lean-forward="true" selection-start-line="243" selection-start-column="43" selection-end-line="243" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.conda/envs/py3/Lib/site-packages/hmmlearn/_utils.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-16">
-              <caret line="27" column="35" lean-forward="true" selection-start-line="27" selection-start-column="35" selection-end-line="27" selection-end-column="35" />
+            <state relative-caret-position="204">
+              <caret line="251" selection-start-line="251" selection-end-line="251" />
             </state>
           </provider>
         </entry>
@@ -70,12 +93,12 @@
         <entry file="file://$USER_HOME$/.conda/envs/py3/Lib/site-packages/hmmlearn/hmm.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="137">
-              <caret line="393" column="37" lean-forward="true" selection-start-line="393" selection-start-column="37" selection-end-line="393" selection-end-column="37" />
+              <caret line="393" column="37" selection-start-line="393" selection-start-column="37" selection-end-line="393" selection-end-column="37" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/.conda/envs/py3/Lib/site-packages/hmmlearn/base.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-320">
@@ -85,21 +108,24 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.conda/envs/py3/Lib/site-packages/sklearn/utils/validation.py">
+        <entry file="file://$PROJECT_DIR$/mytest/hmm_fit.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="55">
-              <caret line="520" selection-start-line="520" selection-end-line="520" />
+            <state relative-caret-position="1136">
+              <caret line="74" column="6" lean-forward="true" selection-start-line="74" selection-start-column="6" selection-end-line="74" selection-end-column="6" />
+              <folding>
+                <element signature="e#62#80#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/train_hmm/training_by_hmmlearn_with_mp.py">
+        <entry file="file://$PROJECT_DIR$/mytest/hmm_two_dim.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1160">
-              <caret line="76" column="38" lean-forward="true" selection-start-line="76" selection-start-column="38" selection-end-line="76" selection-end-column="38" />
+            <state relative-caret-position="189">
+              <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
               <folding>
-                <element signature="e#15#39#0" expanded="true" />
+                <element signature="e#0#13#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -108,20 +134,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/train_hmm/training_by_hmmlearn_with_mp_two_dim.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-600">
-              <caret line="26" column="28" lean-forward="true" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
+            <state relative-caret-position="2380">
+              <caret line="119" column="27" selection-start-line="119" selection-start-column="17" selection-end-line="119" selection-end-column="27" />
               <folding>
                 <element signature="e#15#39#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/train_data/get_hmm_train_data_by_encoder.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="24" column="48" lean-forward="true" selection-start-line="24" selection-start-column="48" selection-end-line="24" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -143,6 +160,7 @@
       <find>_check_input_symbols</find>
       <find>delta</find>
       <find>x_len</find>
+      <find>preprocessing</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -187,15 +205,18 @@
         <option value="$PROJECT_DIR$/train_hmm/training_by_hmmlearn.py" />
         <option value="$PROJECT_DIR$/train_hmm/training_by_hmmlearn_wiht_mp.py" />
         <option value="$PROJECT_DIR$/test/test_hmm.py" />
-        <option value="$PROJECT_DIR$/train_hmm/training_by_hmmlearn_with_mp.py" />
         <option value="$PROJECT_DIR$/train_data/get_hmm_train_data_by_encoder.py" />
         <option value="$PROJECT_DIR$/mytest/hmm.py" />
-        <option value="$PROJECT_DIR$/train_hmm/training_by_hmmlearn_with_mp_two_dim.py" />
-        <option value="$PROJECT_DIR$/mytest/hmm_two_dim.py" />
         <option value="$PROJECT_DIR$/train_hmm/training_by_hmmlearn_mulit_with_mp_two_dim.py" />
         <option value="$USER_HOME$/.conda/envs/py3/Lib/site-packages/hmmlearn/hmm.py" />
         <option value="$USER_HOME$/.conda/envs/py3/Lib/site-packages/hmmlearn/base.py" />
+        <option value="$PROJECT_DIR$/train_hmm/training_by_hmmlearn_with_mp.py" />
+        <option value="$PROJECT_DIR$/mytest/hmm_fit.py" />
+        <option value="$PROJECT_DIR$/train_hmm/training_by_hmmlearn_with_mp_two_dim.py" />
+        <option value="$PROJECT_DIR$/mytest/hmm_two_dim.py" />
+        <option value="$PROJECT_DIR$/visualization/drawcsv.py" />
         <option value="$PROJECT_DIR$/train_hmm/training_by_hmmlearn_multionmial_with_mp.py" />
+        <option value="$PROJECT_DIR$/train_hmm/traning_by_hmmlearn_multionmial_with_mp_small_data.py" />
       </list>
     </option>
   </component>
@@ -240,6 +261,11 @@
             </path>
             <path>
               <item name="fog-computing-based-collision-warning-system" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fog-computing-based-collision-warning-system" type="462c0819:PsiDirectoryNode" />
+              <item name="visualization" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fog-computing-based-collision-warning-system" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
@@ -252,7 +278,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/AppData/Local/Programs/Git/git-bash.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/train_hmm/training_by_hmmlearn_with_mp_two_dim.py" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
@@ -278,8 +304,29 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.training_by_hmmlearn_multionmial_with_mp">
-    <configuration name="hmm" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.traning_by_hmmlearn_multionmial_with_mp_small_data">
+    <configuration name="drawcsv" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="fog-computing-based-collision-warning-system" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/visualization" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/visualization/drawcsv.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="hmm_fit" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="fog-computing-based-collision-warning-system" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -291,7 +338,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mytest/hmm.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mytest/hmm_fit.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -321,27 +368,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="training_by_hmmlearn_mulit_with_mp_two_dim" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="fog-computing-based-collision-warning-system" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/train_hmm" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train_hmm/training_by_hmmlearn_mulit_with_mp_two_dim.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="training_by_hmmlearn_multionmial_with_mp" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="fog-computing-based-collision-warning-system" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -363,16 +389,16 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="training_by_hmmlearn_with_mp_two_dim" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="training_by_hmmlearn_with_mp_two_dim" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="fog-computing-based-collision-warning-system" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="C:\Users\user4\.conda\envs\py3\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/train_hmm" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train_hmm/training_by_hmmlearn_with_mp_two_dim.py" />
@@ -384,20 +410,42 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="traning_by_hmmlearn_multionmial_with_mp_small_data" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="fog-computing-based-collision-warning-system" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/train_hmm" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train_hmm/traning_by_hmmlearn_multionmial_with_mp_small_data.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
-      <item itemvalue="Python.hmm" />
       <item itemvalue="Python.training_by_hmmlearn_with_mp_two_dim" />
-      <item itemvalue="Python.hmm_two_dim" />
-      <item itemvalue="Python.training_by_hmmlearn_mulit_with_mp_two_dim" />
       <item itemvalue="Python.training_by_hmmlearn_multionmial_with_mp" />
+      <item itemvalue="Python.hmm_fit" />
+      <item itemvalue="Python.hmm_two_dim" />
+      <item itemvalue="Python.drawcsv" />
+      <item itemvalue="Python.traning_by_hmmlearn_multionmial_with_mp_small_data" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.traning_by_hmmlearn_multionmial_with_mp_small_data" />
         <item itemvalue="Python.training_by_hmmlearn_multionmial_with_mp" />
-        <item itemvalue="Python.training_by_hmmlearn_mulit_with_mp_two_dim" />
+        <item itemvalue="Python.drawcsv" />
         <item itemvalue="Python.hmm_two_dim" />
-        <item itemvalue="Python.training_by_hmmlearn_with_mp_two_dim" />
-        <item itemvalue="Python.hmm" />
+        <item itemvalue="Python.hmm_fit" />
       </list>
     </recent_temporary>
   </component>
@@ -415,9 +463,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="pytest_in_test_autoencoder_py - 2019.05.28 at 12h 07m 21s.xml">
-      <configuration name="pytest in test_autoencoder.py" configurationId="tests" />
-    </history-entry>
     <history-entry file="pytest_in_test_autoencoder_py - 2019.05.28 at 12h 10m 04s.xml">
       <configuration name="pytest in test_autoencoder.py" configurationId="tests" />
     </history-entry>
@@ -445,6 +490,9 @@
     <history-entry file="pytest_in_training_by_hmmlearn_mulit_with_mp_two_dim_py - 2019.06.16 at 22h 59m 14s.xml">
       <configuration name="pytest in training_by_hmmlearn_mulit_with_mp_two_dim.py" configurationId="tests" />
     </history-entry>
+    <history-entry file="pytest_in_training_by_hmmlearn_with_mp_two_dim_py - 2019.06.19 at 17h 19m 43s.xml">
+      <configuration name="pytest in training_by_hmmlearn_with_mp_two_dim.py" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -457,14 +505,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16122234" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20600632" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32899022" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.65437305" visible="true" weight="0.37960956" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.65437305" visible="true" weight="0.52386117" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -511,8 +558,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/training/trainning.py" />
-    <entry file="file://$PROJECT_DIR$/training/training_by.py" />
     <entry file="file://$USER_HOME$/.conda/envs/py3/Lib/site-packages/keras/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
@@ -604,17 +649,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="372">
           <caret line="32" selection-start-line="32" selection-end-line="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/visualization/drawcsv.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="700">
-          <caret line="35" column="82" selection-start-line="35" selection-start-column="72" selection-end-line="35" selection-end-column="82" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-            <marker date="1557971105758" expanded="true" signature="703:758" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -742,16 +776,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mytest/hmm_two_dim.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-469">
-          <caret line="15" column="44" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/train_hmm/training_by_hmmlearn_mulit_with_mp_two_dim.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-420">
@@ -766,16 +790,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="24" column="48" lean-forward="true" selection-start-line="24" selection-start-column="48" selection-end-line="24" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train_hmm/training_by_hmmlearn_with_mp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1160">
-          <caret line="76" column="38" lean-forward="true" selection-start-line="76" selection-start-column="38" selection-end-line="76" selection-end-column="38" />
-          <folding>
-            <element signature="e#15#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -803,14 +817,69 @@
     <entry file="file://$USER_HOME$/.conda/envs/py3/Lib/site-packages/hmmlearn/hmm.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="137">
-          <caret line="393" column="37" lean-forward="true" selection-start-line="393" selection-start-column="37" selection-end-line="393" selection-end-column="37" />
+          <caret line="393" column="37" selection-start-line="393" selection-start-column="37" selection-end-line="393" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.conda/envs/py3/Lib/site-packages/hmmlearn/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-320">
+          <caret line="69" column="74" selection-start-line="69" selection-start-column="69" selection-end-line="69" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.conda/envs/py3/Lib/site-packages/sklearn/preprocessing/label.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="251" selection-start-line="251" selection-end-line="251" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mytest/hmm_fit.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1136">
+          <caret line="74" column="6" lean-forward="true" selection-start-line="74" selection-start-column="6" selection-end-line="74" selection-end-column="6" />
+          <folding>
+            <element signature="e#62#80#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/train_hmm/training_by_hmmlearn_with_mp_two_dim.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-600">
-          <caret line="26" column="28" lean-forward="true" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
+        <state relative-caret-position="2380">
+          <caret line="119" column="27" selection-start-line="119" selection-start-column="17" selection-end-line="119" selection-end-column="27" />
+          <folding>
+            <element signature="e#15#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mytest/hmm_two_dim.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/visualization/drawcsv.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="35" column="37" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+            <marker date="1561946451336" expanded="true" signature="701:752" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_hmm/training_by_hmmlearn_with_mp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="62" column="18" lean-forward="true" selection-start-line="62" selection-start-column="18" selection-end-line="62" selection-end-column="18" />
           <folding>
             <element signature="e#15#39#0" expanded="true" />
           </folding>
@@ -819,25 +888,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/train_hmm/training_by_hmmlearn_multionmial_with_mp.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="105" column="96" selection-start-line="105" selection-start-column="84" selection-end-line="105" selection-end-column="96" />
+        <state relative-caret-position="202">
+          <caret line="114" column="51" lean-forward="true" selection-end-line="123" selection-end-column="10" />
           <folding>
             <element signature="e#15#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.conda/envs/py3/Lib/site-packages/sklearn/preprocessing/label.py">
+    <entry file="file://$PROJECT_DIR$/train_hmm/traning_by_hmmlearn_multionmial_with_mp_small_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8">
-          <caret line="243" column="43" lean-forward="true" selection-start-line="243" selection-start-column="43" selection-end-line="243" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.conda/envs/py3/Lib/site-packages/hmmlearn/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-320">
-          <caret line="69" column="74" selection-start-line="69" selection-start-column="69" selection-end-line="69" selection-end-column="74" />
+        <state relative-caret-position="260">
+          <caret line="28" column="23" lean-forward="true" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
+          <folding>
+            <element signature="e#15#48#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

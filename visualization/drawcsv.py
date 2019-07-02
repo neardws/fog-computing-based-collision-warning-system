@@ -22,11 +22,11 @@ Y_MAX = 13000
 
 
 def main():
-    # df = pd.read_csv(CSV_FILE)
-    # x_max = df['x'].max()
-    # y_max = df['y'].max()
-    plot.xlim(X_MIN, X_MAX)
-    plot.ylim(Y_MIN, Y_MAX)
+    df = pd.read_csv(CSV_FILE)
+    x_max = df['x'].max()
+    y_max = df['y'].max()
+    plot.xlim(0, x_max)
+    plot.ylim(0, y_max)
     # pool = mp.Pool(processes=20)
     # jobs = []
 
@@ -38,8 +38,7 @@ def main():
         trace_id = chunk['traceID'].drop_duplicates()
         for id in trace_id:
             trace = chunk[
-                (chunk['traceID'] == id) & (chunk['x'] >= 10000) & (chunk['x'] <= 16000) & (chunk['y'] >= 10000) & (
-                            chunk['y'] <= 20000)]
+                (chunk['traceID'] == id)]
             if len(trace):
                 x = trace['x']
                 y = trace['y']

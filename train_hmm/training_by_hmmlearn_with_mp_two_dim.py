@@ -16,7 +16,7 @@ GMMHMM：观测状态是连续状态，且符合混合高斯分布
 MultinomialHMM：观测状态是离散的
 """
 train_file = TRAIN_DATA + '2dim' + '.txt'
-chunk_lines = 1000
+chunk_lines = 500
 
 
 def read_distributed(*lines):
@@ -83,7 +83,7 @@ def main():
     print(count)
     print(number)
 
-    pool = mp.Pool(processes=20)
+    pool = mp.Pool(processes=10)
     jobs = []
     for i in range(20):
         jobs.append(pool.apply_async(read_distributed, line_cache[i * chunk_lines : i * chunk_lines + chunk_lines]))
@@ -112,7 +112,7 @@ def main():
     number_of_status = 100
     print('￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥')
     print('Start Training')
-    model = hmm.GaussianHMM(n_components=number_of_status, n_iter=10, tol=0.001, covariance_type='tied')
+    model = hmm.GaussianHMM(n_components=number_of_status, n_iter=1000, tol=0.001, covariance_type='tied', verbose=True)
     model.fit(X, X_len)
     # print(model.score(x,x_len))
     print('**************************************')

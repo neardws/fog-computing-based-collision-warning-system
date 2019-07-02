@@ -8,7 +8,7 @@ import multiprocessing as mp
 import linecache
 import pickle
 TRAIN_DATA = r'E:\NearXu\hmm_train_data\train_'
-MODEL_PATH = r'E:\NearXu\model\model_'
+MODEL_PATH = r'E:\NearXu\model\model_small_'
 
 """
 hmmlearn 有三种隐马尔可夫模型：
@@ -61,7 +61,7 @@ def main():
 
     pool = mp.Pool(processes=10)
     jobs = []
-    for i in range(300):
+    for i in range(10):
         jobs.append(pool.apply_async(read_distributed, line_cache[i * chunk_lines : i * chunk_lines + chunk_lines]))
     # jobs.append(pool.apply_async(read_distributed, line_cache[number * chunk_lines : count]))
     for job in jobs:

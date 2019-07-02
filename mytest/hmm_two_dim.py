@@ -4,7 +4,7 @@ import numpy as np
 from sklearn.utils import check_random_state
 TRAIN_DATA = r'E:\NearXu\hmm_train_data\train_'
 ADD_STRING = '2dim.pkl'
-MODEL_PATH = r'E:\NearXu\model\model_' + ADD_STRING
+MODEL_PATH = r'E:\NearXu\model\hmm_mult\model_' + ADD_STRING
 TEST_FILE = r'E:\NearXu\test\test.txt'
 
 np.set_printoptions(threshold=np.inf)
@@ -15,7 +15,7 @@ model = pickle.load(model_file)
 
 # print(model.get_stationary_distribution())
 # print(len(model.get_stationary_distribution()))
-print(model.transmat_)
+# print(model.transmat_)
 
 with open(TEST_FILE, 'a+', encoding='utf-8') as file:
     file.write(np.array2string(model.transmat_))
@@ -24,32 +24,54 @@ with open(TEST_FILE, 'a+', encoding='utf-8') as file:
 
 line_cache = linecache.getlines(test_file)
 
-number = 0
-for line in line_cache:
-    number += 1
-    x_status = np.array([])
-    first_status = 0
-    if number <= 100:
-        status = line.split()
-        print(status)
-        for xys in status:
-            xy = xys.split(',')
-            if len(xy) == 2:
-                if first_status == 0:
-                    x_status = np.hstack((x_status, xy))
-                    x_status = np.expand_dims(x_status, axis=0)
-                    first_status += 1
-                else:
-                    x_status = np.vstack((x_status, xy))
-        len_traj = len(x_status)
+new_x_status = []
+new_x_status.append()
 
+status_sequence = model.predict(new_x_status)
+print(status_sequence)
 
-        print(x_status.shape)
-        x_status = x_status.astype('float32')
-        x_status = (x_status + 30.0) / 60.
-        # print(x_status)
-        status_sequence = model.predict(x_status)
-        print(status_sequence)
+#
+# number = 0
+# for line in line_cache:
+#     number += 1
+#     x_status = np.array([])
+#     first_status = 0
+#     if number <= 100:
+#         status = line.split()
+#         print(status)
+#         for xys in status:
+#             xy = xys.split(',')
+#             if len(xy) == 2:
+#                 if first_status == 0:
+#                     sta = np.array(xy).astype('float32').astype('int32')
+#                     new_sta = int(sta[0]) * 61 + int(sta[1])
+#                     x_status = np.hstack((x_status, new_sta))
+#                     x_status = np.expand_dims(x_status, axis=0)
+#                     first_status += 1
+#                 else:
+#                     sta = np.array(xy).astype('float32').astype('int32')
+#                     new_sta = int(sta[0]) * 61 + int(sta[1])
+#                     x_status = np.vstack((x_status, new_sta))
+#         len_traj = len(x_status)
+#
+#
+#         print(x_status.shape)
+#         # x_status = x_status.astype('float32')
+#         # x_status = (x_status + 30.0) / 60.
+#         print(x_status)
+#         new_x_status = [[478]
+#         [426]
+#         [486]
+#         [606]
+#         [603]
+#         [416]
+#         [232]
+#         [232]
+#         [232]
+#         [171]]
+
+        # status_sequence = model.predict(x_status)
+        # print(status_sequence)
 
 
 
