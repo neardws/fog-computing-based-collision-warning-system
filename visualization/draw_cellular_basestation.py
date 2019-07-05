@@ -3,23 +3,34 @@ import matplotlib.pyplot as plot
 import multiprocessing as mp
 
 CSV_FILE = r'E:\NearXu\trace\trace_0.csv'
-CELLULAR_LOCATION_FILE = r'E:\NearXu\visualization\cellular_location.csv'
+SORTED_CELLULAR_LOCATION_FILE = r'E:\NearXu\visualization\sorted_cellular_location.csv'
 
 
 def draw_all_cellular_base_stations():
-    cellular_df = pd.read_csv(CELLULAR_LOCATION_FILE, error_bad_lines=False, sep=' ')
+    x_list = []
+    y_list = []
+    cellular_df = pd.read_csv(SORTED_CELLULAR_LOCATION_FILE, error_bad_lines=False, sep=',')
     print(cellular_df.head(5))
-    print(cellular_df['ID'])
     x = cellular_df['x']
     y = cellular_df['y']
     stations_number = 0
-    for i in range(len(cellular_df['ID'])):
+    for i in range(len(x)):
         if x[i] >= 10000 and x[i] <= 15000:
             if y[i] >= 10000 and y[i] <= 20000:
-                draw_each_cellular_base_station(x[i], y[i])
+                x_list.append(x[i])
+                y_list.append(y[i])
                 stations_number += 1
-                if stations_number == 10:
-                    break
+                # if stations_number == 10:
+                #     break
+    print("Stations number is")
+    print(str(stations_number) + "\n")
+    pool = mp.Pool(processes=10)
+    jobs = []
+    for i in range(stations_number):
+        jobs.append(pool.apply_async(draw_each_cellular_base_station, (x[i], y[i])))
+    for job in jobs:
+        job.get()
+    pool.close()
 
 
 def draw_each_cellular_base_station(cell_x, cell_y):
