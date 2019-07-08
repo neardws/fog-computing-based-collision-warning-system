@@ -1,6 +1,6 @@
 import pandas as pd
-CELLULAR_LOCATION_FILE = r'E:\NearXu\visualization\cellular_location.csv'
-SORTED_CELLULAR_LOCATION_FILE = r'E:\NearXu\visualization\sorted_cellular_location.csv'
+CELLULAR_LOCATION_FILE = r'C:\Users\user4\PycharmProjects\fog-computing-based-collision-warning-system\visualization\cellular_location.csv'
+SORTED_CELLULAR_LOCATION_FILE = r'C:\Users\user4\PycharmProjects\fog-computing-based-collision-warning-system\visualization\sorted_cellular_location.csv'
 
 df = pd.read_csv(CELLULAR_LOCATION_FILE, error_bad_lines=False, sep=' ')
 new_df = df.sort_values(by=['x'], ascending=[1])

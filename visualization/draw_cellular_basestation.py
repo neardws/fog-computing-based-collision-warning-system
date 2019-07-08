@@ -3,7 +3,8 @@ import matplotlib.pyplot as plot
 import multiprocessing as mp
 
 CSV_FILE = r'E:\NearXu\trace\trace_0.csv'
-SORTED_CELLULAR_LOCATION_FILE = r'E:\NearXu\visualization\sorted_cellular_location.csv'
+SORTED_CELLULAR_LOCATION_FILE = r'C:\Users\user4\PycharmProjects\fog-computing-based-collision-warning-system\visualization\sorted_cellular_location.csv'
+# SELECTED_CELLULAR_LOACTION = r'C:\Users\user4\PycharmProjects\fog-computing-based-collision-warning-system\visualization'
 
 
 def draw_all_cellular_base_stations():
