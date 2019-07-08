@@ -4,20 +4,20 @@ import multiprocessing as mp
 
 CSV_FILE = r'E:\NearXu\trace\trace_0.csv'
 SORTED_CELLULAR_LOCATION_FILE = r'C:\Users\user4\PycharmProjects\fog-computing-based-collision-warning-system\visualization\sorted_cellular_location.csv'
-# SELECTED_CELLULAR_LOACTION = r'C:\Users\user4\PycharmProjects\fog-computing-based-collision-warning-system\visualization'
+SELECTED_CELLULAR_LOACTION = r'C:\Users\user4\PycharmProjects\fog-computing-based-collision-warning-system\visualization\selected_cellular_location.csv'
 
 
 def draw_all_cellular_base_stations():
     x_list = []
     y_list = []
-    cellular_df = pd.read_csv(SORTED_CELLULAR_LOCATION_FILE, error_bad_lines=False, sep=',')
+    cellular_df = pd.read_csv(SELECTED_CELLULAR_LOACTION, error_bad_lines=False, sep=',')
     print(cellular_df.head(5))
     x = cellular_df['x']
     y = cellular_df['y']
     stations_number = 0
     for i in range(len(x)):
-        if x[i] >= 10000 and x[i] <= 15000:
-            if y[i] >= 10000 and y[i] <= 20000:
+        # if x[i] >= 10000 and x[i] <= 15000:
+        #     if y[i] >= 10000 and y[i] <= 20000:
                 x_list.append(x[i])
                 y_list.append(y[i])
                 stations_number += 1
