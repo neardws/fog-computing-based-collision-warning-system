@@ -64,16 +64,15 @@ def draw_each_cellular_base_station(cell_x, cell_y):
     plot.show()
 
 
-def show_trace():
-    chunk_size = 10000
+def show_trace(CSV_FILE):
+    chunk_size = 1000000
     for chunk in pd.read_csv(CSV_FILE, error_bad_lines=False, chunksize=chunk_size):
-        print(chunk.head(5))
+        print(chunk.head(1))
 
 
 def show_information():
-    morning_time = 32400
-    night_time = 79200
-    during_time = 1800  # half hours
+    cellular_range = 500
+    during_time = 600  # 10 min
     morning_csv_file = r'E:\NearXu\trace\trace_9.csv'
     night_csv_file = r'E:\NearXu\trace\trace_27.csv'
 
@@ -82,19 +81,18 @@ def show_information():
     print(cellular_df.head(5))
     x = cellular_df['x']
     y = cellular_df['y']
-    show_scenario_information(CSV_FILE=night_csv_file, cell_x=x[0], cell_y=y[0], start_time=night_time, during_time=during_time)
+    show_scenario_information(CSV_FILE=get_csv_file('9pm'), cell_x=x[0], cell_y=y[0], start_time=get_start_time('9pm'), during_time=during_time, cellular_range=cellular_range)
 
 
-def show_scenario_information(CSV_FILE, cell_x, cell_y, start_time, during_time):
+def show_scenario_information(CSV_FILE, cell_x, cell_y, start_time, during_time, cellular_range):
     # 需要统计的值
     traffic_density = 0
     vehicle_speed = np.array([])
-    range = 250
     chunk_size = 10000
-    x_min = cell_x - range
-    x_max = cell_x + range
-    y_min = cell_y - range
-    y_max = cell_y + range
+    x_min = cell_x - cellular_range
+    x_max = cell_x + cellular_range
+    y_min = cell_y - cellular_range
+    y_max = cell_y + cellular_range
     for chunk in pd.read_csv(CSV_FILE, error_bad_lines=False, chunksize=chunk_size):
         selected_traces = chunk[(chunk['x'] >= x_min) & (chunk['x'] <= x_max) &
                                 (chunk['y'] >= y_min) & (chunk['y'] <= y_max) &
@@ -108,9 +106,10 @@ def show_scenario_information(CSV_FILE, cell_x, cell_y, start_time, during_time)
                 time = trace['time']
                 vehicle_speed = np.append(vehicle_speed, get_average_speed(length=len(x), x=x, y=y, time=time))
                 traffic_density += 1
-    print('*'*32)
+    print('*'*64)
     print('traffic density is ' + str(traffic_density))
     print('vehicle speed is ' + str(vehicle_speed))
+    print('mean vehicle speed is '+ str(vehicle_speed.mean()))
 
 
 def get_average_speed(length, x, y, time):
@@ -121,9 +120,80 @@ def get_average_speed(length, x, y, time):
         speeds = np.append(speeds, speed)
     return speeds.mean()
 
+
+def get_start_time(time):
+    dic_start_time = {
+        '1am'   :   3600,
+        '2am'   :   7200,
+        '3am'   :   10800,
+        '4am'   :   14400,
+        '5am'   :   18000,
+        '6am'   :   21600,
+        '7am'   :   25200,
+        '8am'   :   28800,
+        '9am'   :   32400,
+        '10am'  :   36000,
+        '11am'  :   39600,
+        '12am'  :   43200,
+        '1pm'   :   46800,
+        '2pm'   :   50400,
+        '3pm'   :   54000,
+        '4pm'   :   57600,
+        '5pm'   :   61200,
+        '6pm'   :   64800,
+        '7pm'   :   68400,
+        '8pm'   :   72000,
+        '9pm'   :   75600,
+        '10pm'  :   79200,
+        '11pm'  :   82800
+    }
+    try:
+        return dic_start_time[time]
+    except KeyError:
+        print("Key Error in get_start_time")
+
+
+def get_csv_file(time):
+    csv_file = r'E:\NearXu\trace\trace_'
+    dic_csv_file = {
+        '1am'   :   csv_file + '0.csv',
+        '2am'   :   csv_file + '0.csv',
+        '3am'   :   csv_file + '0.csv',
+        '4am'   :   csv_file + '0.csv',
+        '5am'   :   csv_file + '0.csv',
+        '6am'   :   csv_file + '0.csv',
+        '7am'   :   csv_file + '3.csv',
+        '8am'   :   csv_file + '7.csv',
+        '9am'   :   csv_file + '8.csv',
+        '10am'  :   csv_file + '9.csv',
+        '11am'  :   csv_file + '10.csv',
+        '12am'  :   csv_file + '12.csv',
+        '1pm'   :   csv_file + '13.csv',
+        '2pm'   :   csv_file + '14.csv',
+        '3pm'   :   csv_file + '15.csv',    # no good
+        '4pm'   :   csv_file + '17.csv',
+        '5pm'   :   csv_file + '20.csv',
+        '6pm'   :   csv_file + '23.csv',
+        '7pm'   :   csv_file + '24.csv',    # no good
+        '8pm'   :   csv_file + '26.csv',
+        '9pm'   :   csv_file + '27.csv',
+        '10pm'  :   csv_file + '27.csv',
+        '11pm'  :   csv_file + '28.csv'
+    }
+    try:
+        return dic_csv_file[time]
+    except KeyError:
+        print("Key Error in get_csv_file")
+
+
 if __name__ == '__main__':
     # draw_all_cellular_base_stations()
-    # show_trace()
+    # CSV_FILE = r'E:\NearXu\trace\trace_'
+    # for i in range(0, 10):
+    #     csv_file = CSV_FILE + str(i) + '.csv'
+    #     print('*'*1000)
+    #     print('now id is '+ str(i))
+    #     show_trace(csv_file)
 
 
     # length = 4
