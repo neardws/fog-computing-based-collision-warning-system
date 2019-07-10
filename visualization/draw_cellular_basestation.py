@@ -2,6 +2,9 @@ import pandas as pd
 import matplotlib.pyplot as plot
 import multiprocessing as mp
 import numpy as np
+import math
+from prettytable import PrettyTable
+
 
 CSV_FILE = r'E:\NearXu\trace\trace_9.csv'
 SORTED_CELLULAR_LOCATION_FILE = r'C:\Users\user4\PycharmProjects\fog-computing-based-collision-warning-system\visualization\sorted_cellular_location.csv'
@@ -73,19 +76,35 @@ def show_trace(CSV_FILE):
 def show_information():
     cellular_range = 500
     during_time = 600  # 10 min
-    morning_csv_file = r'E:\NearXu\trace\trace_9.csv'
-    night_csv_file = r'E:\NearXu\trace\trace_27.csv'
-
-
     cellular_df = pd.read_csv(SELECTED_CELLULAR_LOCATION, error_bad_lines=False, sep=',')
-    print(cellular_df.head(5))
+    times = ('6am',  '7am',  '8am', '9am', '10am',
+            '11am', '12am', '1pm', '2pm', '3pm',
+            '4pm',  '5pm',  '6pm', '7pm', '8pm',
+            '9pm',  '10pm', '11pm')
     x = cellular_df['x']
     y = cellular_df['y']
-    show_scenario_information(CSV_FILE=get_csv_file('9pm'), cell_x=x[0], cell_y=y[0], start_time=get_start_time('9pm'), during_time=during_time, cellular_range=cellular_range)
+    table = PrettyTable(['time','type', '1',  '2',  '3', '4', '5', '6', '7', '8', '9'])
+    for time in times:
+        row_traffic_density = []
+        row_vehicle_speed = []
+        row_traffic_density.append(time)
+        row_traffic_density.append('density')
+        row_vehicle_speed.append(time)
+        row_vehicle_speed.append('speed')
+        for i in range(9):
+            values = show_scenario_information(CSV_FILE=get_csv_file(time), cell_x=x[i], cell_y=y[i],
+                                      start_time=get_start_time(time), during_time=during_time,
+                                      cellular_range=cellular_range)
+            row_traffic_density.append(str(values['traffic_density']))
+            row_vehicle_speed.append(str(values['vehicle_speed']))
+        table.add_row(row_traffic_density)
+        table.add_row(row_vehicle_speed)
+    print(table)
 
 
 def show_scenario_information(CSV_FILE, cell_x, cell_y, start_time, during_time, cellular_range):
     # 需要统计的值
+    values = {'traffic_density':0, 'vehicle_speed':0}
     traffic_density = 0
     vehicle_speed = np.array([])
     chunk_size = 10000
@@ -104,18 +123,24 @@ def show_scenario_information(CSV_FILE, cell_x, cell_y, start_time, during_time,
                 x = trace['x']
                 y = trace['y']
                 time = trace['time']
-                vehicle_speed = np.append(vehicle_speed, get_average_speed(length=len(x), x=x, y=y, time=time))
+                average_speed = get_average_speed(length=len(x), x=x, y=y, time=time)
+                if not math.isnan(average_speed):
+                    vehicle_speed = np.append(vehicle_speed, average_speed)
                 traffic_density += 1
     print('*'*64)
+    print('location is ' + str(cell_x) + ' ' + str(cell_y))
+    print('start time is ' + str(start_time) + ' during is ' + str(during_time))
     print('traffic density is ' + str(traffic_density))
     print('vehicle speed is ' + str(vehicle_speed))
     print('mean vehicle speed is '+ str(vehicle_speed.mean()))
-
+    values['traffic_density'] = traffic_density
+    values['vehicle_speed'] = vehicle_speed.mean()
+    return values
 
 def get_average_speed(length, x, y, time):
     speeds = np.array([])
     for i in range(length-1):
-        print(i)
+        # print(i)
         speed = np.sqrt(np.square(x.iloc[i+1] - x.iloc[i]) + np.square(y.iloc[i+1] - y.iloc[i])) / (time.iloc[i+1] - time.iloc[i])
         speeds = np.append(speeds, speed)
     return speeds.mean()
