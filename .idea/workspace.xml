@@ -4,9 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/README.md" line="60" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d6d4d26-8c02-44c8-aca0-047c84e0ef83" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/visualization/density_speed.txt" beforeDir="false" afterPath="$PROJECT_DIR$/visualization/density_speed.txt" afterDir="false" />
-    </list>
+    <list default="true" id="4d6d4d26-8c02-44c8-aca0-047c84e0ef83" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,11 +34,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/visualization/density_speed.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="722">
-              <caret line="46" column="59" lean-forward="true" selection-start-line="46" selection-start-column="59" selection-end-line="46" selection-end-column="59" />
+            <state relative-caret-position="452">
+              <caret line="48" column="59" lean-forward="true" selection-start-line="48" selection-start-column="59" selection-end-line="48" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -63,7 +61,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$USER_HOME$/.conda/envs/py3/Lib/site-packages/numpy/core/_methods.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="74">
@@ -75,8 +73,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/visualization/selected_cellular_location.csv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="4" column="15" lean-forward="true" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
+            <state relative-caret-position="1">
+              <caret line="9" column="16" lean-forward="true" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -188,16 +186,6 @@
             <path>
               <item name="fog-computing-based-collision-warning-system" type="b2602c69:ProjectViewProjectNode" />
               <item name="fog-computing-based-collision-warning-system" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fog-computing-based-collision-warning-system" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fog-computing-based-collision-warning-system" type="462c0819:PsiDirectoryNode" />
-              <item name="propocess" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fog-computing-based-collision-warning-system" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fog-computing-based-collision-warning-system" type="462c0819:PsiDirectoryNode" />
-              <item name="visualization" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="fog-computing-based-collision-warning-system" type="b2602c69:ProjectViewProjectNode" />
@@ -440,7 +428,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19546892" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -456,7 +443,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.34562698" side_tool="true" weight="0.5856833" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.7407809" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3362256" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.3286334" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -845,13 +832,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.conda/envs/py3/Lib/site-packages/numpy/core/_methods.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="84" selection-start-line="84" selection-end-line="84" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.conda/envs/py3/Lib/site-packages/pandas/io/common.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
@@ -883,17 +863,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/visualization/selected_cellular_location.csv">
+    <entry file="file://$PROJECT_DIR$/visualization/density_speed.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="15" lean-forward="true" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
+        <state relative-caret-position="452">
+          <caret line="48" column="59" lean-forward="true" selection-start-line="48" selection-start-column="59" selection-end-line="48" selection-end-column="59" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/visualization/density_speed.txt">
+    <entry file="file://$PROJECT_DIR$/visualization/selected_cellular_location.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="722">
-          <caret line="46" column="59" lean-forward="true" selection-start-line="46" selection-start-column="59" selection-end-line="46" selection-end-column="59" />
+        <state relative-caret-position="1">
+          <caret line="9" column="16" lean-forward="true" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.conda/envs/py3/Lib/site-packages/numpy/core/_methods.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="74">
+          <caret line="84" selection-start-line="84" selection-end-line="84" />
         </state>
       </provider>
     </entry>
