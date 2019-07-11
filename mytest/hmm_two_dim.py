@@ -3,112 +3,54 @@ import linecache
 import numpy as np
 from sklearn.utils import check_random_state
 TRAIN_DATA = r'E:\NearXu\hmm_train_data\train_'
-ADD_STRING = '2dim.pkl'
-MODEL_PATH = r'E:\NearXu\model\hmm_mult\model_' + ADD_STRING
+LE_STRING = 'le.pkl'
+HMM_STRING = 'hmm.pkl'
+MODEL_SETTING = 'statue_37_number_5000_'
+LE_MODEL_PATH = r'E:\NearXu\model\model_' + MODEL_SETTING  + LE_STRING
+HMM_MODEL_PATH = r'E:\NearXu\model\model_' + MODEL_SETTING  + HMM_STRING
 TEST_FILE = r'E:\NearXu\test\test.txt'
 
 np.set_printoptions(threshold=np.inf)
 
-model_file = open(MODEL_PATH, 'rb')
 test_file = TRAIN_DATA + '2dim' + '.txt'
-model = pickle.load(model_file)
 
-# print(model.get_stationary_distribution())
-# print(len(model.get_stationary_distribution()))
-# print(model.transmat_)
+hmm_model_file = open(HMM_MODEL_PATH, 'rb')
+hmm_model = pickle.load(hmm_model_file)
+
+le_model_file = open(LE_MODEL_PATH, 'rb')
+le_model = pickle.load(le_model_file)
+
 
 with open(TEST_FILE, 'a+', encoding='utf-8') as file:
-    file.write(np.array2string(model.transmat_))
+    file.write(np.array2string(hmm_model.transmat_))
 
-# print('HMM Score')
 
 line_cache = linecache.getlines(test_file)
+line_number = 0
+for line in line_cache:
+    line_number += 1
+    the_x = np.array([])
+    status = line.split()
+    status_num = 0
+    for xys in status:
+        xy = xys.split(',')
+        if len(xy) == 2:
+            status_num += 1
+            sta = np.array(xy).astype('float32').astype('int32')
+            new_sta = int(sta[0]) * 61 + int(sta[1])
+            the_x = np.hstack((the_x, new_sta))
+    len_traj = status_num
+    if len_traj == 0:
+        pass
+    else:
+        x = the_x
+        x = x[:, np.newaxis]
+        new_x = le_model.transform(x)
+        X = np.array(new_x).astype('int32')
+        X = X.reshape(-1, 1)
+        print(X)
+        status_sequence = hmm_model.predict(X)
+        print(status_sequence)
+    if line_number >= 10:
+        break
 
-new_x_status = []
-new_x_status.append()
-
-status_sequence = model.predict(new_x_status)
-print(status_sequence)
-
-#
-# number = 0
-# for line in line_cache:
-#     number += 1
-#     x_status = np.array([])
-#     first_status = 0
-#     if number <= 100:
-#         status = line.split()
-#         print(status)
-#         for xys in status:
-#             xy = xys.split(',')
-#             if len(xy) == 2:
-#                 if first_status == 0:
-#                     sta = np.array(xy).astype('float32').astype('int32')
-#                     new_sta = int(sta[0]) * 61 + int(sta[1])
-#                     x_status = np.hstack((x_status, new_sta))
-#                     x_status = np.expand_dims(x_status, axis=0)
-#                     first_status += 1
-#                 else:
-#                     sta = np.array(xy).astype('float32').astype('int32')
-#                     new_sta = int(sta[0]) * 61 + int(sta[1])
-#                     x_status = np.vstack((x_status, new_sta))
-#         len_traj = len(x_status)
-#
-#
-#         print(x_status.shape)
-#         # x_status = x_status.astype('float32')
-#         # x_status = (x_status + 30.0) / 60.
-#         print(x_status)
-#         new_x_status = [[478]
-#         [426]
-#         [486]
-#         [606]
-#         [603]
-#         [416]
-#         [232]
-#         [232]
-#         [232]
-#         [171]]
-
-        # status_sequence = model.predict(x_status)
-        # print(status_sequence)
-
-
-
-
-
-        # x_status = np.array([])
-        # status = line.split()
-        # if len(status) >= 10:
-        #     len_traj = 0
-        #     #for sta in status:
-        #     #    len_traj += 1
-        #         # if len_traj <= 10:
-        #     x_status = np.hstack((x_status, status))
-        #     the_x = np.append(the_x, x_status)
-        #     the_x = the_x[:, np.newaxis]
-        #     the_x = the_x.astype(np.float64)
-        #     # print(the_x)
-        #     status_sequence = model.predict(the_x)
-        #     print(status_sequence)
-            # status_sequence = model.decode(the_x)
-            # print(status_sequence)
-            # print('HMM Score')
-            # print(model.score(the_x))
-            # print(the_x)
-
-            # transmat_cdf = np.cumsum(model.transmat_, axis=1)
-            # random_state = check_random_state(model.random_state)
-            # next_state = (transmat_cdf[status_sequence[-1]] > random_state.rand()).argmax()
-            # next_obs = model._generate_sample_from_state(status_sequence[-1], next_state)
-            # print(next_state)
-            # print(next_obs)
-
-            # status_sequence = model.predict(the_x)
-            # print(status_sequence)
-            # transmat_cdf = np.cumsum(model.transmat_, axis=1)
-            # random_state = check_random_state(model.random_state)
-            # next_state = (transmat_cdf[status_sequence[-1]] > random_state.rand()).argmax()
-            # next_obs = model._generate_sample_from_state(status_sequence[-1], next_state)
-            # print(next_state)
-            # print(next_obs)
