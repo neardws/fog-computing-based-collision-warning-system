@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d6d4d26-8c02-44c8-aca0-047c84e0ef83" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/mytest/hmm_two_dim.py" beforeDir="false" afterPath="$PROJECT_DIR$/mytest/hmm_two_dim.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment/get_test_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment/get_test_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/result/statue_37_number_5000.txt" beforeDir="false" afterPath="$PROJECT_DIR$/result/statue_37_number_5000.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,38 +29,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/visualization/draw_cellular_basestation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="207" column="8" selection-start-line="207" selection-start-column="8" selection-end-line="207" selection-end-column="8" />
+            <state relative-caret-position="250">
+              <caret line="148" selection-start-line="148" selection-end-line="177" selection-end-column="44" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/visualization/density_speed.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="452">
-              <caret line="48" column="59" selection-start-line="48" selection-start-column="59" selection-end-line="48" selection-end-column="59" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.conda/envs/py3/Lib/site-packages/pandas/io/parsers.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="412" selection-start-line="412" selection-end-line="412" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.conda/envs/py3/Lib/site-packages/pandas/io/common.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="231" selection-start-line="231" selection-end-line="231" />
             </state>
           </provider>
         </entry>
@@ -84,11 +59,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mytest/hmm_two_dim.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="41" column="9" lean-forward="true" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
+            <state relative-caret-position="292">
+              <caret line="33" column="18" lean-forward="true" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -96,11 +71,45 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/experiment/get_test_data.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="161">
+              <caret line="94" column="28" lean-forward="true" selection-start-line="94" selection-start-column="28" selection-end-line="94" selection-end-column="28" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/visualization/drawcsv.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="15" column="134" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="145" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+                <marker date="1561946451336" expanded="true" signature="701:752" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/experiment/vehicels_info.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="40">
+              <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/train_hmm/train_by_hmmlearn_small_test3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="47" column="80" lean-forward="true" selection-start-line="30" selection-start-column="4" selection-end-line="47" selection-end-column="80" />
+            <state relative-caret-position="240">
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
               <folding>
                 <element signature="e#15#48#0" expanded="true" />
               </folding>
@@ -123,8 +132,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/visualization/selected_cellular_location.csv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1">
-              <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+            <state relative-caret-position="20">
+              <caret line="1" selection-start-line="1" selection-end-line="9" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -149,6 +158,8 @@
       <find>id</find>
       <find>station</find>
       <find>CSV_FILE</find>
+      <find>The</find>
+      <find>le</find>
       <find>print</find>
     </findStrings>
   </component>
@@ -159,7 +170,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/propocess/drawcsv.py" />
         <option value="$PROJECT_DIR$/propocess/cellular_location.csv" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/training/hmm.py" />
@@ -198,7 +208,6 @@
         <option value="$PROJECT_DIR$/visualization/drawcsv.py" />
         <option value="$PROJECT_DIR$/train_hmm/training_by_hmmlearn_multionmial_with_mp.py" />
         <option value="$PROJECT_DIR$/train_hmm/traning_by_hmmlearn_multionmial_with_mp_small_data.py" />
-        <option value="$PROJECT_DIR$/experiment/get_test_data.py" />
         <option value="$PROJECT_DIR$/train_hmm/train_by_hmmlearn_samll_status.py" />
         <option value="$PROJECT_DIR$/train_hmm/train_by_hmmlearn_small_test.py" />
         <option value="$PROJECT_DIR$/train_hmm/train_by_hmmlearn_small_test2.py" />
@@ -207,9 +216,11 @@
         <option value="$PROJECT_DIR$/visualization/process_cellular_location.py" />
         <option value="$PROJECT_DIR$/visualization/selected_cellular_location.csv" />
         <option value="$PROJECT_DIR$/propocess/divided_time_hours.py" />
-        <option value="$PROJECT_DIR$/visualization/draw_cellular_basestation.py" />
         <option value="$PROJECT_DIR$/visualization/density_speed.txt" />
         <option value="$PROJECT_DIR$/mytest/hmm_two_dim.py" />
+        <option value="$PROJECT_DIR$/result/statue_37_number_5000.txt" />
+        <option value="$PROJECT_DIR$/visualization/draw_cellular_basestation.py" />
+        <option value="$PROJECT_DIR$/experiment/get_test_data.py" />
       </list>
     </option>
   </component>
@@ -220,8 +231,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="572" />
-    <option name="y" value="-22" />
+    <option name="x" value="173" />
+    <option name="y" value="-9" />
     <option name="width" value="616" />
     <option name="height" value="1056" />
   </component>
@@ -240,12 +251,12 @@
             <path>
               <item name="fog-computing-based-collision-warning-system" type="b2602c69:ProjectViewProjectNode" />
               <item name="fog-computing-based-collision-warning-system" type="462c0819:PsiDirectoryNode" />
-              <item name="mytest" type="462c0819:PsiDirectoryNode" />
+              <item name="experiment" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="fog-computing-based-collision-warning-system" type="b2602c69:ProjectViewProjectNode" />
               <item name="fog-computing-based-collision-warning-system" type="462c0819:PsiDirectoryNode" />
-              <item name="train_hmm" type="462c0819:PsiDirectoryNode" />
+              <item name="visualization" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="fog-computing-based-collision-warning-system" type="b2602c69:ProjectViewProjectNode" />
@@ -287,7 +298,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.draw_cellular_basestation">
+  <component name="RunManager" selected="Python.hmm_two_dim">
     <configuration name="divided_time_hours" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="fog-computing-based-collision-warning-system" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -330,6 +341,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="hmm_two_dim" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="fog-computing-based-collision-warning-system" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/mytest" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mytest/hmm_two_dim.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="process_cellular_location" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="fog-computing-based-collision-warning-system" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -343,27 +375,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/visualization/process_cellular_location.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="train_by_hmmlearn_small_test2" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="fog-computing-based-collision-warning-system" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/train_hmm" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train_hmm/train_by_hmmlearn_small_test2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -417,18 +428,18 @@
     <list>
       <item itemvalue="Python.training_by_hmmlearn_with_mp_two_dim" />
       <item itemvalue="Python.draw_cellular_basestation" />
-      <item itemvalue="Python.train_by_hmmlearn_small_test2" />
       <item itemvalue="Python.train_by_hmmlearn_small_test3" />
       <item itemvalue="Python.process_cellular_location" />
       <item itemvalue="Python.divided_time_hours" />
+      <item itemvalue="Python.hmm_two_dim" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.hmm_two_dim" />
         <item itemvalue="Python.draw_cellular_basestation" />
         <item itemvalue="Python.divided_time_hours" />
         <item itemvalue="Python.process_cellular_location" />
         <item itemvalue="Python.train_by_hmmlearn_small_test3" />
-        <item itemvalue="Python.train_by_hmmlearn_small_test2" />
       </list>
     </recent_temporary>
   </component>
@@ -495,7 +506,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32899022" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.65437305" weight="0.96746206" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.65437305" visible="true" weight="0.31561822" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -504,7 +515,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.34562698" side_tool="true" weight="0.5856833" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3362256" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3362256" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.3286334" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -542,16 +553,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/train_autoencoder/get_autoencoder_train_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1800">
-          <caret line="94" column="26" selection-start-line="94" selection-start-column="12" selection-end-line="94" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mytest/test_hmm.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -731,16 +732,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/experiment/get_test_data.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiment/vehicels_info.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/train_hmm/train_by_hmmlearn_samll_status.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -772,17 +763,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
           <caret line="1" column="117" selection-start-line="1" selection-start-column="117" selection-end-line="1" selection-end-column="117" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/visualization/drawcsv.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="15" column="134" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="145" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-            <marker date="1561946451336" expanded="true" signature="701:752" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -867,16 +847,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/visualization/draw_cellular_basestation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="207" column="8" selection-start-line="207" selection-start-column="8" selection-end-line="207" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/visualization/cellular_location.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -888,13 +858,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="452">
           <caret line="48" column="59" selection-start-line="48" selection-start-column="59" selection-end-line="48" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/visualization/selected_cellular_location.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1">
-          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -927,20 +890,72 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/train_hmm/train_by_hmmlearn_small_test3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="47" column="80" lean-forward="true" selection-start-line="30" selection-start-column="4" selection-end-line="47" selection-end-column="80" />
+        <state relative-caret-position="240">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
           <folding>
             <element signature="e#15#48#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/result/statue_37_number_5000.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="49" column="9" selection-start-line="49" selection-start-column="9" selection-end-line="49" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mytest/hmm_two_dim.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="41" column="9" lean-forward="true" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
+        <state relative-caret-position="292">
+          <caret line="33" column="18" lean-forward="true" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiment/vehicels_info.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/visualization/drawcsv.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="15" column="134" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="145" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+            <marker date="1561946451336" expanded="true" signature="701:752" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/visualization/draw_cellular_basestation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="148" selection-start-line="148" selection-end-line="177" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/visualization/selected_cellular_location.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" selection-start-line="1" selection-end-line="9" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiment/get_test_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="94" column="28" lean-forward="true" selection-start-line="94" selection-start-column="28" selection-end-line="94" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
