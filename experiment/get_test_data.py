@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy import optimize
 import pandas as pd
+from vehicels_info import vehicle
 
 def f_1(x, A, B):
     return A * x +  B
@@ -34,6 +35,8 @@ def get_trace(time, scenario, scenario_range, during_time):
     y_min = scenario_y - scenario_range
     y_max = scenario_y + scenario_range
     chunk_size = 100000
+    # return variable
+    vehicles = []
     for chunk in pd.read_csv(csv_file, error_bad_lines=False, chunksize=chunk_size):
         selected_traces = chunk[(chunk['x'] >= x_min) & (chunk['x'] <= x_max) &
                                 (chunk['y'] >= y_min) & (chunk['y'] <= y_max) &
@@ -44,7 +47,33 @@ def get_trace(time, scenario, scenario_range, during_time):
             if len(trace):
                 x = trace['x']
                 y = trace['y']
-                time = trace['time']
+                trace_time = trace['time']
+                new_vehicle = vehicle()
+                vehicles.append(new_vehicle.set_vehicleID(vehicleID=trace_id).set_trace(x=x, y=y, time=trace_time))
+    return vehicles
+
+
+# selected_scenario:
+# No      Location        Time        Density         Speed
+# 1           6            6pm          485           12.448
+# 2           6           11pm          94            13.2631
+# 3           4            6pm          355           26.5014
+# 4           4           11pm          52            28.7100
+# 5           3            6pm          119           18.3845
+# 6           3           11pm          28            18.2582
+def show_trace():
+    time = '11pm'
+    scenario = '6'
+    during_time = 600
+    scenario_range = 500
+    vehicles = get_trace(time=time, scenario=scenario, scenario_range=scenario_range, during_time=during_time)
+    print("vehicle number is " + str(len(vehicles)))
+    for i in range(len(vehicles)):
+        x = vehicles[i].get_trace_x()
+        y = vehicles[i].get_trace_y()
+        time = vehicles[i].get_trace_time()
+        scenario_x = get_scenario_xy(scenario)[0]
+        curve_fitting(scenario_x=scenario_x, scenario_range=scenario_range, trace_x=x, trace_y=y)
 
 
 def get_csv_file(time):
@@ -128,3 +157,11 @@ def get_scenario_xy(number):
         return dic_scenario_xy[number]
     except KeyError:
         print("Key Error in get_scenario_xy")
+
+
+def main():
+    show_trace()
+
+
+if __name__ == '__main__':
+    main()
