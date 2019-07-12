@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import optimize
-
+import pandas as pd
 
 def f_1(x, A, B):
     return A * x +  B
@@ -11,20 +11,40 @@ def f_2(x, A, B, C):
     return A * x * x + B * x + C
 
 
-def curve_fitting(map_x, range, trace_x, trace_y):
+def curve_fitting(scenario_x, scenario_range, trace_x, trace_y):
     plt.figure()
     plt.scatter(trace_x[:], trace_y[:], 10, 'red')
 
     A, B, C = optimize.curve_fit(f_2, trace_x, trace_y)[0]
-    x = np.arange(map_x-range, map_x+range, 0.01)
+    x = np.arange(scenario_x-scenario_range, scenario_x+scenario_range, 0.01)
     y = A * x * x + B * x + C
     plt.plot(x, y, 'green')
 
     plt.show()
 
 
-def get_trace(time, scenario, range, during):
-    pass
+def get_trace(time, scenario, scenario_range, during_time):
+    csv_file = get_csv_file(time)
+    start_time = get_start_time(time)
+    scenario_xy = get_scenario_xy(scenario)
+    scenario_x = scenario_xy[0]
+    scenario_y = scenario_xy[1]
+    x_min = scenario_x - scenario_range
+    x_max = scenario_x + scenario_range
+    y_min = scenario_y - scenario_range
+    y_max = scenario_y + scenario_range
+    chunk_size = 100000
+    for chunk in pd.read_csv(csv_file, error_bad_lines=False, chunksize=chunk_size):
+        selected_traces = chunk[(chunk['x'] >= x_min) & (chunk['x'] <= x_max) &
+                                (chunk['y'] >= y_min) & (chunk['y'] <= y_max) &
+                                (chunk['time'] >= start_time) & (chunk['time'] <= start_time + during_time)]
+        trace_id = selected_traces['traceID'].drop_duplicates()
+        for id in trace_id:
+            trace = selected_traces[selected_traces['traceID'] == id]
+            if len(trace):
+                x = trace['x']
+                y = trace['y']
+                time = trace['time']
 
 
 def get_csv_file(time):
