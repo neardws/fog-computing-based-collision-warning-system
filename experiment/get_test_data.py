@@ -66,14 +66,50 @@ def get_trace(time, scenario, scenario_range, during_time):
 def show_trace(time, scenario, during_time, scenario_range):
     vehicles = get_trace(time=time, scenario=scenario, scenario_range=scenario_range, during_time=during_time)
     print("vehicle number is " + str(len(vehicles)))
-    for i in range(len(vehicles)):
-        vehicles[i].get_distance(vehicles[i+1])
-        break
+
+    # get_distance(vehicle_one=vehicles[0], vehicle_two=vehicles[2])
+    for i in range(len(vehicles)-1):
+        for j in range(i+1, len(vehicles)):
+            # print(str(i) + " " + str(j))
+            get_distance(vehicle_one=vehicles[i], vehicle_two=vehicles[j])
         # x = vehicles[i].get_trace_x()
         # y = vehicles[i].get_trace_y()
         # time = vehicles[i].get_trace_time()
         # scenario_x = get_scenario_xy(scenario)[0]
         # curve_fitting(scenario_x=scenario_x, scenario_range=scenario_range, trace_x=x, trace_y=y)
+
+
+def get_distance(vehicle_one, vehicle_two):
+    my_max_time = max(vehicle_one.get_trace_time())
+    my_min_time = min(vehicle_one.get_trace_time())
+    my_time = set(range(my_min_time, my_max_time + 1))
+    print(my_time)
+    another_max_time = max(vehicle_two.get_trace_time())
+    another_min_time = min(vehicle_two.get_trace_time())
+    another_time = set(range(another_min_time, another_max_time + 1))
+    print(another_time)
+
+    intersection_time = my_time & another_time
+    print(intersection_time)
+    if len(intersection_time):
+        print('*' * 64)
+        for time in range(min(intersection_time), max(intersection_time)+1):
+            my_xy = vehicle_one.get_xy_from_time(time)
+            another_xy = vehicle_two.get_xy_from_time(time)
+            if my_xy is not None:
+                if another_xy is not None:
+                    my_x = my_xy[0]
+                    my_y = my_xy[1]
+                    another_x = another_xy[0]
+                    another_y = another_xy[1]
+                    # print('My_Xy')
+                    # print(my_xy)
+                    # print(str(my_x) + '  ' + str(my_y))
+                    # print('Another_Xy')
+                    # print(another_xy)
+                    # print(str(another_x) + '  ' + str(another_y))
+                    distance = np.sqrt(np.square(my_x - another_x) + np.square(my_y - another_y))
+                    print(str(distance))
 
 
 def draw_all_scenario():
