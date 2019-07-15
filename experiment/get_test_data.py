@@ -54,6 +54,7 @@ def get_trace(time, scenario, scenario_range, during_time):
     return vehicles
 
 
+
 # selected_scenario:
 # No      Location        Time        Density         Speed
 # 1           6            6pm          485           12.448
@@ -62,19 +63,17 @@ def get_trace(time, scenario, scenario_range, during_time):
 # 4           4           11pm          52            28.7100
 # 5           3            6pm          119           18.3845
 # 6           3           11pm          28            18.2582
-def show_trace():
-    time = '6pm'
-    scenario = '6'
-    during_time = 600
-    scenario_range = 500
+def show_trace(time, scenario, during_time, scenario_range):
     vehicles = get_trace(time=time, scenario=scenario, scenario_range=scenario_range, during_time=during_time)
     print("vehicle number is " + str(len(vehicles)))
     for i in range(len(vehicles)):
-        x = vehicles[i].get_trace_x()
-        y = vehicles[i].get_trace_y()
-        time = vehicles[i].get_trace_time()
-        scenario_x = get_scenario_xy(scenario)[0]
-        curve_fitting(scenario_x=scenario_x, scenario_range=scenario_range, trace_x=x, trace_y=y)
+        vehicles[i].get_distance(vehicles[i+1])
+        break
+        # x = vehicles[i].get_trace_x()
+        # y = vehicles[i].get_trace_y()
+        # time = vehicles[i].get_trace_time()
+        # scenario_x = get_scenario_xy(scenario)[0]
+        # curve_fitting(scenario_x=scenario_x, scenario_range=scenario_range, trace_x=x, trace_y=y)
 
 
 def draw_all_scenario():
@@ -199,9 +198,9 @@ def get_scenario_xy(number):
 
 
 def main():
-    # show_trace()
-    draw_all_scenario()
-    # draw_each_cellular_base_station('6pm', '2', 450)
+    show_trace(time='6am', scenario='5', during_time=600, scenario_range=400)
+    # draw_all_scenario()
+    # draw_each_cellular_base_station('6pm', '5', 400)
 
 if __name__ == '__main__':
     main()
