@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from scipy import optimize
 import pandas as pd
 from vehicels_info import vehicle
+import matplotlib.pyplot as plot
 
 def f_1(x, A, B):
     return A * x +  B
@@ -62,7 +63,7 @@ def get_trace(time, scenario, scenario_range, during_time):
 # 5           3            6pm          119           18.3845
 # 6           3           11pm          28            18.2582
 def show_trace():
-    time = '11pm'
+    time = '6pm'
     scenario = '6'
     during_time = 600
     scenario_range = 500
@@ -74,6 +75,44 @@ def show_trace():
         time = vehicles[i].get_trace_time()
         scenario_x = get_scenario_xy(scenario)[0]
         curve_fitting(scenario_x=scenario_x, scenario_range=scenario_range, trace_x=x, trace_y=y)
+
+
+def draw_all_scenario():
+    for i in range(1,10):
+        print(str(i))
+        draw_each_cellular_base_station('6pm', str(i), 500)
+
+
+def draw_each_cellular_base_station(time, scenario, scenario_range):
+    scenario_x = get_scenario_xy(scenario)[0]
+    scenario_y = get_scenario_xy(scenario)[1]
+    x_min = scenario_x - scenario_range
+    x_max = scenario_x + scenario_range
+    y_min = scenario_y - scenario_range
+    y_max = scenario_y + scenario_range
+    plot.xlim(x_min, x_max)
+    plot.ylim(y_min, y_max)
+
+    chunk_size = 10000
+    chunk_number = 0
+
+    for chunk in pd.read_csv(get_csv_file(time), error_bad_lines=False, chunksize=chunk_size):
+        trace_id = chunk['traceID'].drop_duplicates()
+        for id in trace_id:
+            trace = chunk[(chunk['traceID'] == id) & (chunk['x'] >= x_min) & (chunk['x'] <= x_max) & (chunk['y'] >= y_min) & (chunk['y'] <= y_max)]
+            if len(trace):
+                x = trace['x']
+                y = trace['y']
+                plot.scatter(x, y, 0.1, 'deeppink')
+                print(id)
+        chunk_number += 1
+        if chunk_number == 200:
+            break
+
+    plot.scatter(scenario_x, scenario_y, 10, '#8B0000')
+    plot.show()
+
+
 
 
 def get_csv_file(time):
@@ -160,8 +199,9 @@ def get_scenario_xy(number):
 
 
 def main():
-    show_trace()
-
+    # show_trace()
+    draw_all_scenario()
+    # draw_each_cellular_base_station('6pm', '2', 450)
 
 if __name__ == '__main__':
     main()

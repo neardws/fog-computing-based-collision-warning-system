@@ -50,7 +50,16 @@ for line in line_cache:
         X = X.reshape(-1, 1)
         print(X)
         status_sequence = hmm_model.predict(X)
+        transmat_cdf = np.cumsum(hmm_model.transmat_, axis=1)
+        random_state = check_random_state(hmm_model.random_state)
+        next_state = (transmat_cdf[status_sequence[-1]] > random_state.rand()).argmax()
+        next_obs1 = hmm_model._generate_sample_from_state(next_state, random_state)
+        emission_cdf = np.cumsum(hmm_model.emissionprob_, axis=1)
+        next_obs2 = (emission_cdf[next_state] > random_state.rand()).argmax()
         print(status_sequence)
-    if line_number >= 10:
+        print(next_state)
+        print(next_obs1)
+        print(next_obs2)
+    if line_number >= 100:
         break
 
