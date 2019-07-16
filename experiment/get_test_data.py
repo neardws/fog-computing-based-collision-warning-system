@@ -109,7 +109,11 @@ def get_distance(vehicle_one, vehicle_two):
                     # print(another_xy)
                     # print(str(another_x) + '  ' + str(another_y))
                     distance = np.sqrt(np.square(my_x - another_x) + np.square(my_y - another_y))
-                    print(str(distance))
+                    if distance <= 5.0:
+                        '''
+                        ToDo 标记
+                        '''
+                        print(str(distance))
 
 
 def draw_all_scenario():
