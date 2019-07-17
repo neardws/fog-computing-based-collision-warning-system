@@ -1,4 +1,4 @@
-class vehicle:
+class vehicle_info:
     vehicleId = 0
     trace = []
     def __init__(self):

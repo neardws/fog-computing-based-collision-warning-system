@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy import optimize
 import pandas as pd
-from vehicels_info import vehicle
+from vehicels_info import vehicle_info
 import matplotlib.pyplot as plot
 
 def f_1(x, A, B):
@@ -49,7 +49,7 @@ def get_trace(time, scenario, scenario_range, during_time):
                 x = trace['x']
                 y = trace['y']
                 trace_time = trace['time']
-                new_vehicle = vehicle()
+                new_vehicle = vehicle_info()
                 vehicles.append(new_vehicle.set_vehicleID(vehicleID=trace_id).set_trace(x=x, y=y, time=trace_time))
     return vehicles
 

@@ -40,15 +40,24 @@ for line in line_cache:
             new_sta = int(sta[0]) * 61 + int(sta[1])
             the_x = np.hstack((the_x, new_sta))
     len_traj = status_num
+    print('last status is')
+    last_status = status[-1]
+    print(last_status)
     if len_traj == 0:
         pass
     else:
         x = the_x
         x = x[:, np.newaxis]
+        # print(x)
+        print('%'*64)
+        print(x[-1])
+        x = np.delete(x, len(x)-1)
+        # print(x)
+
         new_x = le_model.transform(x)
         X = np.array(new_x).astype('int32')
         X = X.reshape(-1, 1)
-        print(X)
+        # print(X)
         status_sequence = hmm_model.predict(X)
         transmat_cdf = np.cumsum(hmm_model.transmat_, axis=1)
         random_state = check_random_state(hmm_model.random_state)
@@ -56,10 +65,19 @@ for line in line_cache:
         next_obs1 = hmm_model._generate_sample_from_state(next_state, random_state)
         emission_cdf = np.cumsum(hmm_model.emissionprob_, axis=1)
         next_obs2 = (emission_cdf[next_state] > random_state.rand()).argmax()
-        print(status_sequence)
-        print(next_state)
-        print(next_obs1)
-        print(next_obs2)
+        next_obs2 = [next_obs2]
+        # print(status_sequence)
+        # print(next_state)
+        # print(next_obs1)
+        # print(next_obs2)
+        origin_obs1 = le_model.inverse_transform(next_obs1)
+        print(origin_obs1)
+        origin_obs2 = le_model.inverse_transform(next_obs2)
+        print(origin_obs2)
+        # sta_one = origin_obs % 61
+        # sta_zero = (origin_obs - sta_one) / 61
+        # print(sta_zero)
+        # print(sta_one)
+        print('*'*64)
     if line_number >= 100:
         break
-

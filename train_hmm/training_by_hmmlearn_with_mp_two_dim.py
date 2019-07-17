@@ -7,7 +7,7 @@ import multiprocessing as mp
 import linecache
 import pickle
 TRAIN_DATA = r'E:\NearXu\hmm_train_data\train_'
-MODEL_PATH = r'E:\NearXu\model\model_2dim'
+MODEL_PATH = r'E:\NearXu\model\model_gm_statue_100_number_10000_0.001_'
 
 """
 hmmlearn 有三种隐马尔可夫模型：
@@ -112,7 +112,7 @@ def main():
     number_of_status = 100
     print('￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥')
     print('Start Training')
-    model = hmm.GaussianHMM(n_components=number_of_status, n_iter=1000, tol=0.001, covariance_type='tied', verbose=True)
+    model = hmm.GaussianHMM(n_components=number_of_status, n_iter=10000, tol=0.001, covariance_type='tied', verbose=True)
     model.fit(X, X_len)
     # print(model.score(x,x_len))
     print('**************************************')
