@@ -1,4 +1,5 @@
 import random
+from scipy.stats import levy_stable
 '''
 transmission_model
 used:
@@ -8,6 +9,11 @@ get_transmission_delay()
 class transmission_model:
     def __init__(self, packet_loss_rate):
         self.packet_loss_rate = packet_loss_rate
+        self.levy_stable_alpha = 1.77395
+        self.levy_stable_beta = 1
+        self.levy_stable_loc = 72.7343
+        self.levy_stable_scale = 13.3685
+
 
     '''
     it is depend on the packet loss rate, which is given by transmission model
@@ -34,7 +40,15 @@ class transmission_model:
     '''
     def get_transmission_delay(self):
 
-        pass
+        transmission_delay = levy_stable.rvs(alpha=self.levy_stable_alpha,
+                                             beta=self.levy_stable_beta,
+                                             loc=self.levy_stable_loc,
+                                             scale=self.levy_stable_scale)
+
+        return transmission_delay
 
 if __name__ == '__main__':
-    print(random.randint(1, 10000))
+    m = transmission_model(packet_loss_rate=3.05)
+    for i in range(100):
+        print(m.get_packet_loss())
+        print(m.get_transmission_delay())
