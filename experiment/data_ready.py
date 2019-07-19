@@ -1,13 +1,15 @@
 import numpy as np
 import pandas as pd
 from vehicels_info import vehicle_info
+from .vehicle import vehicle
 
 class data_ready:
-    def __init__(self, time, scenario, scenario_range, during_time):
+    def __init__(self, time, scenario, scenario_range, during_time, packet_loss_rate):
         self.time = time
         self.scenario = scenario
         self.scenario_range = scenario_range
         self.during_time = during_time
+        self.packet_loss_rate = packet_loss_rate
         self.vehicle_traces = None
         self.vehicle_number = None
         self.collision_time_matrix = None
@@ -158,10 +160,17 @@ class data_ready:
                 self.collision_time_matrix[i,j] = self.get_collision_time(vehicle_one=self.vehicle_traces[i], vehicle_two=self.vehicle_traces[j])
 
     '''
+    :return list of vehicles in "time" 
     get packets, which are send to fog node
     '''
-    def get_send_packets(self):
-        pass
-
-
-
+    def get_send_packets(self, time):
+        vehicles = []
+        for trace in self.vehicle_traces:
+            v = vehicle(packet_loss_rate=self.packet_loss_rate)
+            v.set_vehicleID(trace.get_vehicleID())
+            v.set_time(time)
+            v.set_location(trace.get_xy_from_time(time=time))
+            v.set_packet_loss()
+            v.set_transmission_delay()
+            vehicles.append(v)
+        return vehicles

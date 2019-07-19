@@ -2,6 +2,7 @@ from transmission_model import transmission_model
 class vehicle:
     def __init__(self, packet_loss_rate):
         self.vehicleID = None
+        self.time = None
         self.location_x = None
         self.location_y = None
         self.transmission_delay = None
@@ -17,9 +18,12 @@ class vehicle:
     def set_vehicleID(self, id):
         self.vehicleID = id
 
-    def set_location(self, x, y):
-        self.location_x = x
-        self.location_y = y
+    def set_time(self, time):
+        self.time = time
+
+    def set_location(self, xy):
+        self.location_x = xy[0]
+        self.location_y = xy[1]
 
 if __name__ == '__main__':
     v = vehicle(3.08)
