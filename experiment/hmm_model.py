@@ -1,8 +1,14 @@
-import pickle
-import linecache
 import numpy as np
+from vehicle import vehicle
 from sklearn.utils import check_random_state
 
+'''
+HMM
+used: my_model = hmm_model(type='discrete'. le_model=le_model, hmm_model=hmm_model)
+      my_model.set_origin_trace(vehicles)
+      my_model.set_prediction_seconds(10)
+      prediction_trace = my_model.get_prediction_trace()
+'''
 class hmm_model:
     def __init__(self, type, le_model, hmm_model):
         self.type = type
@@ -10,14 +16,34 @@ class hmm_model:
         self.hmm_model = hmm_model
         self.origin_trace = None
         self.prediction_trace = None
+        self.prediction_seconds = None
 
+    '''
+    Input
+    '''
     def set_origin_trace(self, trace):
         self.origin_trace = trace
 
+    def set_prediction_seconds(self, seconds):
+        self.prediction_seconds = seconds
+
+    '''
+    Output
+    get prediction trace in the prediction time 
+    '''
     def get_prediction_trace(self):
         prediction_trace = None
+        trace = self.origin_trace
+        for i in range(self.prediction_seconds):
+            prediction_location = self.predict(trace)
+            v = vehicle()
+            v.set_location(prediction_location)
+            trace.append(v)
         return prediction_trace
 
+    '''
+    get the prediction location according to the given trace
+    '''
     def predict(self, trace):
         X = self.process_state(trace)
         print(X)
@@ -37,6 +63,9 @@ class hmm_model:
         # print(prediction_y)
         return prediction_x, prediction_y
 
+    '''
+    process the trace into status, which contains x and y increment
+    '''
     def process_state(self, trace):
         status = []
         for i in range(len(trace) - 1):
@@ -71,6 +100,9 @@ class hmm_model:
             print('Type Error')
         return X
 
+    '''
+    get the origin x, y increment by observation
+    '''
     def get_origin_xy_increment(self, obs):
         x_increment = None
         y_increment = None
@@ -92,6 +124,7 @@ class hmm_model:
         else:
             print('Type error')
         return x_increment, y_increment
+
 
     def get_origin_xy(self, trace):
         origin_x = trace[-1].location_x
