@@ -1,5 +1,6 @@
 import numpy as np
 from transmission_model import transmission_model
+from hmm_model import predict
 class fog_node:
     def __init__(self, x, y, range):
         self.location_x = x
@@ -8,7 +9,6 @@ class fog_node:
         self.unite_time = None
         self.vehicles = None
         self.selected_vehicles = []
-        self.collision_time_matrix = None
         self.history_record = []
 
     def receive_packets(self, vehicles):
@@ -33,7 +33,8 @@ class fog_node:
     Step two: fix transmission delay
     '''
     def form_real_time_view(self):
-        pass
+        self.fix_packet_loss()
+        self.fix_transmission_delay(self.unite_time)
 
     def fix_transmission_delay(self, unite_time):
         for vehicle in self.selected_vehicles:
@@ -79,5 +80,4 @@ class fog_node:
                 return_vehicle = vehicle
         return return_vehicle
 
-    def prediction_and_statistics(self):
-        pass
+    def prediction(self):
