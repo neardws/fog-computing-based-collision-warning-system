@@ -55,33 +55,38 @@ class experiment:
     def set_headway(self, headway):
         self.headway = headway
 
+    def get_hmm_model_file_path(self, type, status_number, train_number, accuracy):
+        file_path = '../model/model_'
+        if type == 'discrete':
+            file_path += 'mu_status_'
+        elif type == 'continuous':
+            file_path += 'gm_status_'
+        else:
+            pass
+            file_path = file_path + str(status_number) + '_number_' + str(train_number) + '_' + str(accuracy) + '_hmm.pkl'
+        return file_path
 
+    def get_le_model_file_path(self, status_number, train_number, accuracy):
+        file_path = '../model/model_mu_status_' + str(status_number) + '_number_' + str(train_number) + '_' + str(accuracy) + '_le.pkl'
+        return file_path
 
-'''
-Todo get test data in each second and 
-'''
-def get_test_data():
-    pass
+    def experiment_setup(self):
+        pass
 
+    def one_experiment(self):
+        dr = data_ready(time=self.start_time, scenario=self.scenario, scenario_range=self.scenario_range,
+                        during_time=self.during_time, packet_loss_rate=self.packet_loss_rate, collision_distance=self.collision_distance)
+        dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
 
-'''
-Todo add delay and packet loss in each second  
-'''
-def vehicles_knowledge():
-    pass
+        fg = fog_node(scenario=self.scenario, range=self.scenario_range, hmm_model=self.hmm_model,
+                      prediction_time=self.prediction_time, collision_distance=self.collision_distance)
 
-
-'''
-Todo form real-time view of vehicles in fog node
-'''
-def fog_real_time_view():
-    pass
-
-
-'''
-Todo statistics precision and recall in each second
-'''
-def prediction_and_statistics():
-    pass
-
+        for time in range(start=dr.get_start_time(self.start_time), stop=(dr.get_start_time(self.start_time) + self.during_time)):
+            send_packet = dr.get_send_packets(time=time)
+            fg.set_headway(self.headway)
+            fg.set_unite_time(time+1)
+            fg.receive_packets(send_packet)
+            fg.selected_packet_under_communication_range()
+            fg.form_real_time_view()
+            fg.prediction()
 
