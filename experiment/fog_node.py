@@ -1,9 +1,9 @@
 import numpy as np
 from transmission_model import transmission_model
 class fog_node:
-    def __init__(self, x, y, range, hmm_model, prediction_time, collision_distance):
-        self.location_x = x
-        self.location_y = y
+    def __init__(self, scenario, range, hmm_model, prediction_time, collision_distance):
+        self.location_x = self.get_scenario_xy(scenario)[0]
+        self.location_y = self.get_scenario_xy(scenario)[1]
         self.communication_range = range
         self.hmm_model = hmm_model
         self.prediction_time = prediction_time
@@ -163,3 +163,20 @@ class fog_node:
                 xy.append(vehicle.location_x)
                 xy.append(vehicle.location_y)
         return xy
+
+    def get_scenario_xy(self, number):
+        dic_scenario_xy = {
+            '1': [5241.17, 14185.2],
+            '2': [6097.06, 14870.0],
+            '3': [6581.00, 26107.6],
+            '4': [7653.15, 19486.6],
+            '5': [9447.04, 18721.4],
+            '6': [10422.00, 12465.3],
+            '7': [10435.80, 17528.2],
+            '8': [11227.50, 20388.4],
+            '9': [11550.60, 18791.4]
+        }
+        try:
+            return dic_scenario_xy[number]
+        except KeyError:
+            print("Key Error in get_scenario_xy")
