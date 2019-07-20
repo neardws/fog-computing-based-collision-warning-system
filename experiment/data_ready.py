@@ -4,15 +4,17 @@ from vehicels_info import vehicle_info
 from .vehicle import vehicle
 
 class data_ready:
-    def __init__(self, time, scenario, scenario_range, during_time, packet_loss_rate):
+    def __init__(self, time, scenario, scenario_range, during_time, packet_loss_rate, collision_distance):
         self.time = time
         self.scenario = scenario
         self.scenario_range = scenario_range
         self.during_time = during_time
         self.packet_loss_rate = packet_loss_rate
+        self.collision_distance = collision_distance
         self.vehicle_traces = None
         self.vehicle_number = None
         self.collision_time_matrix = None
+        self.vehicle_id_array = None
 
     '''
     :return csv_file, which contains vehicles traces
@@ -139,7 +141,7 @@ class data_ready:
                         another_x = another_xy[0]
                         another_y = another_xy[1]
                         distance = np.sqrt(np.square(my_x - another_x) + np.square(my_y - another_y))
-                        if distance <= 5.0:
+                        if distance <= self.collision_distance:
                             '''
                             ToDo 标记
                             '''
@@ -151,13 +153,16 @@ class data_ready:
     '''
     set vehicles traces and collision time matrix
     '''
-    def set_vehicle_traces_and_collision_time_matrix(self):
+    def set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array(self):
         self.vehicle_traces = self.get_trace()
         self.vehicle_number = len(self.vehicle_traces)
         self.collision_time_matrix = np.zeros(self.vehicle_number, self.vehicle_number)
+        self.vehicle_id_array = np.zeros(self.vehicle_number)
         for i in range(self.vehicle_number - 1):
             for j in range(i + 1, self.vehicle_number):
                 self.collision_time_matrix[i,j] = self.get_collision_time(vehicle_one=self.vehicle_traces[i], vehicle_two=self.vehicle_traces[j])
+            self.vehicle_id_array[i] = self.vehicle_traces[i].vehicleID
+        self.vehicle_id_array[-1] = self.vehicle_traces[-1].vehicleID # get the last one
 
     '''
     :return list of vehicles in "time" 

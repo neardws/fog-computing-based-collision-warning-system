@@ -34,10 +34,12 @@ class hmm_model:
     def get_prediction_trace(self):
         prediction_trace = None
         trace = self.origin_trace
+        origin_time = trace[-1].time
         for i in range(self.prediction_seconds):
             prediction_location = self.predict(trace)
             v = vehicle()
             v.set_location(prediction_location)
+            v.set_time(origin_time + i + 1)
             trace.append(v)
         return prediction_trace
 

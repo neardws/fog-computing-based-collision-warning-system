@@ -9,7 +9,7 @@ import linecache
 import pickle
 import time
 TRAIN_DATA = r'E:\NearXu\hmm_train_data\train_'
-MODEL_PATH = r'E:\NearXu\model\model_statue_37_number_5000_'
+MODEL_PATH = r'E:\NearXu\model\model_statue_100_number_10000_0.001_'
 
 """
 hmmlearn 有三种隐马尔可夫模型：
@@ -18,7 +18,7 @@ GMMHMM：观测状态是连续状态，且符合混合高斯分布
 MultinomialHMM：观测状态是离散的
 """
 train_file = TRAIN_DATA + '2dim' + '.txt'
-chunk_lines = 500
+chunk_lines = 1000
 
 
 def read_distributed(*lines):
@@ -109,11 +109,11 @@ def main():
     # print(X_len.dtype)
     print(sum(X_len))
 
-    number_of_status = 37
+    number_of_status = 100
     print('￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥')
     t()
     print('Start Training')
-    model = hmm.MultinomialHMM(n_components=number_of_status, n_iter=10000, tol=0.01, verbose=True)
+    model = hmm.MultinomialHMM(n_components=number_of_status, n_iter=10000, tol=0.001, verbose=True)
     model.fit(X, X_len)
     # print(model.score(x,x_len))
     print('**************************************')

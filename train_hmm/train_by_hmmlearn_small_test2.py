@@ -61,7 +61,7 @@ def main():
     print(number)
 
     t()
-    pool = mp.Pool(processes=10)
+    pool = mp.Pool(processes=20)
     jobs = []
     for i in range(20):
         jobs.append(pool.apply_async(read_distributed, line_cache[i * chunk_lines : i * chunk_lines + chunk_lines]))

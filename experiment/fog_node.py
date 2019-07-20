@@ -1,15 +1,31 @@
 import numpy as np
 from transmission_model import transmission_model
-from hmm_model import predict
 class fog_node:
-    def __init__(self, x, y, range):
+    def __init__(self, x, y, range, hmm_model, prediction_time, collision_distance):
         self.location_x = x
         self.location_y = y
         self.communication_range = range
+        self.hmm_model = hmm_model
+        self.prediction_time = prediction_time
+        self.collision_distance = collision_distance
+        self.headway = None
         self.unite_time = None
+        self.prediction_time = None
         self.vehicles = None
         self.selected_vehicles = []
         self.history_record = []
+        self.prediction_traces = []
+        self.collision_warning_messages = set()
+        self.selected_vehicle_collision_time_matrix = None
+
+    def set_headway(self, headway):
+        self.headway = headway
+
+    def set_unite_time(self, time):
+        self.unite_time = time
+
+    def set_prediction_time(self, time):
+        self.prediction_time = time
 
     def receive_packets(self, vehicles):
         self.vehicles = vehicles
@@ -80,4 +96,70 @@ class fog_node:
                 return_vehicle = vehicle
         return return_vehicle
 
+    def get_trace_from_history_record(self, vehicleID):
+        trace = []
+        for i in range(len(self.history_record)):
+            for vehicle in self.history_record[i]:
+                if vehicleID == vehicle.vehicleID:
+                    trace.append(vehicle)
+        return trace
+
+    '''
+    :return a result matrix, which contains collision warning messages,
+    namely, id of vehicles, which are going to collision
+    '''
     def prediction(self):
+        self.hmm_model.set_prediction_seconds(self.prediction_time)
+        '''Prediction'''
+        for vehicle in self.selected_vehicles:
+            id = vehicle.vehicleID
+            origin_trace = self.get_trace_from_history_record(id).append(vehicle)
+            self.hmm_model.set_origin_trace(origin_trace)
+            self.prediction_traces.append(self.hmm_model.get_prediction_trace())
+        '''Judge'''
+        selected_vehicle_number = len(self.selected_vehicles)
+        self.selected_vehicle_collision_time_matrix = np.zeros(selected_vehicle_number, selected_vehicle_number)
+        for i in range(selected_vehicle_number - 1):
+            for j in range(i, selected_vehicle_number):
+                collision_time = self.get_collision_time(self.prediction_traces[i], self.prediction_traces[j])
+                if collision_time == 0:
+                    pass
+                else:   # it get collision
+                    the_headway = collision_time - self.unite_time
+                    if the_headway < 0:
+                        print("Error: The headway < 0")
+                    else:
+                        if the_headway < self.headway:
+                            self.collision_warning_messages.add(self.selected_vehicles[i].vehicleID)
+                            self.collision_warning_messages.add(self.selected_vehicles[j].vehicleID)
+
+    def get_collision_time(self, trace_one, trace_two):
+        collision_time = 0
+
+        one_max_time = trace_one[-1].time
+        one_min_time = trace_one[0].time
+        one_time = set(range(one_min_time, one_max_time + 1))
+        two_max_time = trace_two[-1].time
+        two_min_time = trace_two[0].time
+        two_time = set(range(two_min_time, two_max_time + 1))
+
+        intersection_time = one_time & two_time
+        if len(intersection_time):
+            for time in range(min(intersection_time), max(intersection_time) + 1):
+                one_xy = self.get_xy_from_trace(time=time, trace=trace_one)
+                two_xy = self.get_xy_from_trace(time=time, trace=trace_two)
+                if one_xy is not None:
+                    if two_xy is not None:
+                        distance = np.sqrt(np.square(one_xy[0] - two_xy[0]) + np.square(one_xy[1] - two_xy[1]))
+                        if distance <= self.collision_distance:
+                            collision_time = time
+        return collision_time
+
+    def get_xy_from_trace(self, time, trace):
+        xy = None
+        for vehicle in trace:
+            if time == vehicle.time:
+                xy = []
+                xy.append(vehicle.location_x)
+                xy.append(vehicle.location_y)
+        return xy
