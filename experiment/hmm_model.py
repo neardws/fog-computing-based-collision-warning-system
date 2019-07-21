@@ -49,11 +49,11 @@ class hmm_model:
     def predict(self, trace):
         X = self.process_state(trace)
         print(X)
-        status_sequence = hmm_model.predict(X)
-        transmat_cdf = np.cumsum(hmm_model.transmat_, axis=1)
-        random_state = check_random_state(hmm_model.random_state)
+        status_sequence = self.hmm_model.predict(X)
+        transmat_cdf = np.cumsum(self.hmm_model.transmat_, axis=1)
+        random_state = check_random_state(self.hmm_model.random_state)
         next_state = (transmat_cdf[status_sequence[-1]] > random_state.rand()).argmax()
-        next_obs1 = hmm_model._generate_sample_from_state(next_state, random_state)
+        next_obs1 = self.hmm_model._generate_sample_from_state(next_state, random_state)
         # emission_cdf = np.cumsum(hmm_model.emissionprob_, axis=1)
         # next_obs2 = (emission_cdf[next_state] > random_state.rand()).argmax()
         xy_increment = self.get_origin_xy_increment(next_obs1)
@@ -76,7 +76,7 @@ class hmm_model:
             status.append([x_add, y_add])
         X = None
         the_x = np.array([])
-        if type == 'discrete':
+        if self.type == 'discrete':
             status_num = 0
             for xys in status:
                 status_num += 1
@@ -93,7 +93,7 @@ class hmm_model:
                 new_x = self.le_model.transform(x)
                 X = np.array(new_x).astype('int32')
                 X = X.reshape(-1, 1)
-        elif type == 'continuous':
+        elif self.type == 'continuous':
             '''
             TODO
             '''
@@ -108,7 +108,7 @@ class hmm_model:
     def get_origin_xy_increment(self, obs):
         x_increment = None
         y_increment = None
-        if type == 'discrete':
+        if self.type == 'discrete':
             origin_obs = self.le_model.inverse_transform(obs)
             y_increment = origin_obs % 61
             x_increment = (origin_obs - y_increment) / 61
@@ -118,7 +118,7 @@ class hmm_model:
             if x_increment > 30:
                 x_increment -= 61
                 y_increment += 1
-        elif type == 'continuous':
+        elif self.type == 'continuous':
             '''
             TODO
             '''

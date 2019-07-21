@@ -11,7 +11,6 @@ class fog_node:
         self.fog_transmission_model = fog_transmission_model(0) # never mind the packet loss rate
         self.headway = None
         self.unite_time = None
-        self.prediction_time = None
         self.vehicles = None
         self.selected_vehicles = []
         self.history_record = []
@@ -154,10 +153,12 @@ class fog_node:
         for vehicle in self.selected_vehicles:
             id = vehicle.vehicleID
             origin_trace = self.get_trace_from_history_record(id)
-            origin_trace.append(vehicle)
-            self.hmm_model.set_origin_trace(origin_trace)
-            self.hmm_model.set_prediction_seconds(self.prediction_time)
-            self.prediction_traces.append(self.hmm_model.get_prediction_trace())
+            if len(origin_trace) == 0:
+                pass
+            else:
+                origin_trace.append(vehicle)
+                self.hmm_model.set_origin_trace(origin_trace)
+                self.prediction_traces.append(self.hmm_model.get_prediction_trace())
         '''Judge'''
         selected_vehicle_number = len(self.selected_vehicles)
         self.selected_vehicle_collision_time_matrix = np.zeros(selected_vehicle_number, selected_vehicle_number)
