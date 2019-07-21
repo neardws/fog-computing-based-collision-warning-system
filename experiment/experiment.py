@@ -33,14 +33,12 @@ Three difference changeable parameters:
 '''
 class experiment:
     def __init__(self, start_time, during_time, scenario_range, collision_distance,
-                       hmm_type, hmm_model, le_model, prediction_time):
+                       hmm_model, prediction_time):
         self.start_time = start_time
         self.during_time = during_time
         self.scenario_range = scenario_range
         self.collision_distance = collision_distance
-        self.hmm_type = hmm_type
         self.hmm_model = hmm_model
-        self.le_model = le_model
         self.prediction_time = prediction_time
         self.scenario = None
         self.packet_loss_rate = None
@@ -54,21 +52,6 @@ class experiment:
 
     def set_headway(self, headway):
         self.headway = headway
-
-    def get_hmm_model_file_path(self, type, status_number, train_number, accuracy):
-        file_path = '../model/model_'
-        if type == 'discrete':
-            file_path += 'mu_status_'
-        elif type == 'continuous':
-            file_path += 'gm_status_'
-        else:
-            pass
-            file_path = file_path + str(status_number) + '_number_' + str(train_number) + '_' + str(accuracy) + '_hmm.pkl'
-        return file_path
-
-    def get_le_model_file_path(self, status_number, train_number, accuracy):
-        file_path = '../model/model_mu_status_' + str(status_number) + '_number_' + str(train_number) + '_' + str(accuracy) + '_le.pkl'
-        return file_path
 
     def fog_node_with_real_time_view_experiment(self):
         evaluation_fog_with_real_time_view = []
@@ -222,7 +205,38 @@ class experiment:
         return true_collision_warning
 
 def start_experiment():
-    pass
+    hmm_type = 'discrete'
+    status_number = 37
+    train_number = 5000
+    accuracy = 0.01
+    le_model_file = open(get_le_model_file_path(status_number=status_number, train_number=train_number, accuracy=accuracy), 'r')
+    hmm_model_file = open(get_hmm_model_file_path(type=hmm_type, status_number=status_number, train_number=train_number, accuracy=accuracy), 'r')
+    my_hmm_model = hmm_model(type='discrete', le_model=pickle.load(le_model_file), hmm_model=pickle.load(hmm_model_file))
+    my_experiment = experiment(start_time='9am', during_time=600, scenario_range=500,
+                               collision_distance=5.0, hmm_model=my_hmm_model, prediction_time=10)
+
+    my_experiment.set_headway(2)
+    my_experiment.set_packet_loss_rate(3.00)
+    my_experiment.set_scenario('6')
+
+    my_experiment.fog_node_with_real_time_view_experiment()
+    my_experiment.fog_node_without_real_time_view_experiment()
+    my_experiment.cloud_node_without_real_time_view_experiment()
+
+def get_hmm_model_file_path(type, status_number, train_number, accuracy):
+    file_path = '../model/model_'
+    if type == 'discrete':
+        file_path += 'mu_status_'
+    elif type == 'continuous':
+        file_path += 'gm_status_'
+    else:
+        pass
+        file_path = file_path + str(status_number) + '_number_' + str(train_number) + '_' + str(accuracy) + '_hmm.pkl'
+    return file_path
+
+def get_le_model_file_path(status_number, train_number, accuracy):
+    file_path = '../model/model_mu_status_' + str(status_number) + '_number_' + str(train_number) + '_' + str(accuracy) + '_le.pkl'
+    return file_path
 
 if __name__ == '__main__':
     start_experiment()
