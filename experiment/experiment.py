@@ -1,7 +1,8 @@
-from .data_ready import data_ready
-from .fog_node import fog_node
-from .hmm_model import hmm_model
+from data_ready import data_ready
+from fog_node import fog_node
+from hmm_model import hmm_model
 import pickle
+
 '''
 experiment setup
 some parameters are listed as below
@@ -62,7 +63,7 @@ class experiment:
         fg = fog_node(scenario=self.scenario, range=self.scenario_range, hmm_model=self.hmm_model,
                       prediction_time=self.prediction_time, collision_distance=self.collision_distance)
 
-        for time in range(start=dr.get_start_time(self.start_time), stop=(dr.get_start_time(self.start_time) + self.during_time)):
+        for time in range(dr.get_start_time(self.start_time), (dr.get_start_time(self.start_time) + self.during_time)):
             send_packet = dr.get_send_packets(time=time)
             fg.set_headway(self.headway)
             fg.set_unite_time(time+1)
@@ -209,8 +210,8 @@ def start_experiment():
     status_number = 37
     train_number = 5000
     accuracy = 0.01
-    le_model_file = open(get_le_model_file_path(status_number=status_number, train_number=train_number, accuracy=accuracy), 'r')
-    hmm_model_file = open(get_hmm_model_file_path(type=hmm_type, status_number=status_number, train_number=train_number, accuracy=accuracy), 'r')
+    le_model_file = open(get_le_model_file_path(status_number=status_number, train_number=train_number, accuracy=accuracy), 'rb')
+    hmm_model_file = open(get_hmm_model_file_path(type=hmm_type, status_number=status_number, train_number=train_number, accuracy=accuracy), 'rb')
     my_hmm_model = hmm_model(type='discrete', le_model=pickle.load(le_model_file), hmm_model=pickle.load(hmm_model_file))
     my_experiment = experiment(start_time='9am', during_time=600, scenario_range=500,
                                collision_distance=5.0, hmm_model=my_hmm_model, prediction_time=10)
@@ -223,8 +224,11 @@ def start_experiment():
     my_experiment.fog_node_without_real_time_view_experiment()
     my_experiment.cloud_node_without_real_time_view_experiment()
 
+'''
+TODO: fix the file path bug
+'''
 def get_hmm_model_file_path(type, status_number, train_number, accuracy):
-    file_path = '../model/model_'
+    file_path = r'E:\NearXu\model\model_'
     if type == 'discrete':
         file_path += 'mu_status_'
     elif type == 'continuous':
@@ -232,11 +236,11 @@ def get_hmm_model_file_path(type, status_number, train_number, accuracy):
     else:
         pass
         file_path = file_path + str(status_number) + '_number_' + str(train_number) + '_' + str(accuracy) + '_hmm.pkl'
-    return file_path
+    return r'E:\NearXu\model\model_mu_statue_37_number_5000_0.01_hmm.pkl'
 
 def get_le_model_file_path(status_number, train_number, accuracy):
-    file_path = '../model/model_mu_status_' + str(status_number) + '_number_' + str(train_number) + '_' + str(accuracy) + '_le.pkl'
-    return file_path
+    file_path = r'E:\NearXu\model\model_mu_status_' + str(status_number) + '_number_' + str(train_number) + '_' + str(accuracy) + '_le.pkl'
+    return r'E:\NearXu\model\model_mu_statue_37_number_5000_0.01_le.pkl'
 
 if __name__ == '__main__':
     start_experiment()

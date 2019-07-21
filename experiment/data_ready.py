@@ -162,13 +162,13 @@ class data_ready:
     def set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array(self):
         self.vehicle_traces = self.get_trace()
         self.vehicle_number = len(self.vehicle_traces)
-        self.collision_time_matrix = np.zeros(self.vehicle_number, self.vehicle_number)
-        self.vehicle_id_array = np.zeros(self.vehicle_number)
+        self.collision_time_matrix = np.zeros((self.vehicle_number, self.vehicle_number))
+        self.vehicle_id_array = []
         for i in range(self.vehicle_number - 1):
             for j in range(i + 1, self.vehicle_number):
                 self.collision_time_matrix[i,j] = self.get_collision_time(vehicle_one=self.vehicle_traces[i], vehicle_two=self.vehicle_traces[j])
-            self.vehicle_id_array[i] = self.vehicle_traces[i].vehicleID
-        self.vehicle_id_array[-1] = self.vehicle_traces[-1].vehicleID # get the last one
+            self.vehicle_id_array.append(self.vehicle_traces[i].vehicleID)
+        self.vehicle_id_array.append(self.vehicle_traces[-1].vehicleID) # get the last one
 
     '''
     :return list of vehicles in "time" 
@@ -177,11 +177,12 @@ class data_ready:
     def get_send_packets(self, time):
         vehicles = []
         for trace in self.vehicle_traces:
-            v = vehicle(packet_loss_rate=self.packet_loss_rate)
-            v.set_vehicleID(trace.get_vehicleID())
-            v.set_time(time)
-            v.set_location(trace.get_xy_from_time(time=time))
-            v.set_packet_loss()
-            v.set_transmission_delay()
-            vehicles.append(v)
+            if trace.get_xy_from_time(time) is not None:
+                v = vehicle(packet_loss_rate=self.packet_loss_rate)
+                v.set_vehicleID(trace.get_vehicleID())
+                v.set_time(time)
+                v.set_location(trace.get_xy_from_time(time=time))
+                v.set_packet_loss()
+                v.set_transmission_delay()
+                vehicles.append(v)
         return vehicles

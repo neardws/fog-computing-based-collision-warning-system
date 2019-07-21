@@ -13,11 +13,11 @@ class vehicle:
         self.cloud_trans_model = cloud_transmission_model()
 
     def set_transmission_delay(self):
-        self.fog_transmission_delay = self.dsrc_trans_model.get_transmission_delay()
+        self.fog_transmission_delay = self.fog_trans_model.get_transmission_delay()
         self.cloud_transmission_delay = self.cloud_trans_model.get_transmission_delay()
 
     def set_packet_loss(self):
-        self.packet_loss = self.trans_model.get_packet_loss()
+        self.packet_loss = self.fog_trans_model.get_packet_loss()
 
     def set_vehicleID(self, id):
         self.vehicleID = id
@@ -34,4 +34,4 @@ if __name__ == '__main__':
     v.set_packet_loss()
     v.set_transmission_delay()
     print(v.packet_loss)
-    print(v.dsrc_transmission_delay)
+    print(v.fog_transmission_delay)

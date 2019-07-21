@@ -8,6 +8,7 @@ class fog_node:
         self.hmm_model = hmm_model
         self.prediction_time = prediction_time
         self.collision_distance = collision_distance
+        self.fog_transmission_model = fog_transmission_model(0) # never mind the packet loss rate
         self.headway = None
         self.unite_time = None
         self.prediction_time = None
@@ -90,7 +91,7 @@ class fog_node:
     def fix_fog_transmission_delay(self, unite_time):
         for vehicle in self.selected_vehicles:
             receive_time = vehicle.time + vehicle.fog_transmission_delay / 1000
-            estimated_delay = fog_transmission_model.get_transmission_delay()
+            estimated_delay = self.fog_transmission_model.get_transmission_delay()
             estimated_send_time = receive_time - estimated_delay / 1000
             history_vehicle = self.get_vehicle_form_history_record(vehicle.vehicleID)
             if history_vehicle is not None:
@@ -127,7 +128,10 @@ class fog_node:
     def get_vehicle_form_history_record(self, vehicleID):
         return_vehicle = None
         for vehicle in self.history_record[-1]:
-            if vehicleID == vehicle.vehicleID:
+            the_id = vehicle.vehicleID
+            # print(the_id)
+            # print(vehicleID)
+            if (vehicleID is the_id):
                 return_vehicle = vehicle
         return return_vehicle
 
@@ -135,7 +139,8 @@ class fog_node:
         trace = []
         for i in range(len(self.history_record)):
             for vehicle in self.history_record[i]:
-                if vehicleID == vehicle.vehicleID:
+                the_id = vehicle.vehicleID
+                if (vehicleID is the_id):
                     trace.append(vehicle)
         return trace
 
@@ -148,8 +153,10 @@ class fog_node:
         '''Prediction'''
         for vehicle in self.selected_vehicles:
             id = vehicle.vehicleID
-            origin_trace = self.get_trace_from_history_record(id).append(vehicle)
+            origin_trace = self.get_trace_from_history_record(id)
+            origin_trace.append(vehicle)
             self.hmm_model.set_origin_trace(origin_trace)
+            self.hmm_model.set_prediction_seconds(self.prediction_time)
             self.prediction_traces.append(self.hmm_model.get_prediction_trace())
         '''Judge'''
         selected_vehicle_number = len(self.selected_vehicles)

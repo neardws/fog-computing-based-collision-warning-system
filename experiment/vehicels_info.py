@@ -1,18 +1,16 @@
 class vehicle_info:
-    vehicleId = 0
-    trace = []
     def __init__(self):
-        self.vehicleId = 0
+        self.vehicleID = 0
         self.trace = []
 
     def get_vehicleID(self):
-        return self.vehicleId
+        return self.vehicleID
 
     def get_trace(self):
         return self.trace
 
     def set_vehicleID(self, vehicleID):
-        self.vehicleId = vehicleID
+        self.vehicleID = vehicleID
         return self
 
     def set_trace(self, x, y, time):
@@ -31,9 +29,13 @@ class vehicle_info:
         return self.trace[2]
 
     def get_xy_from_time(self, time):
+        xy = None
         for i in range(len(self.get_trace_time())):
             if self.get_trace_time().iloc[i] == time:
-                return self.get_trace_x().iloc[i], self.get_trace_y().iloc[i]
+                xy = []
+                xy.append(self.get_trace_x().iloc[i])
+                xy.append(self.get_trace_y().iloc[i])
+        return xy
 
 if __name__ == '__main__':
     pass
