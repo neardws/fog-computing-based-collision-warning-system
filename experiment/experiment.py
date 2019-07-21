@@ -70,13 +70,8 @@ class experiment:
         file_path = '../model/model_mu_status_' + str(status_number) + '_number_' + str(train_number) + '_' + str(accuracy) + '_le.pkl'
         return file_path
 
-    def start_experiment(self):
-        pass
-
-    def one_experiment(self):
-        evaluation_cloud_without_real_time_view = []
+    def fog_node_with_real_time_view_experiment(self):
         evaluation_fog_with_real_time_view = []
-        evaluation_fog_without_real_time_view = []
         dr = data_ready(time=self.start_time, scenario=self.scenario, scenario_range=self.scenario_range,
                         during_time=self.during_time, packet_loss_rate=self.packet_loss_rate, collision_distance=self.collision_distance)
         dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
@@ -90,11 +85,11 @@ class experiment:
             fg.set_unite_time(time+1)
             fg.receive_packets(send_packet)
             fg.selected_packet_under_communication_range()
-            fg.form_real_time_view()
+            fg.form_fog_real_time_view()
             fg.prediction()
             selected_vehicle_id = fg.get_selected_vehicle_id()
             collision_warning_message = fg.get_collision_warning_messages()
-            true_collision_warning = self.get_true_collision_warning(dr.get_collision_time_matrix(), dr.get_vehicle_id_array())
+            true_collision_warning = self.get_true_collision_warning(dr.get_collision_time_matrix(), dr.get_vehicle_id_array(), time)
             tp = 0  # true in collision warning message
             fp = 0  # false in collision waring message
             fn = 0  # true not in collision warning message
@@ -113,6 +108,94 @@ class experiment:
             recall = tp / (tp + fn)
             experiment_result = {'time': time, 'precision': precision, 'recall': recall}
             evaluation_fog_with_real_time_view.append(experiment_result)
+        return evaluation_fog_with_real_time_view
+
+    def fog_node_without_real_time_view_experiment(self):
+        evaluation_fog_without_real_time_view = []
+        dr = data_ready(time=self.start_time, scenario=self.scenario, scenario_range=self.scenario_range,
+                        during_time=self.during_time, packet_loss_rate=self.packet_loss_rate,
+                        collision_distance=self.collision_distance)
+        dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
+
+        fg = fog_node(scenario=self.scenario, range=self.scenario_range, hmm_model=self.hmm_model,
+                      prediction_time=self.prediction_time, collision_distance=self.collision_distance)
+
+        for time in range(start=dr.get_start_time(self.start_time),
+                          stop=(dr.get_start_time(self.start_time) + self.during_time)):
+            send_packet = dr.get_send_packets(time=time)
+            fg.set_headway(self.headway)
+            fg.set_unite_time(time + 1)
+            fg.receive_packets(send_packet)
+            fg.selected_packet_under_communication_range()
+            fg.form_fog_not_real_time_view()
+            fg.prediction()
+            selected_vehicle_id = fg.get_selected_vehicle_id()
+            collision_warning_message = fg.get_collision_warning_messages()
+            true_collision_warning = self.get_true_collision_warning(dr.get_collision_time_matrix(),
+                                                                     dr.get_vehicle_id_array(), time)
+            tp = 0  # true in collision warning message
+            fp = 0  # false in collision waring message
+            fn = 0  # true not in collision warning message
+            for id in selected_vehicle_id:
+                if id in true_collision_warning:
+                    if id in collision_warning_message:
+                        tp += 1
+                    else:
+                        fn += 1
+                else:
+                    if id in collision_warning_message:
+                        fp += 1
+                    else:
+                        pass
+            precision = tp / (tp + fp)
+            recall = tp / (tp + fn)
+            experiment_result = {'time': time, 'precision': precision, 'recall': recall}
+            evaluation_fog_without_real_time_view.append(experiment_result)
+        return evaluation_fog_without_real_time_view
+
+
+    def cloud_node_without_real_time_view_experiment(self):
+        evaluation_cloud_without_real_time_view = []
+        dr = data_ready(time=self.start_time, scenario=self.scenario, scenario_range=self.scenario_range,
+                        during_time=self.during_time, packet_loss_rate=self.packet_loss_rate,
+                        collision_distance=self.collision_distance)
+        dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
+
+        fg = fog_node(scenario=self.scenario, range=self.scenario_range, hmm_model=self.hmm_model,
+                      prediction_time=self.prediction_time, collision_distance=self.collision_distance)
+
+        for time in range(start=dr.get_start_time(self.start_time),
+                          stop=(dr.get_start_time(self.start_time) + self.during_time)):
+            send_packet = dr.get_send_packets(time=time)
+            fg.set_headway(self.headway)
+            fg.set_unite_time(time + 1)
+            fg.receive_packets(send_packet)
+            fg.selected_packet_under_communication_range()
+            fg.form_cloud_not_real_time_view()
+            fg.prediction()
+            selected_vehicle_id = fg.get_selected_vehicle_id()
+            collision_warning_message = fg.get_collision_warning_messages()
+            true_collision_warning = self.get_true_collision_warning(dr.get_collision_time_matrix(),
+                                                                     dr.get_vehicle_id_array(), time)
+            tp = 0  # true in collision warning message
+            fp = 0  # false in collision waring message
+            fn = 0  # true not in collision warning message
+            for id in selected_vehicle_id:
+                if id in true_collision_warning:
+                    if id in collision_warning_message:
+                        tp += 1
+                    else:
+                        fn += 1
+                else:
+                    if id in collision_warning_message:
+                        fp += 1
+                    else:
+                        pass
+            precision = tp / (tp + fp)
+            recall = tp / (tp + fn)
+            experiment_result = {'time': time, 'precision': precision, 'recall': recall}
+            evaluation_cloud_without_real_time_view.append(experiment_result)
+        return evaluation_cloud_without_real_time_view
 
 
     def get_true_collision_warning(self, collision_time_matrix, vehicle_id_array, time):
@@ -138,5 +221,9 @@ class experiment:
                             true_collision_warning.append(vehicle_id_two)
         return true_collision_warning
 
+def start_experiment():
+    pass
 
+if __name__ == '__main__':
+    start_experiment()
 

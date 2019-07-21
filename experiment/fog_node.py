@@ -1,5 +1,5 @@
 import numpy as np
-from transmission_model import transmission_model
+from transmission_model import fog_transmission_model
 class fog_node:
     def __init__(self, scenario, range, hmm_model, prediction_time, collision_distance):
         self.location_x = self.get_scenario_xy(scenario)[0]
@@ -53,18 +53,44 @@ class fog_node:
             under_communication_range = True
         return under_communication_range
 
+    def form_cloud_not_real_time_view(self):
+        for vehicle in self.selected_vehicles:
+            receive_time = vehicle.time + vehicle.cloud_transmission_delay / 1000
+            history_vehicle = self.get_vehicle_form_history_record(vehicle.vehicleID)
+            if history_vehicle is not None:
+                speed_x = vehicle.location_x - history_vehicle.location_x
+                speed_y = vehicle.location_y - history_vehicle.location_y
+                time_difference = self.unite_time - receive_time
+                add_x = speed_x * time_difference
+                add_y = speed_y * time_difference
+                vehicle.location_x = vehicle.location_x + add_x
+                vehicle.location_y = vehicle.location_y + add_y
+
+    def form_fog_not_real_time_view(self):
+        for vehicle in self.selected_vehicles:
+            receive_time = vehicle.time + vehicle.fog_transmission_delay / 1000
+            history_vehicle = self.get_vehicle_form_history_record(vehicle.vehicleID)
+            if history_vehicle is not None:
+                speed_x = vehicle.location_x - history_vehicle.location_x
+                speed_y = vehicle.location_y - history_vehicle.location_y
+                time_difference = self.unite_time - receive_time
+                add_x = speed_x * time_difference
+                add_y = speed_y * time_difference
+                vehicle.location_x = vehicle.location_x + add_x
+                vehicle.location_y = vehicle.location_y + add_y
+
     '''
     Step one: fix packet loss
     Step two: fix transmission delay
     '''
-    def form_real_time_view(self):
+    def form_fog_real_time_view(self):
         self.fix_packet_loss()
-        self.fix_transmission_delay(self.unite_time)
+        self.fix_fog_transmission_delay(self.unite_time)
 
-    def fix_transmission_delay(self, unite_time):
+    def fix_fog_transmission_delay(self, unite_time):
         for vehicle in self.selected_vehicles:
-            receive_time = vehicle.time + vehicle.transmission_delay
-            estimated_delay = transmission_model.get_transmission_delay()
+            receive_time = vehicle.time + vehicle.fog_transmission_delay / 1000
+            estimated_delay = fog_transmission_model.get_transmission_delay()
             estimated_send_time = receive_time - estimated_delay / 1000
             history_vehicle = self.get_vehicle_form_history_record(vehicle.vehicleID)
             if history_vehicle is not None:

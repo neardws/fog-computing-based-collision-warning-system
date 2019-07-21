@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 from vehicels_info import vehicle_info
-from .vehicle import vehicle
+from vehicle import vehicle
 
 class data_ready:
     def __init__(self, time, scenario, scenario_range, during_time, packet_loss_rate, collision_distance):

@@ -6,7 +6,7 @@ used:
 get_packet_loss()
 get_transmission_delay()
 '''
-class transmission_model:
+class fog_transmission_model:
     def __init__(self, packet_loss_rate):
         self.packet_loss_rate = packet_loss_rate
         self.levy_stable_alpha = 1.77395
@@ -47,8 +47,15 @@ class transmission_model:
 
         return transmission_delay
 
+class cloud_transmission_model:
+    def __init__(self):
+        self.mean_transmission_delay = 120
+
+    def get_transmission_delay(self):
+        return self.mean_transmission_delay
+
 if __name__ == '__main__':
-    m = transmission_model(packet_loss_rate=3.05)
+    m = fog_transmission_model(packet_loss_rate=3.05)
     for i in range(100):
         print(m.get_packet_loss())
         print(m.get_transmission_delay())
