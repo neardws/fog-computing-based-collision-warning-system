@@ -15,7 +15,7 @@ class fog_node:
         self.selected_vehicles = []
         self.history_record = []
         self.prediction_traces = []
-        self.collision_warning_messages = set()
+        self.collision_warning_messages = []
         self.selected_vehicle_collision_time_matrix = None
 
     def set_headway(self, headway):
@@ -29,6 +29,15 @@ class fog_node:
 
     def receive_packets(self, vehicles):
         self.vehicles = vehicles
+
+    def get_selected_vehicle_id(self):
+        selected_vehicle_id = []
+        for vehicle in self.selected_vehicles:
+            selected_vehicle_id.append(vehicle.vehicleID)
+        return selected_vehicle_id
+
+    def get_collision_warning_messages(self):
+        return self.collision_warning_messages
 
     def selected_packet_under_communication_range(self):
         for vehicle in self.vehicles:
@@ -130,8 +139,14 @@ class fog_node:
                         print("Error: The headway < 0")
                     else:
                         if the_headway < self.headway:
-                            self.collision_warning_messages.add(self.selected_vehicles[i].vehicleID)
-                            self.collision_warning_messages.add(self.selected_vehicles[j].vehicleID)
+                            if self.selected_vehicles[i].vehicleID in self.collision_warning_messages:
+                                pass
+                            else:
+                                self.collision_warning_messages.append(self.selected_vehicles[i].vehicleID)
+                            if self.selected_vehicles[j].vehicleID in self.collision_warning_messages:
+                                pass
+                            else:
+                                self.collision_warning_messages.append(self.selected_vehicles[j].vehicleID)
 
     def get_collision_time(self, trace_one, trace_two):
         collision_time = 0

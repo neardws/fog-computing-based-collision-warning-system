@@ -16,6 +16,12 @@ class data_ready:
         self.collision_time_matrix = None
         self.vehicle_id_array = None
 
+    def get_collision_time_matrix(self):
+        return self.collision_time_matrix
+
+    def get_vehicle_id_array(self):
+        return self.vehicle_id_array
+
     '''
     :return csv_file, which contains vehicles traces
     according to the selected time in a range of 1AM to 11PM during one day

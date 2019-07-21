@@ -70,10 +70,13 @@ class experiment:
         file_path = '../model/model_mu_status_' + str(status_number) + '_number_' + str(train_number) + '_' + str(accuracy) + '_le.pkl'
         return file_path
 
-    def experiment_setup(self):
+    def start_experiment(self):
         pass
 
     def one_experiment(self):
+        evaluation_cloud_without_real_time_view = []
+        evaluation_fog_with_real_time_view = []
+        evaluation_fog_without_real_time_view = []
         dr = data_ready(time=self.start_time, scenario=self.scenario, scenario_range=self.scenario_range,
                         during_time=self.during_time, packet_loss_rate=self.packet_loss_rate, collision_distance=self.collision_distance)
         dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
@@ -89,4 +92,51 @@ class experiment:
             fg.selected_packet_under_communication_range()
             fg.form_real_time_view()
             fg.prediction()
+            selected_vehicle_id = fg.get_selected_vehicle_id()
+            collision_warning_message = fg.get_collision_warning_messages()
+            true_collision_warning = self.get_true_collision_warning(dr.get_collision_time_matrix(), dr.get_vehicle_id_array())
+            tp = 0  # true in collision warning message
+            fp = 0  # false in collision waring message
+            fn = 0  # true not in collision warning message
+            for id in selected_vehicle_id:
+                if id in true_collision_warning:
+                    if id in collision_warning_message:
+                        tp += 1
+                    else:
+                        fn += 1
+                else:
+                    if id in collision_warning_message:
+                        fp += 1
+                    else:
+                        pass
+            precision = tp / (tp + fp)
+            recall = tp / (tp + fn)
+            experiment_result = {'time': time, 'precision': precision, 'recall': recall}
+            evaluation_fog_with_real_time_view.append(experiment_result)
+
+
+    def get_true_collision_warning(self, collision_time_matrix, vehicle_id_array, time):
+        true_collision_warning = []
+        for i in range(collision_time_matrix.shape()[0]):
+            for j in range(collision_time_matrix.shape()[1]):
+                if collision_time_matrix[i][j] == 0:
+                    pass
+                else:
+                    the_headway = collision_time_matrix[i][j] - time
+                    if the_headway < 0:
+                        pass
+                    elif the_headway < self.headway:
+                        vehicle_id_one = vehicle_id_array[i]
+                        vehicle_id_two = vehicle_id_array[j]
+                        if vehicle_id_one in true_collision_warning:
+                            pass
+                        else:
+                            true_collision_warning.append(vehicle_id_one)
+                        if vehicle_id_two in true_collision_warning:
+                            pass
+                        else:
+                            true_collision_warning.append(vehicle_id_two)
+        return true_collision_warning
+
+
 
