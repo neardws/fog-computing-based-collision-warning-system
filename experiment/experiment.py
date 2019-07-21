@@ -77,17 +77,25 @@ class experiment:
             tp = 0  # true in collision warning message
             fp = 0  # false in collision waring message
             fn = 0  # true not in collision warning message
-            for id in selected_vehicle_id:
-                if id in true_collision_warning:
-                    if id in collision_warning_message:
-                        tp += 1
+            '''
+            TODO: 
+                raise ValueError("Can only compare identically-labeled "
+            ValueError: Can only compare identically-labeled Series objects
+            '''
+            try:
+                for id in selected_vehicle_id:
+                    if id in true_collision_warning:
+                        if id in collision_warning_message:
+                            tp += 1
+                        else:
+                            fn += 1
                     else:
-                        fn += 1
-                else:
-                    if id in collision_warning_message:
-                        fp += 1
-                    else:
-                        pass
+                        if id in collision_warning_message:
+                            fp += 1
+                        else:
+                            pass
+            except ValueError:
+                print('Value Error')
             precision = tp / (tp + fp)
             recall = tp / (tp + fn)
             experiment_result = {'time': time, 'precision': precision, 'recall': recall}
@@ -184,8 +192,8 @@ class experiment:
 
     def get_true_collision_warning(self, collision_time_matrix, vehicle_id_array, time):
         true_collision_warning = []
-        for i in range(collision_time_matrix.shape()[0]):
-            for j in range(collision_time_matrix.shape()[1]):
+        for i in range(collision_time_matrix.shape[0]):
+            for j in range(collision_time_matrix.shape[1]):
                 if collision_time_matrix[i][j] == 0:
                     pass
                 else:
@@ -195,14 +203,21 @@ class experiment:
                     elif the_headway < self.headway:
                         vehicle_id_one = vehicle_id_array[i]
                         vehicle_id_two = vehicle_id_array[j]
-                        if vehicle_id_one in true_collision_warning:
-                            pass
-                        else:
-                            true_collision_warning.append(vehicle_id_one)
-                        if vehicle_id_two in true_collision_warning:
-                            pass
-                        else:
-                            true_collision_warning.append(vehicle_id_two)
+                        '''
+                        TODO: fix bugs
+                        ValueError: Can only compare identically-labeled Series objects
+                        '''
+                        try:
+                            if vehicle_id_one in true_collision_warning:
+                                pass
+                            else:
+                                true_collision_warning.append(vehicle_id_one)
+                            if vehicle_id_two in true_collision_warning:
+                                pass
+                            else:
+                                true_collision_warning.append(vehicle_id_two)
+                        except ValueError:
+                            print('Value Error')
         return true_collision_warning
 
 def start_experiment():
@@ -212,7 +227,7 @@ def start_experiment():
     accuracy = 0.01
     le_model_file = open(get_le_model_file_path(status_number=status_number, train_number=train_number, accuracy=accuracy), 'rb')
     hmm_model_file = open(get_hmm_model_file_path(type=hmm_type, status_number=status_number, train_number=train_number, accuracy=accuracy), 'rb')
-    my_hmm_model = hmm_model(type='discrete', le_model=pickle.load(le_model_file), hmm_model=pickle.load(hmm_model_file))
+    my_hmm_model = hmm_model(type='discrete', le_model=pickle.load(le_model_file), hmm_model=pickle.load(hmm_model_file), packet_loss_rate=3.00)
     my_experiment = experiment(start_time='9am', during_time=600, scenario_range=500,
                                collision_distance=5.0, hmm_model=my_hmm_model, prediction_time=10)
 

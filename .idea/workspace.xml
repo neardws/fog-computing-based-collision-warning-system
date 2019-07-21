@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d6d4d26-8c02-44c8-aca0-047c84e0ef83" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiment/data_ready.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment/data_ready.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/experiment/experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment/experiment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiment/vehicels_info.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment/vehicels_info.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiment/vehicle.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment/vehicle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment/fog_node.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment/fog_node.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment/hmm_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment/hmm_model.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,8 +29,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/experiment/hmm_model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1800">
-              <caret line="120" column="32" selection-start-line="120" selection-start-column="22" selection-end-line="120" selection-end-column="32" />
+            <state relative-caret-position="207">
+              <caret line="94" column="19" lean-forward="true" selection-start-line="94" selection-start-column="19" selection-end-line="94" selection-end-column="19" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -43,8 +41,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/experiment/data_ready.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="183" selection-start-line="183" selection-end-line="183" />
+            <state relative-caret-position="454">
+              <caret line="179" column="56" selection-start-line="179" selection-start-column="56" selection-end-line="179" selection-end-column="56" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -52,11 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/experiment/fog_node.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="146" column="22" selection-start-line="146" selection-start-column="13" selection-end-line="146" selection-end-column="22" />
+            <state relative-caret-position="130">
+              <caret line="168" column="16" selection-start-line="168" selection-start-column="16" selection-end-line="168" selection-end-column="16" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -67,8 +65,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/experiment/experiment.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="66" selection-start-line="66" selection-end-line="66" />
+            <state relative-caret-position="230">
+              <caret line="245" selection-start-line="245" selection-end-line="245" />
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
               </folding>
@@ -77,10 +75,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/visualization/density_speed.txt">
+        <entry file="file://$USER_HOME$/.conda/envs/py3/Lib/site-packages/sklearn/utils/validation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="19" column="104" selection-start-line="19" selection-start-column="104" selection-end-line="19" selection-end-column="104" />
+            <state relative-caret-position="50">
+              <caret line="513" selection-start-line="513" selection-end-line="513" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.conda/envs/py3/Lib/site-packages/pandas/core/generic.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="193">
+              <caret line="1477" selection-start-line="1477" selection-end-line="1477" />
             </state>
           </provider>
         </entry>
@@ -88,7 +95,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/experiment/transmission_model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="662">
+            <state relative-caret-position="302">
               <caret line="57" column="11" selection-start-line="57" selection-start-column="11" selection-end-line="57" selection-end-column="11" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
@@ -100,17 +107,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/experiment/vehicels_info.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="359">
+              <caret line="35" column="53" lean-forward="true" selection-start-line="35" selection-start-column="53" selection-end-line="35" selection-end-column="53" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/experiment/vehicle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+            <state relative-caret-position="-38">
+              <caret line="12" column="57" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="57" />
               <folding>
                 <element signature="e#0#54#0" expanded="true" />
               </folding>
@@ -121,22 +128,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mytest/hmm_two_dim.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+            <state relative-caret-position="-120">
+              <caret line="60" column="35" selection-start-line="60" selection-start-column="26" selection-end-line="60" selection-end-column="35" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/train_hmm/train_by_hmmlearn_samll_status.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="15" column="11" selection-start-line="15" selection-end-line="15" selection-end-column="11" />
-              <folding>
-                <element signature="e#15#48#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -168,10 +163,17 @@
       <find>show_scenario_information</find>
       <find>le</find>
       <find>unite_time</find>
-      <find>hmm_model</find>
       <find>set_transmission_delay</find>
       <find>hmm_type</find>
+      <find>fog_transmission_model</find>
+      <find>origin_trace</find>
       <find>vehicle_id_array</find>
+      <find>prediction_time</find>
+      <find>type</find>
+      <find>get_prediction_trace</find>
+      <find>predict</find>
+      <find>hmm_model</find>
+      <find>packet_loss_rate</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -225,13 +227,13 @@
         <option value="$PROJECT_DIR$/train_hmm/training_by_hmmlearn_with_mp_two_dim.py" />
         <option value="$PROJECT_DIR$/train_hmm/train_by_hmmlearn_small_test2.py" />
         <option value="$PROJECT_DIR$/train_hmm/train_by_hmmlearn_small_test3.py" />
-        <option value="$PROJECT_DIR$/experiment/hmm_model.py" />
         <option value="$PROJECT_DIR$/experiment/transmission_model.py" />
-        <option value="$PROJECT_DIR$/experiment/fog_node.py" />
+        <option value="$PROJECT_DIR$/experiment/vehicle.py" />
         <option value="$PROJECT_DIR$/experiment/vehicels_info.py" />
         <option value="$PROJECT_DIR$/experiment/data_ready.py" />
         <option value="$PROJECT_DIR$/experiment/experiment.py" />
-        <option value="$PROJECT_DIR$/experiment/vehicle.py" />
+        <option value="$PROJECT_DIR$/experiment/hmm_model.py" />
+        <option value="$PROJECT_DIR$/experiment/fog_node.py" />
       </list>
     </option>
   </component>
@@ -521,7 +523,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32899022" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.65437305" visible="true" weight="0.28850326" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.65437305" visible="true" weight="0.489154" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -530,7 +532,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50105375" side_tool="true" weight="0.6030369" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49894625" weight="0.6030369" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49894625" weight="0.79934925" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.3286334" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -540,12 +542,12 @@
       <window_info anchor="right" id="Coverage" order="5" side_tool="true" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20600632" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20969442" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32899022" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.65437305" visible="true" weight="0.4284165" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.65437305" visible="true" weight="0.42299348" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -553,8 +555,8 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.34562698" side_tool="true" weight="0.5856833" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.1583514" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50105375" side_tool="true" weight="0.6030369" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49894625" weight="0.6030369" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.3286334" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -573,13 +575,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-16">
           <caret line="27" column="35" lean-forward="true" selection-start-line="27" selection-start-column="35" selection-end-line="27" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.conda/envs/py3/Lib/site-packages/sklearn/utils/validation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="55">
-          <caret line="520" selection-start-line="520" selection-end-line="520" />
         </state>
       </provider>
     </entry>
@@ -608,13 +603,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="193">
           <caret line="4718" selection-start-line="4718" selection-end-line="4718" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.conda/envs/py3/Lib/site-packages/pandas/core/generic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="1705" selection-start-line="1705" selection-end-line="1705" />
         </state>
       </provider>
     </entry>
@@ -884,16 +872,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/experiment/hmm_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1800">
-          <caret line="120" column="32" selection-start-line="120" selection-start-column="22" selection-end-line="120" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/visualization/selected_cellular_location.csv">
       <provider selected="true" editor-type-id="csv-text-editor" />
       <provider editor-type-id="csv-table-editor">
@@ -912,20 +890,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mytest/hmm_two_dim.py">
+    <entry file="file://$PROJECT_DIR$/experiment/data_ready.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiment/fog_node.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="146" column="22" selection-start-line="146" selection-start-column="13" selection-end-line="146" selection-end-column="22" />
+        <state relative-caret-position="454">
+          <caret line="179" column="56" selection-start-line="179" selection-start-column="56" selection-end-line="179" selection-end-column="56" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -934,8 +902,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/experiment/transmission_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="662">
+        <state relative-caret-position="302">
           <caret line="57" column="11" selection-start-line="57" selection-start-column="11" selection-end-line="57" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.conda/envs/py3/Lib/site-packages/pandas/core/generic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="1477" selection-start-line="1477" selection-end-line="1477" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.conda/envs/py3/Lib/site-packages/sklearn/utils/validation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="513" selection-start-line="513" selection-end-line="513" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mytest/hmm_two_dim.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-120">
+          <caret line="60" column="35" selection-start-line="60" selection-start-column="26" selection-end-line="60" selection-end-column="35" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
@@ -944,37 +936,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/experiment/vehicels_info.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="359">
+          <caret line="35" column="53" lean-forward="true" selection-start-line="35" selection-start-column="53" selection-end-line="35" selection-end-column="53" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/experiment/experiment.py">
+    <entry file="file://$PROJECT_DIR$/experiment/vehicle.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="66" selection-start-line="66" selection-end-line="66" />
+        <state relative-caret-position="-38">
+          <caret line="12" column="57" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="57" />
           <folding>
-            <element signature="e#0#33#0" expanded="true" />
+            <element signature="e#0#54#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/experiment/data_ready.py">
+    <entry file="file://$PROJECT_DIR$/experiment/hmm_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="183" selection-start-line="183" selection-end-line="183" />
+        <state relative-caret-position="207">
+          <caret line="94" column="19" lean-forward="true" selection-start-line="94" selection-start-column="19" selection-end-line="94" selection-end-column="19" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/experiment/vehicle.py">
+    <entry file="file://$PROJECT_DIR$/experiment/experiment.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+        <state relative-caret-position="230">
+          <caret line="245" selection-start-line="245" selection-end-line="245" />
           <folding>
-            <element signature="e#0#54#0" expanded="true" />
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiment/fog_node.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="168" column="16" selection-start-line="168" selection-start-column="16" selection-end-line="168" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>

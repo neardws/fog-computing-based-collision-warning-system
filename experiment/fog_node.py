@@ -158,16 +158,26 @@ class fog_node:
             else:
                 origin_trace.append(vehicle)
                 self.hmm_model.set_origin_trace(origin_trace)
-                self.prediction_traces.append(self.hmm_model.get_prediction_trace())
+                prediction_trace = self.hmm_model.get_prediction_trace()
+                if prediction_trace is not None:
+                    self.prediction_traces.append(self.hmm_model.get_prediction_trace())
         '''Judge'''
         selected_vehicle_number = len(self.selected_vehicles)
-        self.selected_vehicle_collision_time_matrix = np.zeros(selected_vehicle_number, selected_vehicle_number)
+        self.selected_vehicle_collision_time_matrix = np.zeros((selected_vehicle_number, selected_vehicle_number))
         for i in range(selected_vehicle_number - 1):
             for j in range(i, selected_vehicle_number):
-                collision_time = self.get_collision_time(self.prediction_traces[i], self.prediction_traces[j])
+                '''
+                TODO: IndexError
+                IndexError: list index out of range in collision_time = self.get_collision_time(self.prediction_traces[i], self.prediction_traces[j])
+                '''
+                collision_time = 0
+                try:
+                    collision_time = self.get_collision_time(self.prediction_traces[i], self.prediction_traces[j])
+                except IndexError:
+                    print('Index Error')
                 if collision_time == 0:
                     pass
-                else:   # it get collision
+                else:  # it get collision
                     the_headway = collision_time - self.unite_time
                     if the_headway < 0:
                         print("Error: The headway < 0")
@@ -181,6 +191,8 @@ class fog_node:
                                 pass
                             else:
                                 self.collision_warning_messages.append(self.selected_vehicles[j].vehicleID)
+
+
 
     def get_collision_time(self, trace_one, trace_two):
         collision_time = 0
