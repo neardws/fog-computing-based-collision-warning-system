@@ -3,6 +3,8 @@ import pandas as pd
 from vehicels_info import vehicle_info
 from vehicle import vehicle
 
+np.set_printoptions(threshold=np.inf)
+
 class data_ready:
     def __init__(self, time, scenario, scenario_range, during_time, packet_loss_rate, collision_distance):
         self.time = time
@@ -14,7 +16,15 @@ class data_ready:
         self.vehicle_traces = None
         self.vehicle_number = None
         self.collision_time_matrix = None
+        self.collision_number = None
+        self.collision_message = None
         self.vehicle_id_array = None
+
+    def get_vehicle_trace(self):
+        return self.vehicle_traces
+
+    def get_vehicle_number(self):
+        return self.vehicle_number
 
     def get_collision_time_matrix(self):
         return self.collision_time_matrix
@@ -22,6 +32,23 @@ class data_ready:
     def get_vehicle_id_array(self):
         return self.vehicle_id_array
 
+    def get_collision_number(self):
+        return self.collision_number
+
+    def get_collision_message(self):
+        return self.collision_message
+
+    def show_detail(self):
+        print("-"*64)
+        print("Below is the detail of data")
+        print("The vehicle number is")
+        print(self.get_vehicle_number())
+        print("The vehicle_id_array is")
+        print(self.get_vehicle_id_array())
+        print("The collision_number is")
+        print(self.get_collision_number())
+        print("The collision message is ")
+        print(self.get_collision_message())
     '''
     :return csv_file, which contains vehicles traces
     according to the selected time in a range of 1AM to 11PM during one day
@@ -114,7 +141,7 @@ class data_ready:
                     y = trace['y']
                     trace_time = trace['time']
                     new_vehicle = vehicle_info()
-                    vehicles.append(new_vehicle.set_vehicleID(vehicleID=trace_id).set_trace(x=x, y=y, time=trace_time))
+                    vehicles.append(new_vehicle.set_vehicleID(vehicleID=id).set_trace(x=x, y=y, time=trace_time))
         return vehicles
 
     '''
@@ -127,16 +154,16 @@ class data_ready:
         my_max_time = max(vehicle_one.get_trace_time())
         my_min_time = min(vehicle_one.get_trace_time())
         my_time = set(range(my_min_time, my_max_time + 1))
-        print(my_time)
+        # print(my_time)
         another_max_time = max(vehicle_two.get_trace_time())
         another_min_time = min(vehicle_two.get_trace_time())
         another_time = set(range(another_min_time, another_max_time + 1))
-        print(another_time)
+        # print(another_time)
 
         intersection_time = my_time & another_time
-        print(intersection_time)
+        # print(intersection_time)
         if len(intersection_time):
-            print('*' * 64)
+            # print('*' * 64)
             for time in range(min(intersection_time), max(intersection_time) + 1):
                 my_xy = vehicle_one.get_xy_from_time(time)
                 another_xy = vehicle_two.get_xy_from_time(time)
@@ -164,11 +191,23 @@ class data_ready:
         self.vehicle_number = len(self.vehicle_traces)
         self.collision_time_matrix = np.zeros((self.vehicle_number, self.vehicle_number))
         self.vehicle_id_array = []
+        self.collision_number = 0
+        self.collision_message = []
         for i in range(self.vehicle_number - 1):
             for j in range(i + 1, self.vehicle_number):
-                self.collision_time_matrix[i,j] = self.get_collision_time(vehicle_one=self.vehicle_traces[i], vehicle_two=self.vehicle_traces[j])
-            self.vehicle_id_array.append(self.vehicle_traces[i].vehicleID)
-        self.vehicle_id_array.append(self.vehicle_traces[-1].vehicleID) # get the last one
+                collision_time = self.get_collision_time(vehicle_one=self.vehicle_traces[i], vehicle_two=self.vehicle_traces[j])
+                self.collision_time_matrix[i, j] = collision_time
+                if collision_time == 0:
+                    pass
+                else:
+                    self.collision_number += 1
+                    self.collision_message.append({'vehicleOne': self.vehicle_traces[i].get_vehicleID(),
+                                                   'vehicleTwo': self.vehicle_traces[j].get_vehicleID(),
+                                                   'collisionTime': collision_time})
+                # print(self.vehicle_traces[i].get_vehicleID())
+            # print(type(self.vehicle_traces[i].get_vehicleID()))
+            self.vehicle_id_array.append(int(self.vehicle_traces[i].get_vehicleID()))
+        self.vehicle_id_array.append(int(self.vehicle_traces[-1].vehicleID)) # get the last one
 
     '''
     :return list of vehicles in "time" 

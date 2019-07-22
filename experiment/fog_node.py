@@ -11,12 +11,11 @@ class fog_node:
         self.fog_transmission_model = fog_transmission_model(0) # never mind the packet loss rate
         self.headway = None
         self.unite_time = None
-        self.vehicles = None
+        self.receive_vehicle = None
         self.selected_vehicles = []
         self.history_record = []
         self.prediction_traces = []
         self.collision_warning_messages = []
-        self.selected_vehicle_collision_time_matrix = None
 
     def set_headway(self, headway):
         self.headway = headway
@@ -28,7 +27,7 @@ class fog_node:
         self.prediction_time = time
 
     def receive_packets(self, vehicles):
-        self.vehicles = vehicles
+        self.receive_vehicle = vehicles
 
     def get_selected_vehicle_id(self):
         selected_vehicle_id = []
@@ -40,11 +39,11 @@ class fog_node:
         return self.collision_warning_messages
 
     def selected_packet_under_communication_range(self):
-        for vehicle in self.vehicles:
+        for vehicle in self.receive_vehicle:
             if self.packet_is_under_communication_range(vehicle):
                 if not vehicle.packet_loss:
                     self.selected_vehicles.append(vehicle)
-        self.history_record.append(self.selected_vehicles)
+        # self.history_record.append(self.selected_vehicles)
 
     def packet_is_under_communication_range(self, vehicle):
         under_communication_range = False
@@ -106,14 +105,14 @@ class fog_node:
         if len(self.history_record) == 0:
             pass
         else:
-            if len(self.vehicles) < len(self.history_record[-1]):
+            if len(self.receive_vehicle) < len(self.history_record[-1]):
                 add_vehicle_id = self.get_all_history_record_id() - self.get_all_vehicles_id()
                 for id in add_vehicle_id:
                     self.selected_vehicles.append(self.get_vehicle_form_history_record(id))
 
     def get_all_vehicles_id(self):
         vehicles_ID = set()
-        for vehicle in self.vehicles:
+        for vehicle in self.receive_vehicle:
             vehicles_ID.add(vehicle.vehicleID)
         return vehicles_ID
 
@@ -126,20 +125,19 @@ class fog_node:
 
     def get_vehicle_form_history_record(self, vehicleID):
         return_vehicle = None
-        for vehicle in self.history_record[-1]:
-            the_id = vehicle.vehicleID
-            # print(the_id)
-            # print(vehicleID)
-            if (vehicleID is the_id):
-                return_vehicle = vehicle
+        if len(self.history_record) == 0:
+            pass
+        else:
+            for vehicle in self.history_record[-1]:
+                if vehicleID == vehicle.vehicleID:
+                    return_vehicle = vehicle
         return return_vehicle
 
     def get_trace_from_history_record(self, vehicleID):
         trace = []
         for i in range(len(self.history_record)):
             for vehicle in self.history_record[i]:
-                the_id = vehicle.vehicleID
-                if (vehicleID is the_id):
+                if vehicleID == vehicle.vehicleID:
                     trace.append(vehicle)
         return trace
 
@@ -150,31 +148,26 @@ class fog_node:
     def prediction(self):
         self.hmm_model.set_prediction_seconds(self.prediction_time)
         '''Prediction'''
+        add_history_record = []
         for vehicle in self.selected_vehicles:
             id = vehicle.vehicleID
             origin_trace = self.get_trace_from_history_record(id)
             if len(origin_trace) == 0:
-                pass
+                add_history_record.append(vehicle)
             else:
                 origin_trace.append(vehicle)
+                print("Origin trace:")
+                print(origin_trace)
                 self.hmm_model.set_origin_trace(origin_trace)
                 prediction_trace = self.hmm_model.get_prediction_trace()
                 if prediction_trace is not None:
                     self.prediction_traces.append(self.hmm_model.get_prediction_trace())
+        self.history_record.append(add_history_record)
         '''Judge'''
-        selected_vehicle_number = len(self.selected_vehicles)
-        self.selected_vehicle_collision_time_matrix = np.zeros((selected_vehicle_number, selected_vehicle_number))
-        for i in range(selected_vehicle_number - 1):
-            for j in range(i, selected_vehicle_number):
-                '''
-                TODO: IndexError
-                IndexError: list index out of range in collision_time = self.get_collision_time(self.prediction_traces[i], self.prediction_traces[j])
-                '''
-                collision_time = 0
-                try:
-                    collision_time = self.get_collision_time(self.prediction_traces[i], self.prediction_traces[j])
-                except IndexError:
-                    print('Index Error')
+        prediction_traces_number = len(self.prediction_traces)
+        for i in range(prediction_traces_number - 1):
+            for j in range(i, prediction_traces_number):
+                collision_time = self.get_collision_time(self.prediction_traces[i], self.prediction_traces[j])
                 if collision_time == 0:
                     pass
                 else:  # it get collision

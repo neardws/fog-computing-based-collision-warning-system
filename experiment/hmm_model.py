@@ -62,10 +62,6 @@ class hmm_model:
             # emission_cdf = np.cumsum(hmm_model.emissionprob_, axis=1)
             # next_obs2 = (emission_cdf[next_state] > random_state.rand()).argmax()
             xy_increment = self.get_origin_xy_increment(next_obs1)
-            '''
-            TODO: fix the None Type bug
-            TypeError: unsupported operand type(s) for +: 'NoneType' and 'float'
-            '''
             if trace[-1].location_x is not None:
                 if trace[-1].location_y is not None:
                     prediction_x = trace[-1].location_x + xy_increment[0]
@@ -81,55 +77,45 @@ class hmm_model:
     def process_state(self, trace):
         status = []
         X = None
-        '''
-        TODO: fix the len(trace) bug
-        TypeError: unsupported operand type(s) for -: 'NoneType' and 'float'
-        '''
-        if len(trace) > 2:
-            print(len(trace))
-            print(trace[2])
-            for i in range(len(trace) - 2):
-                print(i)
-                print(trace[i + 1].location_x)
-                print(trace[i].location_x)
-                '''
-                TODO: fix the Type Error
-                TypeError: unsupported operand type(s) for -: 'NoneType' and 'float'
-                '''
-                if trace[i + 1].location_x is not None:
-                    if trace[i + 1].location_y is not None:
-                        x_add = trace[i + 1].location_x - trace[i].location_x
-                        y_add = trace[i + 1].location_y - trace[i].location_y
-                        status.append([x_add, y_add])
-            the_x = np.array([])
-            if self.type == 'discrete':
-                status_num = 0
-                for xys in status:
-                    status_num += 1
-                    sta_x = np.array(xys[0]).astype('float32').astype('int32')
-                    sta_y = np.array(xys[1]).astype('float32').astype('int32')
-                    new_sta = int(sta_x) * 61 + int(sta_y)
-                    the_x = np.hstack((the_x, new_sta))
-                len_traj = status_num
-                if len_traj == 0:
-                    pass
-                else:
-                    x = the_x
-                    x = x[:, np.newaxis]
-                    try:
-                        new_x = self.le_model.transform(x)
-                        X = np.array(new_x).astype('int32')
-                        X = X.reshape(-1, 1)
-                    except ValueError:
-                        X = None
-                        print('ValueError: y contains previously unseen labels')
-            elif self.type == 'continuous':
-                '''
-                TODO
-                '''
-                print('Not defined')
+        for i in range(len(trace) - 1):
+            print(i)
+            print(trace[i + 1].location_x)
+            print(trace[i].location_x)
+            if trace[i + 1].location_x is not None:
+                if trace[i + 1].location_y is not None:
+                    x_add = trace[i + 1].location_x - trace[i].location_x
+                    y_add = trace[i + 1].location_y - trace[i].location_y
+                    status.append([x_add, y_add])
+        the_x = np.array([])
+        if self.type == 'discrete':
+            status_num = 0
+            for xys in status:
+                status_num += 1
+                sta_x = np.array(xys[0]).astype('float32').astype('int32')
+                sta_y = np.array(xys[1]).astype('float32').astype('int32')
+                new_sta = int(sta_x) * 61 + int(sta_y)
+                the_x = np.hstack((the_x, new_sta))
+            len_traj = status_num
+            if len_traj == 0:
+                pass
             else:
-                print('Type Error')
+                x = the_x
+                x = x[:, np.newaxis]
+                try:
+                    new_x = self.le_model.transform(x)
+                    X = np.array(new_x).astype('int32')
+                    X = X.reshape(-1, 1)
+                except ValueError:
+                    X = None
+                    print('ValueError: y contains previously unseen labels')
+        elif self.type == 'continuous':
+            '''
+            TODO
+            '''
+            print('Not defined')
+        else:
+            print('Type Error')
+
         return X
 
     '''
