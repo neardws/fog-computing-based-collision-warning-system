@@ -36,13 +36,19 @@ class hmm_model:
         prediction_trace = None
         trace = self.origin_trace
         origin_time = trace[-1].time
+        origin_id = trace[-1].vehicleID
         for i in range(self.prediction_seconds):
             prediction_location = self.predict(trace)
             if prediction_location is not None:
                 v = vehicle(self.packet_loss_rate)
+                v.set_vehicleID(origin_id)
                 v.set_location(prediction_location)
                 v.set_time(origin_time + i + 1)
                 trace.append(v)
+            else:
+                # print("prediction location is none in HMM_MODEL get prediction trace")
+                break
+        prediction_trace = trace
         return prediction_trace
 
     '''
@@ -50,26 +56,25 @@ class hmm_model:
     '''
     def predict(self, trace):
         X = self.process_state(trace)
-        prediction_x = None
-        prediction_y = None
         if X is not None:
-            print(X)
+            # print(X)
+            print("X is not None")
             status_sequence = self.hmm_model.predict(X)
             transmat_cdf = np.cumsum(self.hmm_model.transmat_, axis=1)
             random_state = check_random_state(self.hmm_model.random_state)
             next_state = (transmat_cdf[status_sequence[-1]] > random_state.rand()).argmax()
             next_obs1 = self.hmm_model._generate_sample_from_state(next_state, random_state)
-            # emission_cdf = np.cumsum(hmm_model.emissionprob_, axis=1)
-            # next_obs2 = (emission_cdf[next_state] > random_state.rand()).argmax()
             xy_increment = self.get_origin_xy_increment(next_obs1)
-            if trace[-1].location_x is not None:
-                if trace[-1].location_y is not None:
-                    prediction_x = trace[-1].location_x + xy_increment[0]
-                    prediction_y = trace[-1].location_y + xy_increment[1]
-            # print('*' * 64)
-            # print(prediction_x)
-            # print(prediction_y)
-        return prediction_x, prediction_y
+            prediction_x = trace[-1].location_x + xy_increment[0]
+            prediction_y = trace[-1].location_y + xy_increment[1]
+
+            print('*' * 64)
+            print(prediction_x)
+            print(prediction_y)
+            return prediction_x, prediction_y
+        else:
+            # print("X is none in HMM MODEL predict")
+            return None
 
     '''
     process the trace into status, which contains x and y increment
@@ -78,24 +83,26 @@ class hmm_model:
         status = []
         X = None
         for i in range(len(trace) - 1):
-            print(i)
-            print(trace[i + 1].location_x)
-            print(trace[i].location_x)
-            if trace[i + 1].location_x is not None:
-                if trace[i + 1].location_y is not None:
-                    x_add = trace[i + 1].location_x - trace[i].location_x
-                    y_add = trace[i + 1].location_y - trace[i].location_y
-                    status.append([x_add, y_add])
+            # print(i)
+            # print(trace[i + 1].location_x)
+            # print(trace[i].location_x)
+            x_add = trace[i + 1].location_x - trace[i].location_x
+            y_add = trace[i + 1].location_y - trace[i].location_y
+            status.append([int(x_add), int(y_add)])
+
         the_x = np.array([])
+        print('status is')
+        print(status)
         if self.type == 'discrete':
+            # print('TYPE MATCH')
             status_num = 0
             for xys in status:
                 status_num += 1
-                sta_x = np.array(xys[0]).astype('float32').astype('int32')
-                sta_y = np.array(xys[1]).astype('float32').astype('int32')
-                new_sta = int(sta_x) * 61 + int(sta_y)
+                new_sta = xys[0] * 61 + xys[1]
                 the_x = np.hstack((the_x, new_sta))
             len_traj = status_num
+            print("The x is")
+            print(the_x)
             if len_traj == 0:
                 pass
             else:
@@ -103,11 +110,11 @@ class hmm_model:
                 x = x[:, np.newaxis]
                 try:
                     new_x = self.le_model.transform(x)
-                    X = np.array(new_x).astype('int32')
-                    X = X.reshape(-1, 1)
                 except ValueError:
-                    X = None
-                    print('ValueError: y contains previously unseen labels')
+                    print("Value Error")
+                    return None
+                X = np.array(new_x).astype('int32')
+                X = X.reshape(-1, 1)
         elif self.type == 'continuous':
             '''
             TODO
@@ -115,7 +122,7 @@ class hmm_model:
             print('Not defined')
         else:
             print('Type Error')
-
+        # print(X)
         return X
 
     '''

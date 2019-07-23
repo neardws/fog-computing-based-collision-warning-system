@@ -152,19 +152,34 @@ class fog_node:
         for vehicle in self.selected_vehicles:
             id = vehicle.vehicleID
             origin_trace = self.get_trace_from_history_record(id)
+            print("len(origin_trace)")
+            print(len(origin_trace))
             if len(origin_trace) == 0:
                 add_history_record.append(vehicle)
             else:
                 origin_trace.append(vehicle)
-                print("Origin trace:")
-                print(origin_trace)
+                # print("Origin trace:")
+                # print(origin_trace)
                 self.hmm_model.set_origin_trace(origin_trace)
                 prediction_trace = self.hmm_model.get_prediction_trace()
+                print("prediction trace is")
+                print(prediction_trace)
                 if prediction_trace is not None:
-                    self.prediction_traces.append(self.hmm_model.get_prediction_trace())
+                    print("prediction_trace is NOTNONE in fog node")
+                    self.prediction_traces.append(prediction_trace)
+                    print(self.prediction_traces)
+                # else:
+                #     print("prediction_trace is None in fog node")
+        print("history_record length is")
+        print(len(self.history_record))
         self.history_record.append(add_history_record)
         '''Judge'''
         prediction_traces_number = len(self.prediction_traces)
+        print("prediction_traces_number is")
+        print(prediction_traces_number)
+        for i in range(prediction_traces_number):
+            print(self.prediction_traces[i])
+
         for i in range(prediction_traces_number - 1):
             for j in range(i, prediction_traces_number):
                 collision_time = self.get_collision_time(self.prediction_traces[i], self.prediction_traces[j])
@@ -173,18 +188,18 @@ class fog_node:
                 else:  # it get collision
                     the_headway = collision_time - self.unite_time
                     if the_headway < 0:
-                        print("Error: The headway < 0")
+                        # print("Error: The headway < 0")
+                        pass
                     else:
                         if the_headway < self.headway:
-                            if self.selected_vehicles[i].vehicleID in self.collision_warning_messages:
+                            if self.prediction_traces[i][0].vehicleID in self.collision_warning_messages:
                                 pass
                             else:
-                                self.collision_warning_messages.append(self.selected_vehicles[i].vehicleID)
-                            if self.selected_vehicles[j].vehicleID in self.collision_warning_messages:
+                                self.collision_warning_messages.append(self.prediction_traces[i][0].vehicleID)
+                            if self.prediction_traces[j][0].vehicleID in self.collision_warning_messages:
                                 pass
                             else:
-                                self.collision_warning_messages.append(self.selected_vehicles[j].vehicleID)
-
+                                self.collision_warning_messages.append(self.prediction_traces[j][0].vehicleID)
 
 
     def get_collision_time(self, trace_one, trace_two):
