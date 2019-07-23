@@ -58,7 +58,7 @@ class hmm_model:
         X = self.process_state(trace)
         if X is not None:
             # print(X)
-            print("X is not None")
+            # print("X is not None")
             status_sequence = self.hmm_model.predict(X)
             transmat_cdf = np.cumsum(self.hmm_model.transmat_, axis=1)
             random_state = check_random_state(self.hmm_model.random_state)
@@ -68,9 +68,9 @@ class hmm_model:
             prediction_x = trace[-1].location_x + xy_increment[0]
             prediction_y = trace[-1].location_y + xy_increment[1]
 
-            print('*' * 64)
-            print(prediction_x)
-            print(prediction_y)
+            # print('*' * 64)
+            # print(prediction_x)
+            # print(prediction_y)
             return prediction_x, prediction_y
         else:
             # print("X is none in HMM MODEL predict")
@@ -91,8 +91,8 @@ class hmm_model:
             status.append([int(x_add), int(y_add)])
 
         the_x = np.array([])
-        print('status is')
-        print(status)
+        # print('status is')
+        # print(status)
         if self.type == 'discrete':
             # print('TYPE MATCH')
             status_num = 0
@@ -101,8 +101,8 @@ class hmm_model:
                 new_sta = xys[0] * 61 + xys[1]
                 the_x = np.hstack((the_x, new_sta))
             len_traj = status_num
-            print("The x is")
-            print(the_x)
+            # print("The x is")
+            # print(the_x)
             if len_traj == 0:
                 pass
             else:
@@ -111,7 +111,7 @@ class hmm_model:
                 try:
                     new_x = self.le_model.transform(x)
                 except ValueError:
-                    print("Value Error")
+                    # print("Value Error")
                     return None
                 X = np.array(new_x).astype('int32')
                 X = X.reshape(-1, 1)
