@@ -17,6 +17,14 @@ class fog_node:
         self.prediction_traces = []
         self.collision_warning_messages = []
 
+    def re_init(self):
+        self.headway = None
+        self.unite_time = None
+        self.receive_vehicle = None
+        self.selected_vehicles = []
+        self.prediction_traces = []
+        # self.collision_warning_messages = []
+
     def set_headway(self, headway):
         self.headway = headway
 

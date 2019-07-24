@@ -83,12 +83,19 @@ class experiment:
         true_collision_number = 0
 
         for time in range(dr.get_start_time(self.start_time), (dr.get_start_time(self.start_time) + self.during_time)):
+            # if (time - self.start_time) % 10 == 0:
+            #     print("-" * 64)
+            #     show_time()
+            #     print("time is")
+            #     print(time)
             print("-" * 64)
             show_time()
             print("time is")
             print(time)
 
             send_packet = dr.get_send_packets(time=time)
+
+            fg.re_init()
 
             fg.set_headway(self.headway)
             fg.set_unite_time(time + 1)
@@ -126,8 +133,14 @@ class experiment:
         print("FN")
         print(fn)
 
-        precision = tp / (tp + fp)
-        recall = tp / (tp + fn)
+        if (tp + fp) == 0:
+            precision = 0
+        else:
+            precision = tp / (tp + fp)
+        if (tp + fn) == 0:
+            recall = 0
+        else:
+            recall = tp / (tp + fn)
         experiment_result = {'type': 'fog with realtime view',
                              'time': self.start_time,
                              'scenario': self.scenario,
@@ -143,9 +156,9 @@ class experiment:
         RESULT_PATH = r'E:\NearXu\result\mp_result'
         result_name = RESULT_PATH + '_type_fog_with_' + 'time' + str(self.start_time) + '_scenario_' + str(
             self.scenario) + '_plr_' \
-                             '' + str(self.packet_loss_rate) + '_headway_' + str(self.headway) + '.pkl'
-        with open(result_name, 'wb') as result_file:
-            pickle.dump(experiment_result, result_file)
+                             '' + str(self.packet_loss_rate) + '_headway_' + str(self.headway) + '.txt'
+        with open(result_name, 'w+') as result_file:
+            result_file.write(str(experiment_result))
         print("fog_node_with_real_time_view_experiment result saved")
 
     def fog_node_without_real_time_view_experiment(self, dr):
@@ -158,12 +171,19 @@ class experiment:
         true_collision_number = 0
 
         for time in range(dr.get_start_time(self.start_time), (dr.get_start_time(self.start_time) + self.during_time)):
+            # if (time - self.start_time) % 10 == 0:
+            #     print("-" * 64)
+            #     show_time()
+            #     print("time is")
+            #     print(time)
             print("-" * 64)
             show_time()
             print("time is")
             print(time)
 
             send_packet = dr.get_send_packets(time=time)
+
+            fg.re_init()
 
             fg.set_headway(self.headway)
             fg.set_unite_time(time + 1)
@@ -201,8 +221,14 @@ class experiment:
         print("FN")
         print(fn)
 
-        precision = tp / (tp + fp)
-        recall = tp / (tp + fn)
+        if (tp + fp) == 0:
+            precision = 0
+        else:
+            precision = tp / (tp + fp)
+        if (tp + fn) == 0:
+            recall = 0
+        else:
+            recall = tp / (tp + fn)
         experiment_result = {'type': 'fog without realtime view',
                              'time': self.start_time,
                              'scenario': self.scenario,
@@ -218,9 +244,9 @@ class experiment:
         RESULT_PATH = r'E:\NearXu\result\mp_result'
         result_name = RESULT_PATH + '_type_fog_without_' + 'time' + str(self.start_time) + '_scenario_' + str(
             self.scenario) + '_plr_' \
-                             '' + str(self.packet_loss_rate) + '_headway_' + str(self.headway) + '.pkl'
-        with open(result_name, 'wb') as result_file:
-            pickle.dump(experiment_result, result_file)
+                             '' + str(self.packet_loss_rate) + '_headway_' + str(self.headway) + '.txt'
+        with open(result_name, 'w+') as result_file:
+            result_file.write(str(experiment_result))
         print("fog_node_without_real_time_view_experiment result saved")
 
     def cloud_node_without_real_time_view_experiment(self, dr):
@@ -233,12 +259,19 @@ class experiment:
         true_collision_number = 0
 
         for time in range(dr.get_start_time(self.start_time), (dr.get_start_time(self.start_time) + self.during_time)):
+            # if (time - self.start_time) % 10 == 0:
+            #     print("-" * 64)
+            #     show_time()
+            #     print("time is")
+            #     print(time)
             print("-" * 64)
             show_time()
             print("time is")
             print(time)
 
             send_packet = dr.get_send_packets(time=time)
+
+            fg.re_init()
 
             fg.set_headway(self.headway)
             fg.set_unite_time(time + 1)
@@ -276,8 +309,14 @@ class experiment:
         print("FN")
         print(fn)
 
-        precision = tp / (tp + fp)
-        recall = tp / (tp + fn)
+        if (tp + fp) == 0:
+            precision = 0
+        else:
+            precision = tp / (tp + fp)
+        if (tp + fn) == 0:
+            recall = 0
+        else:
+            recall = tp / (tp + fn)
         experiment_result = {'type': 'cloud without realtime view',
                              'time': self.start_time,
                              'scenario': self.scenario,
@@ -293,9 +332,9 @@ class experiment:
         RESULT_PATH = r'E:\NearXu\result\mp_result'
         result_name = RESULT_PATH + '_type_cloud_without_' + 'time' + str(self.start_time) + '_scenario_' + str(
             self.scenario) + '_plr_' \
-                             '' + str(self.packet_loss_rate) + '_headway_' + str(self.headway) + '.pkl'
-        with open(result_name, 'wb') as result_file:
-            pickle.dump(experiment_result, result_file)
+                             '' + str(self.packet_loss_rate) + '_headway_' + str(self.headway) + '.txt'
+        with open(result_name, 'w+') as result_file:
+            result_file.write(str(experiment_result))
         print("cloud_node_without_real_time_view_experiment result saved")
 
     def get_true_collision_warning(self, collision_time_matrix, vehicle_id_array, time):
@@ -327,18 +366,13 @@ def show_time():
 
 
 def start_experiment(type, start_time, during_time, headway, packet_loss_rate, scenario):
-    # start_time = parameters['start_time']
-    # during_time = parameters['during_time']
-    # headway = parameters['headway']
-    # packet_loss_rate = parameters['packet_loss_rate']
-    # scenario = parameters['scenario']
+    print("-" * 64)
+    print("experiment start")
     print(start_time)
     print(during_time)
     print(headway)
     print(packet_loss_rate)
     print(scenario)
-    print("-" * 64)
-    print("experiment start")
     show_time()
 
     hmm_type = 'discrete'
