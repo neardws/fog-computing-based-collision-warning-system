@@ -7,7 +7,8 @@ class fog_node:
         self.communication_range = range
         self.hmm_model = hmm_model
         self.prediction_time = prediction_time
-        self.collision_distance = collision_distance
+        # self.collision_distance = collision_distance
+        self.collision_distance = 5.0
         self.fog_transmission_model = fog_transmission_model(0) # never mind the packet loss rate
         self.headway = None
         self.unite_time = None
