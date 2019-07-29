@@ -49,6 +49,8 @@ class data_ready:
         print(self.get_collision_number())
         print("The collision message is ")
         print(self.get_collision_message())
+        return "-"*64 + '\n' + "Below is the detail of data\nThe vehicle number is " + str(self.get_vehicle_number()) + "\nThe vehicle_id_array is" + str(self.get_vehicle_id_array()) + "\n" \
+                "The collision_number is " + str(self.get_collision_number()) + "\nThe collision message is " + str(self.get_collision_message()) + "\n"
     '''
     :return csv_file, which contains vehicles traces
     according to the selected time in a range of 1AM to 11PM during one day

@@ -7,7 +7,6 @@ class fog_node:
         self.communication_range = range
         self.hmm_model = hmm_model
         self.prediction_time = prediction_time
-        # self.collision_distance = collision_distance
         self.collision_distance = collision_distance
         self.fog_transmission_model = fog_transmission_model(0) # never mind the packet loss rate
         self.headway = None
@@ -22,9 +21,9 @@ class fog_node:
         self.headway = None
         self.unite_time = None
         self.receive_vehicle = None
-        self.selected_vehicles = []
-        self.prediction_traces = []
-        self.collision_warning_messages = []
+        self.selected_vehicles.clear()
+        self.prediction_traces.clear()
+        self.collision_warning_messages.clear()
 
     def set_headway(self, headway):
         self.headway = headway
@@ -154,7 +153,7 @@ class fog_node:
     :return a result matrix, which contains collision warning messages,
     namely, id of vehicles, which are going to collision
     '''
-    def prediction(self):
+    def prediction(self, saver):
         self.hmm_model.set_prediction_seconds(self.prediction_time)
         '''Prediction'''
         add_history_record = []
@@ -184,34 +183,42 @@ class fog_node:
         self.history_record.append(add_history_record)
         '''Judge'''
         prediction_traces_number = len(self.prediction_traces)
-        # print("prediction_traces_number is")
-        # print(prediction_traces_number)
+
+        saver.write("#" * 64)
+        saver.write("prediction_traces_number is")
+        saver.write(str(prediction_traces_number))
         # for i in range(prediction_traces_number):
         #     print(self.prediction_traces[i])
 
         for i in range(prediction_traces_number - 1):
-            for j in range(i, prediction_traces_number):
-                collision_time = self.get_collision_time(self.prediction_traces[i], self.prediction_traces[j])
+            for j in range(i+1, prediction_traces_number):
+                collision_time = self.get_collision_time(self.prediction_traces[i], self.prediction_traces[j], saver)
+                saver.write("i " + str(i) + " j "+ str(j))
+                saver.write("collision time " + str(collision_time))
                 if collision_time == 0:
                     pass
                 else:  # it get collision
                     the_headway = collision_time - self.unite_time
-                    if the_headway < 0:
-                        # print("Error: The headway < 0")
-                        pass
-                    else:
-                        if the_headway < self.headway:
-                            if self.prediction_traces[i][0].vehicleID in self.collision_warning_messages:
-                                pass
-                            else:
-                                self.collision_warning_messages.append(self.prediction_traces[i][0].vehicleID)
-                            if self.prediction_traces[j][0].vehicleID in self.collision_warning_messages:
-                                pass
-                            else:
-                                self.collision_warning_messages.append(self.prediction_traces[j][0].vehicleID)
+                    saver.write("the headway " + str(the_headway))
+                    # if the_headway < 0:
+                    #     # print("Error: The headway < 0")
+                    #     pass
+                    # else:
+                    if the_headway < self.headway:
+                        saver.write("Collision id are")
+                        saver.write(str(self.prediction_traces[i][0].vehicleID) + " " + str(
+                            self.prediction_traces[j][0].vehicleID))
+                        if self.prediction_traces[i][0].vehicleID in self.collision_warning_messages:
+                            pass
+                        else:
+                            self.collision_warning_messages.append(self.prediction_traces[i][0].vehicleID)
+                        if self.prediction_traces[j][0].vehicleID in self.collision_warning_messages:
+                            pass
+                        else:
+                            self.collision_warning_messages.append(self.prediction_traces[j][0].vehicleID)
 
 
-    def get_collision_time(self, trace_one, trace_two):
+    def get_collision_time(self, trace_one, trace_two, saver):
         collision_time = 0
 
         one_max_time = trace_one[-1].time
@@ -222,10 +229,14 @@ class fog_node:
         two_time = set(range(two_min_time, two_max_time + 1))
 
         intersection_time = one_time & two_time
+        saver.write("intersection time" + str(intersection_time))
         if len(intersection_time):
             for time in range(min(intersection_time), max(intersection_time) + 1):
                 one_xy = self.get_xy_from_trace(time=time, trace=trace_one)
                 two_xy = self.get_xy_from_trace(time=time, trace=trace_two)
+                saver.write("time " + str(time))
+                saver.write("one xy " + str(one_xy))
+                saver.write("two xy " + str(two_xy))
                 if one_xy is not None:
                     if two_xy is not None:
                         distance = np.sqrt(np.square(one_xy[0] - two_xy[0]) + np.square(one_xy[1] - two_xy[1]))
