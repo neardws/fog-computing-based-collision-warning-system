@@ -44,7 +44,6 @@ class experiment:
         self.during_time = during_time
         self.scenario_range = scenario_range
         self.collision_distance = collision_distance
-        # self.collision_distance = 5.0
         self.hmm_model = hmm_model
         self.prediction_time = prediction_time
         self.scenario = None
@@ -447,7 +446,8 @@ def get_le_model_file_path(status_number, train_number, accuracy):
         accuracy) + '_le.pkl'
     return r'E:\NearXu\model\model_mu_statue_37_number_10000_0.01_le.pkl'
 
-if __name__ == '__main__':
+
+def main():
     different_start_time = ['1am', '12am', '3pm', '6pm', '9pm']
     different_scenario = ['6', '7', '5', '8', '9']
     different_headway = [0.5, 1, 2, 4, 6]
@@ -521,7 +521,6 @@ if __name__ == '__main__':
         parameters_list.append(parameters1)
         parameters_list.append(parameters2)
 
-
     pool = mp.Pool(processes=15)
     jobs = []
     for parameters in parameters_list:
@@ -529,9 +528,44 @@ if __name__ == '__main__':
         jobs.append(pool.apply_async(start_experiment,
                                      (parameters['start_time'], parameters['during_time'],
                                       parameters['headway'], parameters['packet_loss_rate'], parameters['scenario'],
-                                      parameters['scenario_range'], parameters['collision_distance'], parameters['prediction_time'])))
+                                      parameters['scenario_range'], parameters['collision_distance'],
+                                      parameters['prediction_time'])))
 
     for job in jobs:
         job.get()
     pool.close()
+
+
+def main_test():
+    parameters_list = []
+
+    parameters = {'start_time': '12am',
+                   'during_time': 300,
+                   'headway': 2,
+                   'scenario': '5',
+                   'scenario_range': 300,
+                   'collision_distance': 3.5,
+                   'prediction_time': 2,
+                   'packet_loss_rate': 3}
+
+
+    parameters_list.append(parameters)
+
+    pool = mp.Pool(processes=1)
+    jobs = []
+    for parameters in parameters_list:
+        print(dict(parameters))
+        jobs.append(pool.apply_async(start_experiment,
+                                     (parameters['start_time'], parameters['during_time'],
+                                      parameters['headway'], parameters['packet_loss_rate'], parameters['scenario'],
+                                      parameters['scenario_range'], parameters['collision_distance'],
+                                      parameters['prediction_time'])))
+
+    for job in jobs:
+        job.get()
+    pool.close()
+
+
+if __name__ == '__main__':
+    main_test()
 

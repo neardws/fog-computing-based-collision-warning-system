@@ -8,7 +8,7 @@ class fog_node:
         self.hmm_model = hmm_model
         self.prediction_time = prediction_time
         # self.collision_distance = collision_distance
-        self.collision_distance = 5.0
+        self.collision_distance = collision_distance
         self.fog_transmission_model = fog_transmission_model(0) # never mind the packet loss rate
         self.headway = None
         self.unite_time = None
@@ -24,7 +24,7 @@ class fog_node:
         self.receive_vehicle = None
         self.selected_vehicles = []
         self.prediction_traces = []
-        # self.collision_warning_messages = []
+        self.collision_warning_messages = []
 
     def set_headway(self, headway):
         self.headway = headway
