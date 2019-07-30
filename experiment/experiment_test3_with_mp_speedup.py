@@ -60,6 +60,7 @@ class experiment:
     def set_headway(self, headway):
         self.headway = headway
 
+
     def get_data_ready(self, saver):
         dr = data_ready(time=self.start_time, scenario=self.scenario, scenario_range=self.scenario_range,
                         during_time=self.during_time, packet_loss_rate=self.packet_loss_rate,
