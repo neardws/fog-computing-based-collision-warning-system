@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d6d4d26-8c02-44c8-aca0-047c84e0ef83" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/experiment/experiment_test3_with_mp_speedup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiment/fog_node.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment/fog_node.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/experiment/experiment_test4_with_mp_speedup.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/experiment/result_save.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment/result_save.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,8 +31,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/experiment/hmm_model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="625">
-              <caret line="77" column="13" lean-forward="true" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="13" />
+            <state relative-caret-position="771">
+              <caret line="69" selection-start-line="69" selection-end-line="69" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -45,11 +43,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/experiment/fog_node.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="263" column="25" lean-forward="true" selection-start-line="263" selection-start-column="25" selection-end-line="263" selection-end-column="25" />
+            <state relative-caret-position="650">
+              <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
-                <element signature="e#2462#3153#0" />
                 <element signature="e#3257#3895#0" />
                 <element signature="e#4170#5016#0" />
               </folding>
@@ -80,8 +77,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/experiment/experiment_test3_with_mp_speedup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1960">
-              <caret line="138" column="19" lean-forward="true" selection-start-line="138" selection-start-column="19" selection-end-line="138" selection-end-column="19" />
+            <state relative-caret-position="240">
+              <caret line="70" column="30" lean-forward="true" selection-end-line="558" />
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
                 <element signature="e#238#1745#1" />
@@ -92,6 +89,38 @@
                 <element signature="e#10231#13745#0" />
                 <element signature="e#13844#14860#0" />
                 <element signature="e#17789#22044#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/experiment/experiment_test4_with_mp_speedup.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="245">
+              <caret line="110" column="31" selection-start-line="110" selection-start-column="12" selection-end-line="110" selection-end-column="31" />
+              <folding>
+                <element signature="e#0#33#0" expanded="true" />
+                <element signature="e#238#1745#1" />
+                <element signature="e#2292#2316#0" />
+                <element signature="e#2380#2420#0" />
+                <element signature="e#2466#2488#0" />
+                <element signature="e#6649#10158#0" />
+                <element signature="e#10232#13746#0" />
+                <element signature="e#13845#14861#0" />
+                <element signature="e#17790#22045#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/experiment/data_ready.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2012">
+              <caret line="217" column="37" lean-forward="true" selection-start-line="217" selection-start-column="37" selection-end-line="217" selection-end-column="37" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -112,8 +141,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/experiment/result_save.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="6" column="51" selection-start-line="6" selection-start-column="51" selection-end-line="6" selection-end-column="51" />
+            <state relative-caret-position="240">
+              <caret line="12" column="50" lean-forward="true" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -139,27 +168,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/experiment/data_ready.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="224" column="53" selection-start-line="224" selection-start-column="37" selection-end-line="224" selection-end-column="53" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/experiment/vehicle.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="6" column="30" lean-forward="true" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/experiment/vehicels_info.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="420">
@@ -179,7 +187,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>process_state</find>
       <find>time</find>
       <find>TODO</find>
       <find>vehicle_traces</find>
@@ -206,9 +213,10 @@
       <find>get_collis</find>
       <find>receive</find>
       <find>get_selected_vehicle_id</find>
-      <find>for</find>
       <find>get_all_history_record_id</find>
       <find>selected_vehicles</find>
+      <find>return</find>
+      <find>for</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -218,7 +226,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/training/get_autoencoder_train_data.py" />
         <option value="$PROJECT_DIR$/training/test_autoencoder.py" />
         <option value="$PROJECT_DIR$/training/taining_by_autoencoder.py" />
         <option value="$PROJECT_DIR$/training/autoencoder_t.py" />
@@ -266,9 +273,10 @@
         <option value="$PROJECT_DIR$/experiment/vehicle.py" />
         <option value="$PROJECT_DIR$/experiment/hmm_model.py" />
         <option value="$PROJECT_DIR$/experiment/experiment_test2_with_mp_speedup.py" />
-        <option value="$PROJECT_DIR$/experiment/experiment_test3_with_mp_speedup.py" />
-        <option value="$PROJECT_DIR$/experiment/result_save.py" />
         <option value="$PROJECT_DIR$/experiment/fog_node.py" />
+        <option value="$PROJECT_DIR$/experiment/experiment_test3_with_mp_speedup.py" />
+        <option value="$PROJECT_DIR$/experiment/experiment_test4_with_mp_speedup.py" />
+        <option value="$PROJECT_DIR$/experiment/result_save.py" />
       </list>
     </option>
   </component>
@@ -346,7 +354,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.experiment_test3_with_mp_speedup">
+  <component name="RunManager" selected="Python.experiment_test4_with_mp_speedup">
     <configuration name="experiment_test2_with_mp_speedup" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="fog-computing-based-collision-warning-system" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -381,6 +389,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/experiment/experiment_test3_with_mp_speedup.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="experiment_test4_with_mp_speedup" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="fog-computing-based-collision-warning-system" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/experiment" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/experiment/experiment_test4_with_mp_speedup.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -431,27 +460,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="train_by_hmmlearn_small_test2" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="fog-computing-based-collision-warning-system" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/train_hmm" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train_hmm/train_by_hmmlearn_small_test2.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="training_by_hmmlearn_with_mp_two_dim" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="fog-computing-based-collision-warning-system" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -475,19 +483,19 @@
     </configuration>
     <list>
       <item itemvalue="Python.training_by_hmmlearn_with_mp_two_dim" />
-      <item itemvalue="Python.train_by_hmmlearn_small_test2" />
       <item itemvalue="Python.experiment_with_mp_speedup" />
       <item itemvalue="Python.experiment_test_with_mp_speedup" />
       <item itemvalue="Python.experiment_test2_with_mp_speedup" />
       <item itemvalue="Python.experiment_test3_with_mp_speedup" />
+      <item itemvalue="Python.experiment_test4_with_mp_speedup" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.experiment_test4_with_mp_speedup" />
         <item itemvalue="Python.experiment_test3_with_mp_speedup" />
         <item itemvalue="Python.experiment_test2_with_mp_speedup" />
         <item itemvalue="Python.experiment_test_with_mp_speedup" />
         <item itemvalue="Python.experiment_with_mp_speedup" />
-        <item itemvalue="Python.train_by_hmmlearn_small_test2" />
       </list>
     </recent_temporary>
   </component>
@@ -549,12 +557,12 @@
     <frame x="-8" y="32" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8206278" visible="true" weight="0.2312961" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.820331" visible="true" weight="0.2312961" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" sideWeight="0.17937219" side_tool="true" visible="true" weight="0.2312961" />
+      <window_info id="Favorites" order="2" sideWeight="0.17966904" side_tool="true" visible="true" weight="0.2312961" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32899022" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.5295047" visible="true" weight="0.03253796" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.5295047" visible="true" weight="0.0824295" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.87852496" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -562,7 +570,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.47049525" side_tool="true" weight="0.8438178" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49789253" weight="0.8101952" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49789253" weight="0.80151844" />
       <window_info anchor="bottom" id="TODO" order="11" sideWeight="0.49894625" weight="0.63665944" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.3286334" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -601,13 +609,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/.conda/envs/py3/Lib/site-packages/numpy/core/_methods.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="97" column="35" lean-forward="true" selection-start-line="97" selection-start-column="35" selection-end-line="97" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/result/statue_37_number_5000.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="776">
@@ -940,16 +941,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/experiment/data_ready.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="224" column="53" selection-start-line="224" selection-start-column="37" selection-end-line="224" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/experiment/vehicle.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
@@ -974,16 +965,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/experiment/hmm_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="625">
-          <caret line="77" column="13" lean-forward="true" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/experiment/experiment_test_with_mp_speedup.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="292">
@@ -999,13 +980,6 @@
             <element signature="e#13783#14799#0" />
             <element signature="e#18368#22623#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiment/result_save.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="51" selection-start-line="6" selection-start-column="51" selection-end-line="6" selection-end-column="51" />
         </state>
       </provider>
     </entry>
@@ -1029,8 +1003,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/experiment/experiment_test3_with_mp_speedup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1960">
-          <caret line="138" column="19" lean-forward="true" selection-start-line="138" selection-start-column="19" selection-end-line="138" selection-end-column="19" />
+        <state relative-caret-position="240">
+          <caret line="70" column="30" lean-forward="true" selection-end-line="558" />
           <folding>
             <element signature="e#0#33#0" expanded="true" />
             <element signature="e#238#1745#1" />
@@ -1045,13 +1019,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/experiment/fog_node.py">
+    <entry file="file://$PROJECT_DIR$/experiment/hmm_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="263" column="25" lean-forward="true" selection-start-line="263" selection-start-column="25" selection-end-line="263" selection-end-column="25" />
+        <state relative-caret-position="771">
+          <caret line="69" selection-start-line="69" selection-end-line="69" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#2462#3153#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiment/data_ready.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2012">
+          <caret line="217" column="37" lean-forward="true" selection-start-line="217" selection-start-column="37" selection-end-line="217" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiment/result_save.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="12" column="50" lean-forward="true" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiment/experiment_test4_with_mp_speedup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="110" column="31" selection-start-line="110" selection-start-column="12" selection-end-line="110" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+            <element signature="e#238#1745#1" />
+            <element signature="e#2292#2316#0" />
+            <element signature="e#2380#2420#0" />
+            <element signature="e#2466#2488#0" />
+            <element signature="e#6649#10158#0" />
+            <element signature="e#10232#13746#0" />
+            <element signature="e#13845#14861#0" />
+            <element signature="e#17790#22045#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiment/fog_node.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="650">
+          <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
             <element signature="e#3257#3895#0" />
             <element signature="e#4170#5016#0" />
           </folding>

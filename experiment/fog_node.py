@@ -40,6 +40,12 @@ class fog_node:
     def get_collision_warning_messages(self):
         return self.collision_warning_messages
 
+    def get_selected_vehicle_id(self):
+        selected_vehicle_id = []
+        for vehicle in self.selected_vehicles:
+            selected_vehicle_id.append(vehicle.vehicleID)
+        return selected_vehicle_id
+
     def selected_packet_under_communication_range(self):
         self.selected_vehicles = []
         for vehicle in self.receive_vehicle:
