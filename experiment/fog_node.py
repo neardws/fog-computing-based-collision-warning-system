@@ -37,21 +37,15 @@ class fog_node:
     def receive_packets(self, vehicles):
         self.receive_vehicle = vehicles
 
-    def get_selected_vehicle_id(self):
-        selected_vehicle_id = []
-        for vehicle in self.selected_vehicles:
-            selected_vehicle_id.append(vehicle.vehicleID)
-        return selected_vehicle_id
-
     def get_collision_warning_messages(self):
         return self.collision_warning_messages
 
     def selected_packet_under_communication_range(self):
+        self.selected_vehicles = []
         for vehicle in self.receive_vehicle:
             if self.packet_is_under_communication_range(vehicle):
                 if not vehicle.packet_loss:
                     self.selected_vehicles.append(vehicle)
-        # self.history_record.append(self.selected_vehicles)
 
     def packet_is_under_communication_range(self, vehicle):
         under_communication_range = False
@@ -139,6 +133,7 @@ class fog_node:
             for vehicle in self.history_record[-1]:
                 if vehicleID == vehicle.vehicleID:
                     return_vehicle = vehicle
+                    return return_vehicle
         return return_vehicle
 
     def get_trace_from_history_record(self, vehicleID):
@@ -180,7 +175,7 @@ class fog_node:
                 if prediction_trace is not None:
                     self.prediction_traces.append(prediction_trace)
                 add_history_record.append(vehicle)
-        if len(self.history_record) == 5:
+        if len(self.history_record) == 2:
             self.history_record.remove(self.history_record[0])
             self.history_record.append(add_history_record)
         else:
@@ -257,6 +252,7 @@ class fog_node:
                         saver.write("distance " + str(distance))
                         if distance <= self.collision_distance:
                             collision_time = time
+                            return collision_time
         return collision_time
 
     def get_xy_from_trace(self, time, trace):
@@ -266,6 +262,7 @@ class fog_node:
                 xy = []
                 xy.append(vehicle.location_x)
                 xy.append(vehicle.location_y)
+                return xy
         return xy
 
     def get_scenario_xy(self, number):
