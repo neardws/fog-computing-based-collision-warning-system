@@ -4,7 +4,7 @@ class result_save:
         self.scenario = scenario
         self.packet_loss_rate = packet_loss_rate
         self.headway = headway
-        self.RESULT_PATH = r'E:\NearXu\result\mp_result'
+        self.RESULT_PATH = r'E:\NearXu\result\test_result'
         self.result_name = self.RESULT_PATH + '_type_fog_with_' + 'time' + str(self.start_time) + '_scenario_' + str(
             self.scenario) + '_plr_' \
                              '' + str(self.packet_loss_rate) + '_headway_' + str(self.headway) + '.txt'

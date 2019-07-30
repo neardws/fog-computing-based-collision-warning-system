@@ -71,7 +71,10 @@ class hmm_model:
             # print('*' * 64)
             # print(prediction_x)
             # print(prediction_y)
-            return prediction_x, prediction_y
+            prediction_xy = []
+            prediction_xy.append(prediction_x)
+            prediction_xy.append(prediction_y)
+            return prediction_xy
         else:
             # print("X is none in HMM MODEL predict")
             return None

@@ -143,10 +143,16 @@ class fog_node:
 
     def get_trace_from_history_record(self, vehicleID):
         trace = []
-        for i in range(len(self.history_record)):
-            for vehicle in self.history_record[i]:
-                if vehicleID == vehicle.vehicleID:
-                    trace.append(vehicle)
+        if len(self.history_record) > 5:
+            for i in range(len(self.history_record)-5, len(self.history_record)):
+                for vehicle in self.history_record[i]:
+                    if vehicleID == vehicle.vehicleID:
+                        trace.append(vehicle)
+        else:
+            for i in range(len(self.history_record)):
+                for vehicle in self.history_record[i]:
+                    if vehicleID == vehicle.vehicleID:
+                        trace.append(vehicle)
         return trace
 
     '''
@@ -174,8 +180,11 @@ class fog_node:
                 if prediction_trace is not None:
                     self.prediction_traces.append(prediction_trace)
                 add_history_record.append(vehicle)
-
-        self.history_record.append(add_history_record)
+        if len(self.history_record) == 5:
+            self.history_record.remove(self.history_record[0])
+            self.history_record.append(add_history_record)
+        else:
+            self.history_record.append(add_history_record)
         '''Judge'''
         saver.write("^" * 64)
         saver.write("'''Judge'''")
