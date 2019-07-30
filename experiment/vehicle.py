@@ -12,6 +12,9 @@ class vehicle:
         self.fog_trans_model = fog_transmission_model(packet_loss_rate)
         self.cloud_trans_model = cloud_transmission_model()
 
+    def __len__(self):
+        return 1
+
     def set_transmission_delay(self):
         self.fog_transmission_delay = self.fog_trans_model.get_transmission_delay()
         self.cloud_transmission_delay = self.cloud_trans_model.get_transmission_delay()

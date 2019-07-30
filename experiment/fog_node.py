@@ -159,29 +159,26 @@ class fog_node:
         add_history_record = []
         for vehicle in self.selected_vehicles:
             id = vehicle.vehicleID
+            saver.write(str(id))
             origin_trace = self.get_trace_from_history_record(id)
-            # print("len(origin_trace)")
-            # print(len(origin_trace))
+            saver.write("history record")
+            saver.write(str(origin_trace))
             if len(origin_trace) == 0:
                 add_history_record.append(vehicle)
             else:
                 origin_trace.append(vehicle)
-                # print("Origin trace:")
-                # print(origin_trace)
+                saver.write(str(vehicle))
+                saver.write(str(origin_trace))
                 self.hmm_model.set_origin_trace(origin_trace)
                 prediction_trace = self.hmm_model.get_prediction_trace()
-                # print("prediction trace is")
-                # print(prediction_trace)
                 if prediction_trace is not None:
-                    # print("prediction_trace is NOTNONE in fog node")
                     self.prediction_traces.append(prediction_trace)
-                    # print(self.prediction_traces)
-                # else:
-        #         #     print("prediction_trace is None in fog node")
-        # print("history_record length is")
-        # print(len(self.history_record))
+                add_history_record.append(vehicle)
+
         self.history_record.append(add_history_record)
         '''Judge'''
+        saver.write("^" * 64)
+        saver.write("'''Judge'''")
         prediction_traces_number = len(self.prediction_traces)
 
         saver.write("#" * 64)
@@ -194,6 +191,8 @@ class fog_node:
             for j in range(i+1, prediction_traces_number):
                 collision_time = self.get_collision_time(self.prediction_traces[i], self.prediction_traces[j], saver)
                 saver.write("i " + str(i) + " j "+ str(j))
+                saver.write(str(self.prediction_traces[i][0].vehicleID) + " " + str(
+                            self.prediction_traces[j][0].vehicleID))
                 saver.write("collision time " + str(collision_time))
                 if collision_time == 0:
                     pass
@@ -221,6 +220,10 @@ class fog_node:
     def get_collision_time(self, trace_one, trace_two, saver):
         collision_time = 0
 
+        saver.write("trace one")
+        saver.write(str(trace_one))
+        saver.write("trace two")
+        saver.write(str(trace_two))
         one_max_time = trace_one[-1].time
         one_min_time = trace_one[0].time
         one_time = set(range(one_min_time, one_max_time + 1))
@@ -228,6 +231,8 @@ class fog_node:
         two_min_time = trace_two[0].time
         two_time = set(range(two_min_time, two_max_time + 1))
 
+        saver.write("one time " + str(one_time))
+        saver.write("two time " + str(two_time))
         intersection_time = one_time & two_time
         saver.write("intersection time" + str(intersection_time))
         if len(intersection_time):
@@ -240,6 +245,7 @@ class fog_node:
                 if one_xy is not None:
                     if two_xy is not None:
                         distance = np.sqrt(np.square(one_xy[0] - two_xy[0]) + np.square(one_xy[1] - two_xy[1]))
+                        saver.write("distance " + str(distance))
                         if distance <= self.collision_distance:
                             collision_time = time
         return collision_time

@@ -89,6 +89,8 @@ class experiment:
             #     show_time()
             #     print("time is")
             #     print(time)
+            saver.write("-" *64)
+            saver.write("experiment time " + str(time))
             print("-" * 64)
             show_time()
             print("time is")
