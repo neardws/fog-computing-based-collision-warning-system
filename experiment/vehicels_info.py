@@ -13,6 +13,13 @@ class vehicle_info:
         self.vehicleID = vehicleID
         return self
 
+    def show_trace_detail(self):
+        return {
+            'x' : self.get_trace_x(),
+            'y' : self.get_trace_y(),
+            'time' : self.get_trace_time()
+        }
+
     def set_trace(self, x, y, time):
         self.trace.append(x)
         self.trace.append(y)
@@ -35,6 +42,7 @@ class vehicle_info:
                 xy = []
                 xy.append(self.get_trace_x().iloc[i])
                 xy.append(self.get_trace_y().iloc[i])
+                return xy
         return xy
 
 if __name__ == '__main__':

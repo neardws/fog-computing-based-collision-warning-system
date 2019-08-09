@@ -543,13 +543,13 @@ def main_test():
     parameters = {'start_time': '12am',
                    'during_time': 300,
                    'headway': 2,
-                   'scenario': '1',
+                   'scenario': '9',
                    'scenario_range': 300,
                    'collision_distance': 3.5,
                    'prediction_time': 2,
                    'packet_loss_rate': 3}
 
-    start_experiment(0, parameters['start_time'], parameters['during_time'],
+    start_experiment(1, parameters['start_time'], parameters['during_time'],
                      parameters['headway'], parameters['packet_loss_rate'], parameters['scenario'],
                      parameters['scenario_range'], parameters['collision_distance'],
                      parameters['prediction_time'])

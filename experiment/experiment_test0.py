@@ -75,12 +75,19 @@ class experiment:
 
     def fog_node_with_real_time_view_experiment(self, dr, saver):
         fg = fog_node(scenario=self.scenario, range=self.scenario_range, hmm_model=self.hmm_model,
-                      prediction_time=self.prediction_time, collision_distance=self.collision_distance)
+                      prediction_time=self.prediction_time, collision_distance=(self.collision_distance))
 
-        tp = 0  # true in collision warning message
-        fp = 0  # false in collision waring message
-        fn = 0  # true not in collision warning message
-        tn = 0
+        # tp = 0  # true in collision warning message
+        # fp = 0  # false in collision waring message
+        # fn = 0  # true not in collision warning message
+        # tn = 0
+
+        recall_tp = 0
+        recall_fn = 0
+
+        precision_tp = 0
+        precision_fp = 0
+
         true_collision_number = 0
 
         for time in range(dr.get_start_time(self.start_time)+50, (dr.get_start_time(self.start_time) + self.during_time)-200):
@@ -95,7 +102,7 @@ class experiment:
 
             fg.re_init()
 
-            fg.set_headway(self.headway)
+            fg.set_headway(self.headway)    # 增加命中率
             fg.set_unite_time(time)
 
             fg.receive_packets(send_packet)
@@ -105,7 +112,7 @@ class experiment:
             selected_vehicle_id = fg.get_selected_vehicle_id()
             collision_warning_message = fg.get_collision_warning_messages()
             true_collision_warning = self.get_true_collision_warning(fg.get_selected_vehicle_id(), dr.get_collision_time_matrix(),
-                                                                     dr.get_vehicle_id_array(), time)
+                                                                     dr.get_vehicle_id_array(), time, dr.get_collision_message())
             true_collision_number += len(true_collision_warning)
 
             saver.write('time ' + str(time))
@@ -113,46 +120,61 @@ class experiment:
             saver.write('true_collision ' + str(true_collision_warning))
             saver.write('collision_warning' + str(collision_warning_message))
 
-            for id in selected_vehicle_id:
+            for id in collision_warning_message:
                 if id in true_collision_warning:
-                    if id in collision_warning_message:
-                        tp += 1
-                    else:
-                        fn += 1
+                    recall_tp += 1
                 else:
-                    if id in collision_warning_message:
-                        fp += 1
-                    else:
-                        tn += 1
+                    recall_fn += 1
+
+            for id in true_collision_warning:
+                if id in collision_warning_message:
+                    precision_tp += 1
+                else:
+                    precision_fp += 1
+
+
+            # for id in selected_vehicle_id:
+            #     if id in true_collision_warning:
+            #         if id in collision_warning_message:
+            #             tp += 1
+            #         else:
+            #             fn += 1
+            #     else:
+            #         if id in collision_warning_message:
+            #             fp += 1
+            #         else:
+            #             tn += 1
 
         print('&' * 64)
 
         print(true_collision_number)
 
-        print("TP")
-        print(tp)
+        print("recall_tp")
+        print(recall_tp)
+        print("precision_tp")
+        print(precision_tp)
         print("FP")
-        print(fp)
+        print(precision_fp)
         print("FN")
-        print(fn)
+        print(recall_fn)
 
-        if (tp + fp) == 0:
-            precision = 0
+        if (precision_tp + precision_fp) == 0:
+            precision = 1
         else:
-            precision = tp / (tp + fp)
-        if (tp + fn) == 0:
-            recall = 0
+            precision = precision_tp / (precision_tp + precision_fp)
+        if (recall_tp + recall_fn) == 0:
+            recall = 1
         else:
-            recall = tp / (tp + fn)
+            recall = recall_tp / (recall_tp + recall_fn)
         experiment_result = {'type': 'fog with realtime view',
                              'time': self.start_time,
                              'scenario': self.scenario,
                              'packet loss rate': self.packet_loss_rate,
                              'headway': self.headway,
-                             'TP': tp,
-                             'FP': fp,
-                             'FN': fn,
-                             'TN': tn,
+                             'recall_tp': recall_tp,
+                             'precision_tp': precision_tp,
+                             'FP': precision_fp,
+                             'FN': recall_fn,
                              'true collision number': true_collision_number,
                              'precision': precision,
                              'recall': recall}
@@ -344,33 +366,60 @@ class experiment:
             result_file.write(str(experiment_result))
         print("cloud_node_without_real_time_view_experiment result saved")
 
-    def get_true_collision_warning(self, selected_id, collision_time_matrix, vehicle_id_array, time):
+    def get_true_collision_warning(self, selected_id, collision_time_matrix, vehicle_id_array, time, collision_message):
         true_collision_warning = []
-        for i in range(collision_time_matrix.shape[0]):
-            for j in range(collision_time_matrix.shape[1]):
-                if collision_time_matrix[i][j] == 0:
-                    pass
-                else:
-                    the_headway = collision_time_matrix[i][j] - time
-                    if the_headway < 0:
-                        pass
-                    elif the_headway < self.headway:
-                        vehicle_id_one = vehicle_id_array[i]
-                        vehicle_id_two = vehicle_id_array[j]
-                        if vehicle_id_one in selected_id:
-                            if vehicle_id_two in selected_id:
-                                if vehicle_id_one in true_collision_warning:
-                                    pass
-                                else:
-                                    true_collision_warning.append(int(vehicle_id_one))
-                                if vehicle_id_two in true_collision_warning:
-                                    pass
-                                else:
-                                    true_collision_warning.append(int(vehicle_id_two))
-                            else:
-                                pass
+
+        for message in collision_message:
+            vehicle_one_id = message['vehicleOne']
+            vehicle_two_id = message['vehicleTwo']
+            collision_time = message['collisionTime']
+            if (collision_time - time) < 0:
+                pass
+            else:
+                if (collision_time - time) <= self.headway:
+                    if vehicle_one_id in selected_id:
+                        if vehicle_two_id in selected_id:
+                            true_collision_warning.append(int(vehicle_one_id))
+                            true_collision_warning.append(int(vehicle_two_id))
+                            # if vehicle_one_id in true_collision_warning:
+                            #     pass
+                            # else:
+                            #     true_collision_warning.append(int(vehicle_one_id))
+                            # if vehicle_two_id in true_collision_warning:
+                            #     pass
+                            # else:
+                            #     true_collision_warning.append(int(vehicle_two_id))
                         else:
                             pass
+                    else:
+                        pass
+
+
+        # for i in range(collision_time_matrix.shape[0]):
+        #     for j in range(collision_time_matrix.shape[1]):
+        #         if collision_time_matrix[i][j] == 0:
+        #             pass
+        #         else:
+        #             the_headway = collision_time_matrix[i][j] - time
+        #             if the_headway < 0:
+        #                 pass
+        #             elif the_headway <= self.headway:
+        #                 vehicle_id_one = vehicle_id_array[i]
+        #                 vehicle_id_two = vehicle_id_array[j]
+        #                 if vehicle_id_one in selected_id:
+        #                     if vehicle_id_two in selected_id:
+        #                         if vehicle_id_one in true_collision_warning:
+        #                             pass
+        #                         else:
+        #                             true_collision_warning.append(int(vehicle_id_one))
+        #                         if vehicle_id_two in true_collision_warning:
+        #                             pass
+        #                         else:
+        #                             true_collision_warning.append(int(vehicle_id_two))
+        #                     else:
+        #                         pass
+        #                 else:
+        #                     pass
         return true_collision_warning
 
 
@@ -543,7 +592,7 @@ def main_test():
     parameters = {'start_time': '12am',
                    'during_time': 300,
                    'headway': 2,
-                   'scenario': '1',
+                   'scenario': '5',
                    'scenario_range': 300,
                    'collision_distance': 3.5,
                    'prediction_time': 2,

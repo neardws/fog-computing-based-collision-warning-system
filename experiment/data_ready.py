@@ -211,6 +211,23 @@ class data_ready:
             self.vehicle_id_array.append(int(self.vehicle_traces[i].get_vehicleID()))
         self.vehicle_id_array.append(int(self.vehicle_traces[-1].vehicleID)) # get the last one
 
+    def get_collision_traces(self):
+        collision_traces = []
+        for i in range(self.vehicle_number - 1):
+            for j in range(i + 1, self.vehicle_number):
+                collision_time = self.get_collision_time(vehicle_one=self.vehicle_traces[i], vehicle_two=self.vehicle_traces[j])
+                if collision_time == 0:
+                    pass
+                else:
+                    collision_traces.append({
+                        "collisionTime": collision_time,
+                        'vehicleOne': self.vehicle_traces[i].get_vehicleID(),
+                        'vehicleTwo': self.vehicle_traces[j].get_vehicleID(),
+                        'vehicleOneTrace': self.vehicle_traces[i].show_trace_detail(),
+                        'vehicleTwoTrace': self.vehicle_traces[j].show_trace_detail()
+                    })
+        return collision_traces
+
     '''
     :return list of vehicles in "time" 
     get packets, which are send to fog node

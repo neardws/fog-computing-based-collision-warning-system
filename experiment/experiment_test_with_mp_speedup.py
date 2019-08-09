@@ -60,6 +60,7 @@ class experiment:
     def set_headway(self, headway):
         self.headway = headway
 
+
     def get_data_ready(self, saver):
         dr = data_ready(time=self.start_time, scenario=self.scenario, scenario_range=self.scenario_range,
                         during_time=self.during_time, packet_loss_rate=self.packet_loss_rate,
@@ -416,8 +417,8 @@ def start_experiment(first, start_time, during_time, headway, packet_loss_rate, 
     elif first == 0:
         with open("dr.pkl", "rb") as file:
             dr = pickle.load(file)
-            saver.write(str(dr.show_detail()))
-            my_experiment.fog_node_with_real_time_view_experiment(dr, saver)
+            saver.write(str(dr.get_collision_traces()))
+            # my_experiment.fog_node_with_real_time_view_experiment(dr, saver)
     else:
         pass
     # my_experiment.fog_node_without_real_time_view_experiment(dr)
