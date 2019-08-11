@@ -236,7 +236,6 @@ class fog_node:
                             # else:
                             #     self.collision_warning_messages.append(self.prediction_traces[j][0].vehicleID)
 
-
     def get_collision_time(self, trace_one, trace_two, saver):
         collision_time = 0
 
