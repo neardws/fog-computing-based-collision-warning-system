@@ -60,19 +60,6 @@ class experiment:
     def set_headway(self, headway):
         self.headway = headway
 
-    def get_data_ready(self, saver):
-        dr = data_ready(time=self.start_time, scenario=self.scenario, scenario_range=self.scenario_range,
-                        during_time=self.during_time, packet_loss_rate=self.packet_loss_rate,
-                        collision_distance=self.collision_distance)
-        dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
-
-        print("-" * 64)
-        print("Data is ready")
-        show_time()
-        saver.write(str(dr.show_detail()))
-
-        return dr
-
     def fog_node_with_real_time_view_experiment(self, dr, saver):
         fg = fog_node(scenario=self.scenario, range=self.scenario_range, hmm_model=self.hmm_model,
                       prediction_time=self.prediction_time, collision_distance=(self.collision_distance))
@@ -106,8 +93,7 @@ class experiment:
             fg.prediction(saver)
             selected_vehicle_id = fg.get_selected_vehicle_id()
             collision_warning_message = fg.get_collision_warning_messages()
-            true_collision_warning = self.get_true_collision_warning(fg.get_selected_vehicle_id(), dr.get_collision_time_matrix(),
-                                                                     dr.get_vehicle_id_array(), time, dr.get_collision_message())
+            true_collision_warning = self.get_true_collision_warning(fg.get_selected_vehicle_id(), time, dr.get_collision_message())
             true_collision_number += len(true_collision_warning)
 
             saver.write('time ' + str(time))
@@ -201,8 +187,7 @@ class experiment:
             fg.prediction(saver)
             selected_vehicle_id = fg.get_selected_vehicle_id()
             collision_warning_message = fg.get_collision_warning_messages()
-            true_collision_warning = self.get_true_collision_warning(fg.get_selected_vehicle_id(), dr.get_collision_time_matrix(),
-                                                                     dr.get_vehicle_id_array(), time, dr.get_collision_message())
+            true_collision_warning = self.get_true_collision_warning(fg.get_selected_vehicle_id(), time, dr.get_collision_message())
             true_collision_number += len(true_collision_warning)
 
             saver.write('time ' + str(time))
@@ -295,8 +280,7 @@ class experiment:
             fg.prediction(saver)
             selected_vehicle_id = fg.get_selected_vehicle_id()
             collision_warning_message = fg.get_collision_warning_messages()
-            true_collision_warning = self.get_true_collision_warning(fg.get_selected_vehicle_id(), dr.get_collision_time_matrix(),
-                                                                     dr.get_vehicle_id_array(), time, dr.get_collision_message())
+            true_collision_warning = self.get_true_collision_warning(fg.get_selected_vehicle_id(), time, dr.get_collision_message())
             true_collision_number += len(true_collision_warning)
 
             saver.write('time ' + str(time))
@@ -357,7 +341,7 @@ class experiment:
 
         print("cloud_node_without_real_time_view_experiment result saved")
 
-    def get_true_collision_warning(self, selected_id, collision_time_matrix, vehicle_id_array, time, collision_message):
+    def get_true_collision_warning(self, selected_id, time, collision_message):
         true_collision_warning = []
 
         for message in collision_message:
@@ -372,45 +356,10 @@ class experiment:
                         if vehicle_two_id in selected_id:
                             true_collision_warning.append(int(vehicle_one_id))
                             true_collision_warning.append(int(vehicle_two_id))
-                            # if vehicle_one_id in true_collision_warning:
-                            #     pass
-                            # else:
-                            #     true_collision_warning.append(int(vehicle_one_id))
-                            # if vehicle_two_id in true_collision_warning:
-                            #     pass
-                            # else:
-                            #     true_collision_warning.append(int(vehicle_two_id))
                         else:
                             pass
                     else:
                         pass
-
-
-        # for i in range(collision_time_matrix.shape[0]):
-        #     for j in range(collision_time_matrix.shape[1]):
-        #         if collision_time_matrix[i][j] == 0:
-        #             pass
-        #         else:
-        #             the_headway = collision_time_matrix[i][j] - time
-        #             if the_headway < 0:
-        #                 pass
-        #             elif the_headway <= self.headway:
-        #                 vehicle_id_one = vehicle_id_array[i]
-        #                 vehicle_id_two = vehicle_id_array[j]
-        #                 if vehicle_id_one in selected_id:
-        #                     if vehicle_id_two in selected_id:
-        #                         if vehicle_id_one in true_collision_warning:
-        #                             pass
-        #                         else:
-        #                             true_collision_warning.append(int(vehicle_id_one))
-        #                         if vehicle_id_two in true_collision_warning:
-        #                             pass
-        #                         else:
-        #                             true_collision_warning.append(int(vehicle_id_two))
-        #                     else:
-        #                         pass
-        #                 else:
-        #                     pass
         return true_collision_warning
 
 
@@ -418,7 +367,20 @@ def show_time():
     print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
 
 
-def start_experiment(first, start_time, during_time, headway, packet_loss_rate, scenario, scenario_range, collision_distance, prediction_time):
+def get_data_ready(start_time, scenario, scenario_range, during_time, collision_distance):
+    DR_PATH = r'dr'
+    dr_name = DR_PATH + '_type_fog_with_' + 'time' + str(start_time) + '_scenario_' + str(
+        scenario)  + '.pkl'
+    dr = data_ready(time=start_time, scenario=scenario, scenario_range=scenario_range,
+                        during_time=during_time, collision_distance=collision_distance)
+    dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
+
+    with open(dr_name, "wb") as file:
+        pickle.dump(dr, file)
+    return dr
+
+
+def start_experiment(dr, start_time, during_time, headway, packet_loss_rate, scenario, scenario_range, collision_distance, prediction_time):
     fog_saver = result_save(type="fog_with", start_time=start_time, scenario=scenario, packet_loss_rate=packet_loss_rate, headway=headway)
     fog_without_saver = result_save(type="fog_without", start_time=start_time, scenario=scenario, packet_loss_rate=packet_loss_rate, headway=headway)
     cloud_without_saver = result_save(type="cloud_without", start_time=start_time, scenario=scenario, packet_loss_rate=packet_loss_rate, headway=headway)
@@ -450,31 +412,13 @@ def start_experiment(first, start_time, during_time, headway, packet_loss_rate, 
     my_experiment.set_packet_loss_rate(packet_loss_rate)
     my_experiment.set_scenario(scenario)
 
-    DR_PATH = r'dr'
-    dr_name = DR_PATH + '_type_fog_with_' + 'time' + str(start_time) + '_scenario_' + str(
-        scenario) + '_plr_' \
-                    '' + str(packet_loss_rate) + '_headway_' + str(headway) + '.pkl'
-    if first == 1:
-        dr = my_experiment.get_data_ready(fog_saver)
-        with open(dr_name, "wb") as file:
-            pickle.dump(dr, file)
-        my_experiment.fog_node_with_real_time_view_experiment(dr, fog_saver)
-        fog_without_saver.write(str(dr.show_detail()))
-        cloud_without_saver.write(str(dr.show_detail()))
-        my_experiment.fog_node_without_real_time_view_experiment(dr, fog_without_saver)
-        my_experiment.cloud_node_without_real_time_view_experiment(dr, cloud_without_saver)
+    fog_saver.write(str(dr.show_detail()))
+    fog_without_saver.write(str(dr.show_detail()))
+    cloud_without_saver.write(str(dr.show_detail()))
+    my_experiment.fog_node_with_real_time_view_experiment(dr, fog_saver)
+    my_experiment.fog_node_without_real_time_view_experiment(dr, fog_without_saver)
+    my_experiment.cloud_node_without_real_time_view_experiment(dr, cloud_without_saver)
 
-    elif first == 0:
-        with open(dr_name, "rb") as file:
-            dr = pickle.load(file)
-            fog_saver.write(str(dr.show_detail()))
-            fog_without_saver.write(str(dr.show_detail()))
-            cloud_without_saver.write(str(dr.show_detail()))
-            my_experiment.fog_node_with_real_time_view_experiment(dr, fog_saver)
-            my_experiment.fog_node_without_real_time_view_experiment(dr, fog_without_saver)
-            my_experiment.cloud_node_without_real_time_view_experiment(dr, cloud_without_saver)
-    else:
-        pass
 
 
 '''
@@ -498,49 +442,17 @@ def get_le_model_file_path(status_number, train_number, accuracy):
 
 
 def main():
-    different_start_time = ['1am', '12am', '3pm', '6pm', '9pm']
+    different_start_time = ['10am', '3pm', '12am', '6pm', '9pm']
     different_scenario = ['6', '7', '5', '8', '9']
-    different_headway = [0.5, 1, 2, 4, 6]
+    different_headway = [1, 2, 4, 5, 10]
     different_packet_loss_rate = [0, 1.5, 3, 6, 12]
 
-    start_time = different_start_time[1]
-    during_time = 300
-    scenario_range = 500
+    start_time = different_start_time[2]
+    during_time = 100
+    scenario_range = 300
     collision_distance = 3.5
     prediction_time = 1
     parameters_list = []
-    dr_parameters_list = []
-
-    # for i in range(5):
-    #     parameters1 = {'start_time': start_time,
-    #                    'during_time': during_time,
-    #                    'headway': different_headway[2],
-    #                    'scenario': different_scenario[i],
-    #                    'scenario_range': scenario_range,
-    #                    'collision_distance': collision_distance,
-    #                    'prediction_time': prediction_time,
-    #                    'packet_loss_rate': different_packet_loss_rate[2]}
-    #     parameters2 = {'start_time': start_time,
-    #                    'during_time': during_time,
-    #                    'headway': different_headway[2],
-    #                    'scenario': different_scenario[2],
-    #                    'scenario_range': scenario_range,
-    #                    'collision_distance': collision_distance,
-    #                    'prediction_time': prediction_time,
-    #                    'packet_loss_rate': different_packet_loss_rate[i]}
-    #     dr_parameters_list.append(parameters1)
-    #     dr_parameters_list.append(parameters2)
-    #
-    # pool = mp.Pool(processes=10)
-    # jobs = []
-    # for parameters in dr_parameters_list:  #get_data_ready(start_time, scenario, scenario_range, during_time, packet_loss_rate)
-    #     jobs.append(pool.apply_async(get_data_ready,
-    #                                  (parameters['start_time'], parameters['scenario'], parameters['scenario_range'],
-    #                                   parameters['during_time'], parameters['packet_loss_rate'], parameters['collision_distance'])))
-    # dr_list = []
-    # for job in jobs:
-    #     dr_list.append(job.get())
-    # pool.close()
 
     for i in range(5):
         parameters = {'start_time': start_time,
@@ -553,7 +465,7 @@ def main():
                       'packet_loss_rate': different_packet_loss_rate[2]}
         parameters1 = {'start_time': start_time,
                        'during_time': during_time,
-                       'headway': different_headway[2],
+                       'headway': different_headway[1],
                        'scenario': different_scenario[i],
                        'scenario_range': scenario_range,
                        'collision_distance': collision_distance,
@@ -561,7 +473,7 @@ def main():
                        'packet_loss_rate': different_packet_loss_rate[2]}
         parameters2 = {'start_time': start_time,
                        'during_time': during_time,
-                       'headway': different_headway[2],
+                       'headway': different_headway[1],
                        'scenario': different_scenario[2],
                        'scenario_range': scenario_range,
                        'collision_distance': collision_distance,
@@ -574,9 +486,9 @@ def main():
     pool = mp.Pool(processes=15)
     jobs = []
     for parameters in parameters_list:
-        # print(dict(parameters))
+
         jobs.append(pool.apply_async(start_experiment,
-                                     (parameters['start_time'], parameters['during_time'],
+                                     (1, parameters['start_time'], parameters['during_time'],
                                       parameters['headway'], parameters['packet_loss_rate'], parameters['scenario'],
                                       parameters['scenario_range'], parameters['collision_distance'],
                                       parameters['prediction_time'])))
@@ -590,14 +502,14 @@ def main_test():
 
     parameters = {'start_time': '12am',
                    'during_time': 100,
-                   'headway': 2,
+                   'headway': 1,
                    'scenario': '5',
                    'scenario_range': 300,
                    'collision_distance': 3.5,
                    'prediction_time': 2,
                    'packet_loss_rate': 3}
 
-    start_experiment(0, parameters['start_time'], parameters['during_time'],
+    start_experiment(dr, parameters['start_time'], parameters['during_time'],
                      parameters['headway'], parameters['packet_loss_rate'], parameters['scenario'],
                      parameters['scenario_range'], parameters['collision_distance'],
                      parameters['prediction_time'])

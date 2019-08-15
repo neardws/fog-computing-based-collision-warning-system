@@ -22,6 +22,10 @@ class vehicle:
     def set_packet_loss(self):
         self.packet_loss = self.fog_trans_model.get_packet_loss()
 
+    def update_packet_loss(self, packet_loss_rate):
+        self.fog_trans_model = fog_transmission_model(packet_loss_rate)
+        self.packet_loss = self.fog_trans_model.get_packet_loss()
+
     def set_vehicleID(self, id):
         self.vehicleID = id
 
