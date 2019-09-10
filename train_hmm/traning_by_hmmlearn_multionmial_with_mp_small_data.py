@@ -8,7 +8,7 @@ import multiprocessing as mp
 import linecache
 import pickle
 TRAIN_DATA = r'E:\NearXu\hmm_train_data\train_'
-MODEL_PATH = r'E:\NearXu\model\model_small_'
+MODEL_PATH = r'E:\NearXu\model\model_new_'
 
 """
 hmmlearn 有三种隐马尔可夫模型：
@@ -109,7 +109,7 @@ def main():
     number_of_status = 372
     print('￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥￥')
     print('Start Training')
-    model = hmm.MultinomialHMM(n_components=number_of_status, n_iter=10000, tol=0.01, verbose=True)
+    model = hmm.MultinomialHMM(n_components=number_of_status, n_iter=10000, tol=0.001, verbose=True)
     model.fit(X, X_len)
     # print(model.score(x,x_len))
     print('**************************************')
