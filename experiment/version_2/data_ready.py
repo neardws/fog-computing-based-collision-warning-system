@@ -267,7 +267,35 @@ class data_ready:
                 vehicle.update_packet_loss(packet_loss_rate)
 
     def get_features_of_data_ready(self):
-        pass
+        # 需要统计的值
+        values = {'traffic_density': 0, 'vehicle_speed': 0, 'vehicle_acceleration':0 }
+        values['traffic_density'] = self.get_vehicle_number()
+
+
+        for trace in self.vehicle_traces:
+            speeds = np.array([])
+            accelerations = np.array([])
+            last_speed = 0
+            last_time = 0
+            for i in range(len(trace) - 1):
+                speed = np.sqrt(np.square(trace[i+1].location_x - trace[i].location_x) + np.square(trace[i+1].location_y - trace[i+1].location_y)) / (
+                        trace[i+1].time - trace[i].time)
+                speeds = np.append(speeds, speed)
+
+                time = trace[i].time + (trace[i+1].time - trace[i].time) / 2
+                if last_speed == 0:
+                    last_speed = speed
+                    last_time = trace[i].time + (trace[i+1].time - trace[i].time) / 2
+                else:
+                    acceleration = (speed - last_speed) / (time - last_time)
+                    accelerations = np.append(accelerations, acceleration)
+                    last_speed = speed
+                    last_time = time
+            average_speed_of_trace = speeds.mean()
+            average_acceleration = accelerations.mean()
+        values['vehicle_speed'] = average_speed_of_trace
+        values['vehicle_acceleration'] = average_acceleration
+        return values
 
 if __name__ == '__main__':
     dr = data_ready("9am", 1, 300, 100, 5)
