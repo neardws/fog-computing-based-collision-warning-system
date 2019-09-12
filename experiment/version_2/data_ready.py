@@ -270,8 +270,8 @@ class data_ready:
         # 需要统计的值
         values = {'traffic_density': 0, 'vehicle_speed': 0, 'vehicle_acceleration':0 }
         values['traffic_density'] = self.get_vehicle_number()
-
-
+        average_speed = np.array([])
+        average_acceleration = np.array([])
         for trace in self.vehicle_traces:
             speeds = np.array([])
             accelerations = np.array([])
@@ -291,9 +291,9 @@ class data_ready:
                     accelerations = np.append(accelerations, acceleration)
                     last_speed = speed
                     last_time = time
-            average_speed_of_trace = speeds.mean()
-            average_acceleration = accelerations.mean()
-        values['vehicle_speed'] = average_speed_of_trace
+            average_speed = np.append(average_speed, speeds.mean())
+            average_acceleration = np.append(average_acceleration, accelerations.mean())
+        values['vehicle_speed'] = average_speed
         values['vehicle_acceleration'] = average_acceleration
         return values
 
