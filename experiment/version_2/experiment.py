@@ -86,9 +86,9 @@ class experiment:
             self.node.form_cloud_not_real_time_view()
             self.node.prediction_by_tradition(self.saver)
 
-            selected_vehicle_id = node.get_selected_vehicle_id()
-            collision_warning_message = node.get_collision_warning_messages()
-            true_collision_warning = self.get_true_collision_warning(node.get_selected_vehicle_id(),
+            selected_vehicle_id = self.node.get_selected_vehicle_id()
+            collision_warning_message = self.node.get_collision_warning_messages()
+            true_collision_warning = self.get_true_collision_warning(self.node.get_selected_vehicle_id(),
                                                                      packets[-1].time,
                                                                      self.dr.get_collision_message())
             true_collision_number += len(true_collision_warning)

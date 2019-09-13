@@ -256,10 +256,11 @@ class data_ready:
                     v.set_vehicleID(trace.get_vehicleID())
                     v.set_time(time)
                     v.set_location(trace.get_xy_from_time(time=time))
-                    v.set_packet_loss()
+                    v.set_packet_loss(self.packet_loss_rate)
                     v.set_transmission_delay()
                     vehicles.append(v)
             self.packets_in_seconds.append(vehicles)
+        return self.packets_in_seconds
 
     def update_packet_in_seconds_by_packet_loss_rate(self, packet_loss_rate):
         for vehicles in self.packets_in_seconds:
