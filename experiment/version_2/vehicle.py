@@ -1,5 +1,4 @@
-from transmission_model import fog_transmission_model
-from transmission_model import cloud_transmission_model
+from transmission_model import transmission_model
 class vehicle:
     def __init__(self):
         self.vehicleID = None
@@ -9,19 +8,20 @@ class vehicle:
         self.fog_transmission_delay = None
         self.cloud_transmission_delay = None
         self.packet_loss = None
-        self.fog_trans_model = fog_transmission_model()
-        self.cloud_trans_model = cloud_transmission_model()
+        self.trans_model = transmission_model()
 
     def __len__(self):
         return 1
 
     def set_transmission_delay(self):
-        self.fog_transmission_delay = self.fog_trans_model.get_transmission_delay()
-        self.cloud_transmission_delay = self.cloud_trans_model.get_transmission_delay()
+        self.trans_model.set_type(0)
+        self.fog_transmission_delay = self.trans_model.get_transmission_delay()
+        self.trans_model.set_type(1)
+        self.cloud_transmission_delay = self.trans_model.get_transmission_delay()
 
     def set_packet_loss(self, packet_loss_rate):
-        self.fog_trans_model.set_packet_loss_rate(packet_loss_rate)
-        self.packet_loss = self.fog_trans_model.get_packet_loss()
+        self.trans_model.set_packet_loss_rate(packet_loss_rate)
+        self.packet_loss = self.trans_model.get_packet_loss()
 
     def set_vehicleID(self, id):
         self.vehicleID = id
@@ -42,16 +42,18 @@ class vehicle:
         self.location_y = xy[1]
 
     def update_packet_loss(self, packet_loss_rate):
-        self.fog_trans_model.set_packet_loss_rate(packet_loss_rate)
-        self.packet_loss = self.fog_trans_model.get_packet_loss()
+        self.trans_model.set_packet_loss_rate(packet_loss_rate)
+        self.packet_loss = self.trans_model.get_packet_loss()
 
     def update_transmission_delay(self):
-        self.fog_transmission_delay = self.fog_trans_model.get_transmission_delay()
-        self.cloud_transmission_delay = self.cloud_trans_model.get_transmission_delay()
-
-if __name__ == '__main__':
-    v = vehicle(3.08)
-    v.set_packet_loss()
-    v.set_transmission_delay()
-    print(v.packet_loss)
-    print(v.fog_transmission_delay)
+        self.trans_model.set_type(0)
+        self.fog_transmission_delay = self.trans_model.get_transmission_delay()
+        self.trans_model.set_type(1)
+        self.cloud_transmission_delay = self.trans_model.get_transmission_delay()
+#
+# if __name__ == '__main__':
+#     v = vehicle(3.08)
+#     v.set_packet_loss()
+#     v.set_transmission_delay()
+#     print(v.packet_loss)
+#     print(v.fog_transmission_delay)

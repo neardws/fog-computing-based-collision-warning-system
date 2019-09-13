@@ -53,8 +53,8 @@ class experiment:
     def set_node(self, node):
         self.node = node
 
-    def set_server(self, server):
-        self.server = server
+    def set_saver(self, saver):
+        self.saver = saver
 
     def set_dr(self, data_ready):
         self.dr = data_ready
@@ -432,6 +432,7 @@ class experiment:
 def show_time():
     print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
 
+
 def show_dr_details(drs, saver):
     table = PrettyTable(['time','scenario', 'scen_range',  'during',  'coll_dis', 'traffic_density', 'vehicle_speed', 'vehicle_acceleration'])
     for dr in drs:
@@ -456,22 +457,10 @@ def show_dr_details(drs, saver):
         table.add_row(row)
 
     print(table)
-    saver.write(table)
+    saver.write(str(table))
 
 
-
-def start_experiment():
-    fog_saver = result_save(type="fog_with", start_time=start_time, scenario=scenario, packet_loss_rate=packet_loss_rate, headway=headway)
-    fog_without_saver = result_save(type="fog_without", start_time=start_time, scenario=scenario, packet_loss_rate=packet_loss_rate, headway=headway)
-    cloud_without_saver = result_save(type="cloud_without", start_time=start_time, scenario=scenario, packet_loss_rate=packet_loss_rate, headway=headway)
-
-    print("-" * 64)
-    print(start_time)
-    print(during_time)
-    print(headway)
-    print(packet_loss_rate)
-    print(scenario)
-    show_time()
+def start_experiment(saver, dr,  prediction_time, headway):
 
     hmm_type = 'discrete'
     status_number = 37
@@ -482,43 +471,20 @@ def start_experiment():
     hmm_model_file = open(get_hmm_model_file_path(type=hmm_type, status_number=status_number, train_number=train_number,
                                                   accuracy=accuracy), 'rb')
     my_hmm_model = hmm_model(type='discrete', le_model=pickle.load(le_model_file),
-                             hmm_model=pickle.load(hmm_model_file), packet_loss_rate=packet_loss_rate)
+                             hmm_model=pickle.load(hmm_model_file))
 
-    my_experiment = experiment(start_time=start_time, during_time=during_time, scenario_range=scenario_range,
-                               collision_distance=collision_distance, hmm_model=my_hmm_model,
-                               prediction_time=headway)
+    my_node = node(scenario=dr.scenario, range=dr.scenario_range, hmm_model=my_hmm_model, prediction_time=prediction_time, collision_distance=dr.collision_distance)
 
+    my_experiment = experiment(my_hmm_model)
     my_experiment.set_headway(headway)
-    my_experiment.set_packet_loss_rate(packet_loss_rate)
-    my_experiment.set_scenario(scenario)
+    my_experiment.set_dr(dr)
+    my_experiment.set_node(my_node)
+    my_experiment.set_saver(saver)
 
-    DR_PATH = r'dr'
-    dr_name = DR_PATH + '_type_fog_with_' + 'time' + str(start_time) + '_scenario_' + str(
-        scenario) + '_plr_' \
-                    '' + str(packet_loss_rate) + '_headway_' + str(headway) + '.pkl'
-    if first == 1:
-        dr = my_experiment.get_data_ready(fog_saver)
-        with open(dr_name, "wb") as file:
-            pickle.dump(dr, file)
-        my_experiment.fog_node_with_real_time_view_experiment(dr, fog_saver)
-        fog_without_saver.write(str(dr.show_detail()))
-        cloud_without_saver.write(str(dr.show_detail()))
-        my_experiment.fog_node_without_real_time_view_experiment(dr, fog_without_saver)
-        my_experiment.cloud_node_without_real_time_view_experiment(dr, cloud_without_saver)
-
-    elif first == 0:
-        with open(dr_name, "rb") as file:
-            dr = pickle.load(file)
-            fog_saver.write(str(dr.show_detail()))
-            fog_without_saver.write(str(dr.show_detail()))
-            cloud_without_saver.write(str(dr.show_detail()))
-            my_experiment.fog_node_with_real_time_view_experiment(dr, fog_saver)
-            my_experiment.fog_node_without_real_time_view_experiment(dr, fog_without_saver)
-            my_experiment.cloud_node_without_real_time_view_experiment(dr, cloud_without_saver)
-    else:
-        pass
-
-
+    my_experiment.cloud_base_algorithm()
+    my_experiment.fog_base_algorithm()
+    my_experiment.fog_correction_algorithm()
+    my_experiment.fog_correction_hmm_algorithm()
 
 
 '''
@@ -554,6 +520,8 @@ def get_data_ready(start_time, scenario, scenario_range, during_time, packet_los
 
 
 def main():
+
+
     different_start_time = ['10am', '3pm', '12am', '6pm', '9pm']
     different_scenario = ['6', '7', '5', '8', '9']
     different_headway = [1, 2, 4, 5, 10]
@@ -564,108 +532,82 @@ def main():
     scenario_range = 300
     collision_distance = 3.5
     prediction_time = 1
-    parameters_list = []
 
-    for i in range(5):
-        parameters = {'start_time': start_time,
-                      'during_time': during_time,
-                      'headway': different_headway[i],
-                      'scenario': different_scenario[2],
-                      'scenario_range': scenario_range,
-                      'collision_distance': collision_distance,
-                      'prediction_time': prediction_time,
-                      'packet_loss_rate': different_packet_loss_rate[2]}
-        parameters1 = {'start_time': start_time,
-                       'during_time': during_time,
-                       'headway': different_headway[1],
-                       'scenario': different_scenario[i],
-                       'scenario_range': scenario_range,
-                       'collision_distance': collision_distance,
-                       'prediction_time': prediction_time,
-                       'packet_loss_rate': different_packet_loss_rate[2]}
-        parameters2 = {'start_time': start_time,
-                       'during_time': during_time,
-                       'headway': different_headway[1],
-                       'scenario': different_scenario[2],
-                       'scenario_range': scenario_range,
-                       'collision_distance': collision_distance,
-                       'prediction_time': prediction_time,
-                       'packet_loss_rate': different_packet_loss_rate[i]}
-        parameters_list.append(parameters)
-        parameters_list.append(parameters1)
-        parameters_list.append(parameters2)
+    my_saver = result_save(type="test", start_time=start_time, scenario=different_scenario[0], packet_loss_rate=different_packet_loss_rate[0], headway=different_headway[0])
 
-    pool = mp.Pool(processes=15)
-    jobs = []
-    for parameters in parameters_list:
+    dr = get_data_ready(start_time=different_start_time[0],
+                        scenario=different_scenario[0],
+                        scenario_range=scenario_range,
+                        during_time=during_time,
+                        packet_loss_rate=different_packet_loss_rate[0],
+                        collision_distance=collision_distance)
 
-        jobs.append(pool.apply_async(start_experiment,
-                                     (1, parameters['start_time'], parameters['during_time'],
-                                      parameters['headway'], parameters['packet_loss_rate'], parameters['scenario'],
-                                      parameters['scenario_range'], parameters['collision_distance'],
-                                      parameters['prediction_time'])))
+    dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
 
-    for job in jobs:
-        job.get()
-    pool.close()
+    drs = []
+    drs.append(dr)
+    show_dr_details(drs, my_saver)
 
-
-def main_test():
-    different_start_time = ['10am', '3pm', '12am', '6pm', '9pm']
-    different_scenario = ['6', '7', '5', '8', '9']
-    different_headway = [1, 2, 4, 5, 10]
-    different_packet_loss_rate = [0, 1.5, 3, 6, 12]
-
-    start_time = different_start_time[2]
-    during_time = 100
-    scenario_range = 300
-    collision_distance = 3.5
-    prediction_time = 1
-    parameters_list = []
-
-    for i in range(5):
-        parameters = {'start_time': start_time,
-                      'during_time': during_time,
-                      'headway': different_headway[i],
-                      'scenario': different_scenario[2],
-                      'scenario_range': scenario_range,
-                      'collision_distance': collision_distance,
-                      'prediction_time': prediction_time,
-                      'packet_loss_rate': different_packet_loss_rate[2]}
-        parameters1 = {'start_time': start_time,
-                       'during_time': during_time,
-                       'headway': different_headway[1],
-                       'scenario': different_scenario[i],
-                       'scenario_range': scenario_range,
-                       'collision_distance': collision_distance,
-                       'prediction_time': prediction_time,
-                       'packet_loss_rate': different_packet_loss_rate[2]}
-        parameters2 = {'start_time': start_time,
-                       'during_time': during_time,
-                       'headway': different_headway[1],
-                       'scenario': different_scenario[2],
-                       'scenario_range': scenario_range,
-                       'collision_distance': collision_distance,
-                       'prediction_time': prediction_time,
-                       'packet_loss_rate': different_packet_loss_rate[i]}
-        parameters_list.append(parameters)
-        parameters_list.append(parameters1)
-        parameters_list.append(parameters2)
-
-    pool = mp.Pool(processes=15)
-    jobs = []
-    for parameters in parameters_list:
-        jobs.append(pool.apply_async(start_experiment,
-                                     (1, parameters['start_time'], parameters['during_time'],
-                                      parameters['headway'], parameters['packet_loss_rate'], parameters['scenario'],
-                                      parameters['scenario_range'], parameters['collision_distance'],
-                                      parameters['prediction_time'])))
-
-    for job in jobs:
-        job.get()
-    pool.close()
-
+    start_experiment(saver=my_saver, dr=dr, prediction_time=prediction_time, headway=different_headway[0])
 
 if __name__ == '__main__':
-    main_test()
+    main()
+
+# def main_test():
+#     different_start_time = ['10am', '3pm', '12am', '6pm', '9pm']
+#     different_scenario = ['6', '7', '5', '8', '9']
+#     different_headway = [1, 2, 4, 5, 10]
+#     different_packet_loss_rate = [0, 1.5, 3, 6, 12]
+#
+#     start_time = different_start_time[2]
+#     during_time = 100
+#     scenario_range = 300
+#     collision_distance = 3.5
+#     prediction_time = 1
+#     parameters_list = []
+#
+#     for i in range(5):
+#         parameters = {'start_time': start_time,
+#                       'during_time': during_time,
+#                       'headway': different_headway[i],
+#                       'scenario': different_scenario[2],
+#                       'scenario_range': scenario_range,
+#                       'collision_distance': collision_distance,
+#                       'prediction_time': prediction_time,
+#                       'packet_loss_rate': different_packet_loss_rate[2]}
+#         parameters1 = {'start_time': start_time,
+#                        'during_time': during_time,
+#                        'headway': different_headway[1],
+#                        'scenario': different_scenario[i],
+#                        'scenario_range': scenario_range,
+#                        'collision_distance': collision_distance,
+#                        'prediction_time': prediction_time,
+#                        'packet_loss_rate': different_packet_loss_rate[2]}
+#         parameters2 = {'start_time': start_time,
+#                        'during_time': during_time,
+#                        'headway': different_headway[1],
+#                        'scenario': different_scenario[2],
+#                        'scenario_range': scenario_range,
+#                        'collision_distance': collision_distance,
+#                        'prediction_time': prediction_time,
+#                        'packet_loss_rate': different_packet_loss_rate[i]}
+#         parameters_list.append(parameters)
+#         parameters_list.append(parameters1)
+#         parameters_list.append(parameters2)
+#
+#     pool = mp.Pool(processes=15)
+#     jobs = []
+#     for parameters in parameters_list:
+#         jobs.append(pool.apply_async(start_experiment,
+#                                      (1, parameters['start_time'], parameters['during_time'],
+#                                       parameters['headway'], parameters['packet_loss_rate'], parameters['scenario'],
+#                                       parameters['scenario_range'], parameters['collision_distance'],
+#                                       parameters['prediction_time'])))
+#
+#     for job in jobs:
+#         job.get()
+#     pool.close()
+
+
+
 

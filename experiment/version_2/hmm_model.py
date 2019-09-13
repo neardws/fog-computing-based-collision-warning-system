@@ -10,11 +10,10 @@ used: my_model = hmm_model(type='discrete'. le_model=le_model, hmm_model=hmm_mod
       prediction_trace = my_model.get_prediction_trace()
 '''
 class hmm_model:
-    def __init__(self, type, le_model, hmm_model, packet_loss_rate):
+    def __init__(self, type, le_model, hmm_model):
         self.type = type
         self.le_model = le_model
         self.hmm_model = hmm_model
-        self.packet_loss_rate = packet_loss_rate
         self.origin_trace = None
         self.prediction_trace = None
         self.prediction_seconds = None

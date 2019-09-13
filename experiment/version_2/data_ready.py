@@ -6,13 +6,13 @@ from vehicle import vehicle
 np.set_printoptions(threshold=np.inf)
 
 class data_ready:
-    def __init__(self, time, scenario, scenario_range, during_time, collision_distance):
+    def __init__(self, time, scenario, scenario_range, during_time, collision_distance, packet_loss_rate):
         self.time = time
         self.scenario = scenario
         self.scenario_range = scenario_range
         self.during_time = during_time
         self.collision_distance = collision_distance
-        self.packet_loss_rate = None
+        self.packet_loss_rate = packet_loss_rate
         self.vehicle_traces = None
         self.vehicle_number = None
         self.collision_time_matrix = None
@@ -277,15 +277,15 @@ class data_ready:
             accelerations = np.array([])
             last_speed = 0
             last_time = 0
-            for i in range(len(trace) - 1):
-                speed = np.sqrt(np.square(trace[i+1].location_x - trace[i].location_x) + np.square(trace[i+1].location_y - trace[i+1].location_y)) / (
-                        trace[i+1].time - trace[i].time)
+            for i in range(len(trace.get_trace_time()) - 1):
+                speed = np.sqrt(np.square(trace.get_trace_x().iloc[i+1] - trace.get_trace_x().iloc[i]) + np.square(trace.get_trace_y().iloc[i+1] - trace.get_trace_y().iloc[i])) / (
+                        trace.get_trace_time().iloc[i+1] - trace.get_trace_time().iloc[i])
                 speeds = np.append(speeds, speed)
 
-                time = trace[i].time + (trace[i+1].time - trace[i].time) / 2
+                time = trace.get_trace_time().iloc[i] + (trace.get_trace_time().iloc[i+1] - trace.get_trace_time().iloc[i]) / 2
                 if last_speed == 0:
                     last_speed = speed
-                    last_time = trace[i].time + (trace[i+1].time - trace[i].time) / 2
+                    last_time = time
                 else:
                     acceleration = (speed - last_speed) / (time - last_time)
                     accelerations = np.append(accelerations, acceleration)
@@ -293,10 +293,10 @@ class data_ready:
                     last_time = time
             average_speed = np.append(average_speed, speeds.mean())
             average_acceleration = np.append(average_acceleration, accelerations.mean())
-        values['vehicle_speed'] = average_speed
-        values['vehicle_acceleration'] = average_acceleration
+        values['vehicle_speed'] = average_speed.mean()
+        values['vehicle_acceleration'] = average_acceleration.mean()
         return values
 
-if __name__ == '__main__':
-    dr = data_ready("9am", 1, 300, 100, 5)
-    dr.get_packet_in_seconds()
+# if __name__ == '__main__':
+#     dr = data_ready("9am", 1, 300, 100, 5)
+#     dr.get_packet_in_seconds()
