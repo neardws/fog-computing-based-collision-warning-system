@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d6d4d26-8c02-44c8-aca0-047c84e0ef83" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiment/version_2/data_ready.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment/version_2/data_ready.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/experiment/version_2/experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment/version_2/experiment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiment/version_2/hmm_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment/version_2/hmm_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiment/version_2/vehicle.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment/version_2/vehicle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment/version_2/node.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment/version_2/node.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,11 +28,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/experiment/version_2/data_ready.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="274" column="41" selection-start-line="274" selection-start-column="41" selection-end-line="274" selection-end-column="41" />
+            <state relative-caret-position="280">
+              <caret line="262" column="38" selection-start-line="262" selection-start-column="38" selection-end-line="262" selection-end-column="38" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -46,8 +43,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/experiment/vehicle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="53" selection-start-column="31" selection-end-column="53" />
+            <state relative-caret-position="60">
+              <caret line="3" column="41" lean-forward="true" selection-start-line="3" selection-start-column="41" selection-end-line="3" selection-end-column="41" />
+              <folding>
+                <element signature="e#0#53#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -61,11 +61,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/experiment/version_2/experiment.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="459" column="26" selection-start-line="459" selection-start-column="26" selection-end-line="459" selection-end-column="26" />
+            <state relative-caret-position="134">
+              <caret line="442" column="8" selection-start-line="442" selection-start-column="8" selection-end-line="442" selection-end-column="8" />
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
                 <element signature="e#238#1745#1" />
@@ -74,7 +74,7 @@
                 <element signature="e#2530#2550#0" />
                 <element signature="e#3571#6816#0" />
                 <element signature="e#5627#8843#0" />
-                <element signature="e#9699#12922#0" />
+                <element signature="e#9037#12361#0" />
                 <element signature="e#12381#15602#0" />
                 <element signature="e#16304#17099#0" />
                 <element signature="e#17123#17182#0" />
@@ -98,8 +98,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/experiment/version_2/node.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="13" column="30" lean-forward="true" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
+            <state relative-caret-position="240">
+              <caret line="105" column="79" selection-start-line="105" selection-start-column="79" selection-end-line="105" selection-end-column="79" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -119,7 +119,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/experiment/version_2/transmission_model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
+            <state relative-caret-position="60">
               <caret line="18" column="16" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="16" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
@@ -131,7 +131,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/experiment/version_2/vehicels_info.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
+            <state relative-caret-position="518">
               <caret line="42" column="52" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="52" />
             </state>
           </provider>
@@ -140,8 +140,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/experiment/version_2/vehicle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+            <state relative-caret-position="440">
+              <caret line="22" column="24" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -157,9 +157,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>selected_vehicles</find>
-      <find>return</find>
-      <find>for</find>
       <find>get_coll</find>
       <find>get_collision</find>
       <find>collision_message</find>
@@ -187,6 +184,9 @@
       <find>prediction_time</find>
       <find>fog_node</find>
       <find>self.packet_loss_rate</find>
+      <find>fog_transmission_model</find>
+      <find>transmission_model</find>
+      <find>transmission_model</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -242,11 +242,11 @@
         <option value="$PROJECT_DIR$/experiment/data_ready_new.py" />
         <option value="$PROJECT_DIR$/experiment/version_2/cloud_node.py" />
         <option value="$PROJECT_DIR$/experiment/version_2/transmission_model.py" />
-        <option value="$PROJECT_DIR$/experiment/version_2/node.py" />
         <option value="$PROJECT_DIR$/experiment/version_2/hmm_model.py" />
         <option value="$PROJECT_DIR$/experiment/version_2/vehicle.py" />
-        <option value="$PROJECT_DIR$/experiment/version_2/experiment.py" />
         <option value="$PROJECT_DIR$/experiment/version_2/data_ready.py" />
+        <option value="$PROJECT_DIR$/experiment/version_2/node.py" />
+        <option value="$PROJECT_DIR$/experiment/version_2/experiment.py" />
       </list>
     </option>
   </component>
@@ -282,12 +282,6 @@
             <path>
               <item name="fog-computing-based-collision-warning-system" type="b2602c69:ProjectViewProjectNode" />
               <item name="fog-computing-based-collision-warning-system" type="462c0819:PsiDirectoryNode" />
-              <item name="experiment" type="462c0819:PsiDirectoryNode" />
-              <item name="version_2" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fog-computing-based-collision-warning-system" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fog-computing-based-collision-warning-system" type="462c0819:PsiDirectoryNode" />
               <item name="visualization" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -307,7 +301,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/experiment/version_2" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -535,12 +529,12 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="32" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.82425743" visible="true" weight="0.23919916" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.82425743" visible="true" weight="0.119072706" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.17574258" side_tool="true" weight="0.2312961" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286334" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.528451" weight="0.3308026" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.528451" visible="true" weight="0.47613883" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.40130153" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -548,7 +542,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.471549" side_tool="true" weight="0.3264642" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.51317173" visible="true" weight="0.3286334" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.51317173" weight="0.45770064" />
       <window_info anchor="bottom" id="TODO" order="11" sideWeight="0.49894625" weight="0.34164858" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.3286334" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -908,54 +902,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/experiment/vehicle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="53" selection-start-column="31" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/visualization/draw_cellular_basestation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" selection-start-line="5" selection-end-line="5" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiment/version_2/node.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="13" column="30" lean-forward="true" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiment/version_2/transmission_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="18" column="16" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiment/version_2/vehicle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiment/version_2/vehicels_info.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="42" column="52" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/experiment/version_2/hmm_model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -973,10 +919,71 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/experiment/version_2/vehicle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="22" column="24" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiment/version_2/vehicels_info.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="518">
+          <caret line="42" column="52" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiment/vehicle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="3" column="41" lean-forward="true" selection-start-line="3" selection-start-column="41" selection-end-line="3" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/visualization/draw_cellular_basestation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" selection-start-line="5" selection-end-line="5" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiment/version_2/data_ready.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="262" column="38" selection-start-line="262" selection-start-column="38" selection-end-line="262" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiment/version_2/transmission_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="18" column="16" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiment/version_2/node.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="105" column="79" selection-start-line="105" selection-start-column="79" selection-end-line="105" selection-end-column="79" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/experiment/version_2/experiment.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="459" column="26" selection-start-line="459" selection-start-column="26" selection-end-line="459" selection-end-column="26" />
+        <state relative-caret-position="134">
+          <caret line="442" column="8" selection-start-line="442" selection-start-column="8" selection-end-line="442" selection-end-column="8" />
           <folding>
             <element signature="e#0#33#0" expanded="true" />
             <element signature="e#238#1745#1" />
@@ -985,20 +992,10 @@
             <element signature="e#2530#2550#0" />
             <element signature="e#3571#6816#0" />
             <element signature="e#5627#8843#0" />
-            <element signature="e#9699#12922#0" />
+            <element signature="e#9037#12361#0" />
             <element signature="e#12381#15602#0" />
             <element signature="e#16304#17099#0" />
             <element signature="e#17123#17182#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiment/version_2/data_ready.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="274" column="41" selection-start-line="274" selection-start-column="41" selection-end-line="274" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>

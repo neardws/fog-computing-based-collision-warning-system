@@ -137,7 +137,7 @@ class experiment:
                              'time': self.dr.time,
                              'scenario': self.dr.scenario,
                              'packet loss rate': self.dr.packet_loss_rate,
-                             'headway': self.dr.headway,
+                             'headway':self.headway,
                              'recall_tp': recall_tp,
                              'precision_tp': precision_tp,
                              'FP': precision_fp,
@@ -223,7 +223,7 @@ class experiment:
                              'time': self.dr.time,
                              'scenario': self.dr.scenario,
                              'packet loss rate': self.dr.packet_loss_rate,
-                             'headway': self.dr.headway,
+                             'headway': self.headway,
                              'recall_tp': recall_tp,
                              'precision_tp': precision_tp,
                              'FP': precision_fp,
@@ -255,6 +255,7 @@ class experiment:
             self.node.set_unite_time(packets[-1].time)
             self.node.receive_packets(packets)
             self.node.selected_packet_under_communication_range()
+
             self.node.form_fog_real_time_view()
             self.node.prediction_by_tradition(self.saver)
 
@@ -309,7 +310,7 @@ class experiment:
                              'time': self.dr.time,
                              'scenario': self.dr.scenario,
                              'packet loss rate': self.dr.packet_loss_rate,
-                             'headway': self.dr.headway,
+                             'headway': self.headway,
                              'recall_tp': recall_tp,
                              'precision_tp': precision_tp,
                              'FP': precision_fp,
@@ -395,7 +396,7 @@ class experiment:
                              'time': self.dr.time,
                              'scenario': self.dr.scenario,
                              'packet loss rate': self.dr.packet_loss_rate,
-                             'headway': self.dr.headway,
+                             'headway': self.headway,
                              'recall_tp': recall_tp,
                              'precision_tp': precision_tp,
                              'FP': precision_fp,
@@ -444,7 +445,7 @@ def show_dr_details(drs, saver):
         features = dr.get_features_of_data_ready()
         traffic_density = features['traffic_density']
         vehicle_speed = features['vehicle_speed']
-        vehicle_acceleraction = features['vehicle_acceleration']
+        vehicle_acceleration = features['vehicle_acceleration']
         row = []
         row.append(str(time))
         row.append(str(scenario))
@@ -453,14 +454,14 @@ def show_dr_details(drs, saver):
         row.append(str(collision_distance))
         row.append(str(traffic_density))
         row.append(str(vehicle_speed))
-        row.append(str(vehicle_acceleraction))
+        row.append(str(vehicle_acceleration))
         table.add_row(row)
 
     print(table)
     saver.write(str(table))
 
 
-def start_experiment(saver, dr,  prediction_time, headway):
+def start_experiment(saver, dr, prediction_time, headway):
 
     hmm_type = 'discrete'
     status_number = 37
@@ -473,7 +474,7 @@ def start_experiment(saver, dr,  prediction_time, headway):
     my_hmm_model = hmm_model(type='discrete', le_model=pickle.load(le_model_file),
                              hmm_model=pickle.load(hmm_model_file))
 
-    my_node = node(scenario=dr.scenario, range=dr.scenario_range, hmm_model=my_hmm_model, prediction_time=prediction_time, collision_distance=dr.collision_distance)
+    my_node = node(scenario=dr.scenario, headway=headway, range=dr.scenario_range, hmm_model=my_hmm_model, prediction_time=prediction_time, collision_distance=dr.collision_distance)
 
     my_experiment = experiment(my_hmm_model)
     my_experiment.set_headway(headway)

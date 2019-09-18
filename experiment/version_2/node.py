@@ -2,15 +2,15 @@ import numpy as np
 from vehicle import vehicle
 from transmission_model import transmission_model
 class node:
-    def __init__(self, scenario, range, hmm_model, prediction_time, collision_distance):
+    def __init__(self, scenario, range, hmm_model, headway, prediction_time, collision_distance):
         self.location_x = self.get_scenario_xy(scenario)[0]
         self.location_y = self.get_scenario_xy(scenario)[1]
         self.communication_range = range
         self.hmm_model = hmm_model
         self.prediction_time = prediction_time
         self.collision_distance = collision_distance
-        self.fog_transmission_model = transmission_model() # never mind the packet loss rate
-        self.headway = None
+        self.transmission_model = transmission_model() # never mind the packet loss rate
+        self.headway = headway
         self.unite_time = None
         self.receive_vehicle = None
         self.selected_vehicles = []
@@ -100,10 +100,11 @@ class node:
                 for id in add_vehicle_id:
                     self.selected_vehicles.append(self.get_vehicle_form_history_record(id))
 
+        self.transmission_model.set_type(0)
         # fix fog transmission delay
         for vehicle in self.selected_vehicles:
             receive_time = vehicle.time + vehicle.fog_transmission_delay / 1000
-            estimated_delay = self.fog_transmission_model.get_transmission_delay()
+            estimated_delay = self.transmission_model.get_transmission_delay()
             estimated_send_time = receive_time - estimated_delay / 1000
             history_vehicle = self.get_vehicle_form_history_record(vehicle.vehicleID)
             if history_vehicle is not None:
