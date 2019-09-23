@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d6d4d26-8c02-44c8-aca0-047c84e0ef83" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/experiment/version_2/data_ready.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment/version_2/data_ready.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/experiment/version_2/experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment/version_2/experiment.py" afterDir="false" />
     </list>
@@ -31,8 +32,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/experiment/version_2/data_ready.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1340">
-              <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
+            <state relative-caret-position="447">
+              <caret line="317" column="90" selection-start-line="317" selection-start-column="90" selection-end-line="317" selection-end-column="90" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -64,8 +65,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/experiment/version_2/experiment.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-104">
-              <caret line="534" column="18" selection-start-line="534" selection-start-column="4" selection-end-line="534" selection-end-column="18" />
+            <state relative-caret-position="-1664">
+              <caret line="445" selection-start-line="445" selection-end-line="445" />
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
                 <element signature="e#238#1745#1" />
@@ -476,7 +477,7 @@
       <window_info id="Favorites" order="2" sideWeight="0.17574258" side_tool="true" weight="0.2312961" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286334" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.528451" visible="true" weight="0.5119306" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.528451" visible="true" weight="0.318872" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.40130153" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -484,7 +485,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.471549" side_tool="true" weight="0.3264642" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.51317173" weight="0.03253796" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.51317173" weight="0.6030369" />
       <window_info anchor="bottom" id="TODO" order="11" sideWeight="0.49894625" weight="0.34164858" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.3286334" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -914,8 +915,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/experiment/version_2/experiment.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-104">
-          <caret line="534" column="18" selection-start-line="534" selection-start-column="4" selection-end-line="534" selection-end-column="18" />
+        <state relative-caret-position="-1664">
+          <caret line="445" selection-start-line="445" selection-end-line="445" />
           <folding>
             <element signature="e#0#33#0" expanded="true" />
             <element signature="e#238#1745#1" />
@@ -933,8 +934,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/experiment/version_2/data_ready.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1340">
-          <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
+        <state relative-caret-position="447">
+          <caret line="317" column="90" selection-start-line="317" selection-start-column="90" selection-end-line="317" selection-end-column="90" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>

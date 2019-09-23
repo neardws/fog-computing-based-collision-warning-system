@@ -292,11 +292,34 @@ class data_ready:
                     accelerations = np.append(accelerations, acceleration)
                     last_speed = speed
                     last_time = time
-            average_speed = np.append(average_speed, speeds.mean())
-            average_acceleration = np.append(average_acceleration, accelerations.mean())
-        values['vehicle_speed'] = average_speed.mean()
-        values['vehicle_acceleration'] = average_acceleration.mean()
+            average_speed = np.append(average_speed, self.get_mean_values(speeds))
+            average_acceleration = np.append(average_acceleration, self.get_mean_values(accelerations))
+            print("average_speed is "  + str(average_speed))
+            print(("average_acceleration is " + str(average_acceleration)))
+        values['vehicle_speed'] = self.get_mean_values(average_speed)
+        values['vehicle_acceleration'] = self.get_mean_values(average_acceleration)
         return values
+
+    def get_mean_values(self, values):
+        value_number = 0
+        value_sum = 0
+        for value in values:
+
+            if np.isnan(value):
+                print("value is nan")
+                pass
+            else:
+                value_sum += value
+                value_number += 1
+                print(value_sum)
+                print(value_number)
+
+        if value_number > 0:
+            print("return (value_sum / value_number) is " + str((value_sum / value_number)))
+            return (value_sum / value_number)
+        else:
+            print("return nan")
+            return np.nan
 
 # if __name__ == '__main__':
 #     dr = data_ready("9am", 1, 300, 100, 5)

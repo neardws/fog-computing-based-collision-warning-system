@@ -539,6 +539,7 @@ def main():
     my_saver = result_save(type="dr", start_time=start_time, scenario=different_scenario[0], packet_loss_rate=different_packet_loss_rate[2], headway=different_headway[1])
 
     drs = []
+    number = 0
     for start_time in different_start_time:
         for scenario in different_scenario:
             print("start time " + str(start_time))
@@ -551,6 +552,11 @@ def main():
                                 collision_distance=collision_distance)
             dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
             drs.append(dr)
+            number += 1
+        #     if number >= 2:
+        #         break
+        # if number >= 2:
+        #     break
     show_dr_details(drs, my_saver)
     # start_experiment(saver=my_saver, dr=dr, prediction_time=prediction_time, headway=different_headway[0])
 
