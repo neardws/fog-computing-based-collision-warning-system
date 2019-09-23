@@ -196,21 +196,21 @@ class data_ready:
         self.vehicle_id_array = []
         self.collision_number = 0
         self.collision_message = []
-        for i in range(self.vehicle_number - 1):
-            for j in range(i + 1, self.vehicle_number):
-                collision_time = self.get_collision_time(vehicle_one=self.vehicle_traces[i], vehicle_two=self.vehicle_traces[j])
-                self.collision_time_matrix[i, j] = collision_time
-                if collision_time == 0:
-                    pass
-                else:
-                    self.collision_number += 1
-                    self.collision_message.append({'vehicleOne': self.vehicle_traces[i].get_vehicleID(),
-                                                   'vehicleTwo': self.vehicle_traces[j].get_vehicleID(),
-                                                   'collisionTime': collision_time})
-                # print(self.vehicle_traces[i].get_vehicleID())
-            # print(type(self.vehicle_traces[i].get_vehicleID()))
-            self.vehicle_id_array.append(int(self.vehicle_traces[i].get_vehicleID()))
-        self.vehicle_id_array.append(int(self.vehicle_traces[-1].vehicleID)) # get the last one
+        if  self.vehicle_number > 0:
+            for i in range(self.vehicle_number - 1):
+                for j in range(i + 1, self.vehicle_number):
+                    collision_time = self.get_collision_time(vehicle_one=self.vehicle_traces[i],
+                                                             vehicle_two=self.vehicle_traces[j])
+                    self.collision_time_matrix[i, j] = collision_time
+                    if collision_time == 0:
+                        pass
+                    else:
+                        self.collision_number += 1
+                        self.collision_message.append({'vehicleOne': self.vehicle_traces[i].get_vehicleID(),
+                                                       'vehicleTwo': self.vehicle_traces[j].get_vehicleID(),
+                                                       'collisionTime': collision_time})
+                self.vehicle_id_array.append(int(self.vehicle_traces[i].get_vehicleID()))
+            self.vehicle_id_array.append(int(self.vehicle_traces[-1].vehicleID))  # get the last one
 
     def get_collision_traces(self):
         collision_traces = []

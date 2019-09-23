@@ -435,13 +435,14 @@ def show_time():
 
 
 def show_dr_details(drs, saver):
-    table = PrettyTable(['time','scenario', 'scen_range',  'during',  'coll_dis', 'traffic_density', 'vehicle_speed', 'vehicle_acceleration'])
+    table = PrettyTable(['time','scenario', 'scen_range',  'during',  'coll_dis', 'traffic_density', 'vehicle_speed', 'vehicle_acceleration', 'collision_number'])
     for dr in drs:
         time = dr.time
         scenario = dr.scenario
         scenario_range = dr.scenario_range
         during_time = dr.during_time
         collision_distance = dr.collision_distance
+        collision_message_number = len(dr.get_collision_message())
         features = dr.get_features_of_data_ready()
         traffic_density = features['traffic_density']
         vehicle_speed = features['vehicle_speed']
@@ -455,6 +456,7 @@ def show_dr_details(drs, saver):
         row.append(str(traffic_density))
         row.append(str(vehicle_speed))
         row.append(str(vehicle_acceleration))
+        row.append(str(collision_message_number))
         table.add_row(row)
 
     print(table)
@@ -523,92 +525,34 @@ def get_data_ready(start_time, scenario, scenario_range, during_time, packet_los
 def main():
 
 
-    different_start_time = ['10am', '3pm', '12am', '6pm', '9pm']
-    different_scenario = ['6', '7', '5', '8', '9']
+    different_start_time = ['6am', '7am', '8am', '9am', '10am', '11am', '12am', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', '9pm', '10pm', '11pm']
+    different_scenario = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
     different_headway = [1, 2, 4, 5, 10]
     different_packet_loss_rate = [0, 1.5, 3, 6, 12]
 
-    start_time = different_start_time[2]
+    start_time = different_start_time[0]
     during_time = 100
-    scenario_range = 300
-    collision_distance = 3.5
+    scenario_range = 500
+    collision_distance = 5.0
     prediction_time = 1
 
-    my_saver = result_save(type="test", start_time=start_time, scenario=different_scenario[0], packet_loss_rate=different_packet_loss_rate[0], headway=different_headway[0])
-
-    dr = get_data_ready(start_time=different_start_time[0],
-                        scenario=different_scenario[0],
-                        scenario_range=scenario_range,
-                        during_time=during_time,
-                        packet_loss_rate=different_packet_loss_rate[0],
-                        collision_distance=collision_distance)
-
-    dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
+    my_saver = result_save(type="dr", start_time=start_time, scenario=different_scenario[0], packet_loss_rate=different_packet_loss_rate[2], headway=different_headway[1])
 
     drs = []
-    drs.append(dr)
+    for start_time in different_start_time:
+        for scenario in different_scenario:
+            print("start time " + str(start_time))
+            print("scenario " + str(scenario))
+            dr = get_data_ready(start_time=start_time,
+                                scenario=scenario,
+                                scenario_range=scenario_range,
+                                during_time=during_time,
+                                packet_loss_rate=different_packet_loss_rate[0],
+                                collision_distance=collision_distance)
+            dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
+            drs.append(dr)
     show_dr_details(drs, my_saver)
-
-    start_experiment(saver=my_saver, dr=dr, prediction_time=prediction_time, headway=different_headway[0])
+    # start_experiment(saver=my_saver, dr=dr, prediction_time=prediction_time, headway=different_headway[0])
 
 if __name__ == '__main__':
     main()
-
-# def main_test():
-#     different_start_time = ['10am', '3pm', '12am', '6pm', '9pm']
-#     different_scenario = ['6', '7', '5', '8', '9']
-#     different_headway = [1, 2, 4, 5, 10]
-#     different_packet_loss_rate = [0, 1.5, 3, 6, 12]
-#
-#     start_time = different_start_time[2]
-#     during_time = 100
-#     scenario_range = 300
-#     collision_distance = 3.5
-#     prediction_time = 1
-#     parameters_list = []
-#
-#     for i in range(5):
-#         parameters = {'start_time': start_time,
-#                       'during_time': during_time,
-#                       'headway': different_headway[i],
-#                       'scenario': different_scenario[2],
-#                       'scenario_range': scenario_range,
-#                       'collision_distance': collision_distance,
-#                       'prediction_time': prediction_time,
-#                       'packet_loss_rate': different_packet_loss_rate[2]}
-#         parameters1 = {'start_time': start_time,
-#                        'during_time': during_time,
-#                        'headway': different_headway[1],
-#                        'scenario': different_scenario[i],
-#                        'scenario_range': scenario_range,
-#                        'collision_distance': collision_distance,
-#                        'prediction_time': prediction_time,
-#                        'packet_loss_rate': different_packet_loss_rate[2]}
-#         parameters2 = {'start_time': start_time,
-#                        'during_time': during_time,
-#                        'headway': different_headway[1],
-#                        'scenario': different_scenario[2],
-#                        'scenario_range': scenario_range,
-#                        'collision_distance': collision_distance,
-#                        'prediction_time': prediction_time,
-#                        'packet_loss_rate': different_packet_loss_rate[i]}
-#         parameters_list.append(parameters)
-#         parameters_list.append(parameters1)
-#         parameters_list.append(parameters2)
-#
-#     pool = mp.Pool(processes=15)
-#     jobs = []
-#     for parameters in parameters_list:
-#         jobs.append(pool.apply_async(start_experiment,
-#                                      (1, parameters['start_time'], parameters['during_time'],
-#                                       parameters['headway'], parameters['packet_loss_rate'], parameters['scenario'],
-#                                       parameters['scenario_range'], parameters['collision_distance'],
-#                                       parameters['prediction_time'])))
-#
-#     for job in jobs:
-#         job.get()
-#     pool.close()
-
-
-
-
