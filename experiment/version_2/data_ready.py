@@ -21,6 +21,9 @@ class data_ready:
         self.vehicle_id_array = None
         self.packets_in_seconds = []
 
+    def return_packet_in_seconds(self):
+        return self.packets_in_seconds
+
     def get_vehicle_trace(self):
         return self.vehicle_traces
 
@@ -211,6 +214,7 @@ class data_ready:
                                                        'collisionTime': collision_time})
                 self.vehicle_id_array.append(int(self.vehicle_traces[i].get_vehicleID()))
             self.vehicle_id_array.append(int(self.vehicle_traces[-1].vehicleID))  # get the last one
+        self.get_packet_in_seconds()
 
     def get_collision_traces(self):
         collision_traces = []
@@ -260,7 +264,6 @@ class data_ready:
                     v.set_transmission_delay()
                     vehicles.append(v)
             self.packets_in_seconds.append(vehicles)
-        return self.packets_in_seconds
 
     def update_packet_in_seconds_by_packet_loss_rate(self, packet_loss_rate):
         for vehicles in self.packets_in_seconds:

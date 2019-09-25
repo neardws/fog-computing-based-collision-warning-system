@@ -2,6 +2,7 @@ from data_ready import data_ready
 from node import node
 from hmm_model import hmm_model
 from result_save import result_save
+import threading
 import pickle
 import time
 import warnings
@@ -522,43 +523,315 @@ def get_data_ready(start_time, scenario, scenario_range, during_time, packet_los
     return dr
 
 
+
+'''
+Experiment
+Change the scenario 
+'''
 def main():
 
-
-    different_start_time = ['6am', '7am', '8am', '9am', '10am', '11am', '12am', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', '9pm', '10pm', '11pm']
+    ''''
+    init value
+    '''
+    different_start_time = ['6am', '7am', '8am', '9am', '10am', '11am', '12am', '1pm', '2pm', '3pm', '4pm', '5pm',
+                            '6pm', '7pm', '8pm', '9pm', '10pm', '11pm']
     different_scenario = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
-    different_headway = [1, 2, 4, 5, 10]
-    different_packet_loss_rate = [0, 1.5, 3, 6, 12]
+    different_headway = [1, 2, 3, 4, 5]
+    different_packet_loss_rate = [0, 1.5, 3, 4.5, 6]
 
-    start_time = different_start_time[0]
+    '''
+    default value
+    '''
     during_time = 100
     scenario_range = 500
     collision_distance = 5.0
     prediction_time = 1
+    default_packet_loss_rate = 3
+    default_headway = 3
 
-    my_saver = result_save(type="dr", start_time=start_time, scenario=different_scenario[0], packet_loss_rate=different_packet_loss_rate[2], headway=different_headway[1])
+    '''
+    change value
+    selected_scenario
+    | 7am  |    2     |    500     |  100   |   5.0    |       139       | 18.92823498469161  |   0.015845421133777758  |        18        |
+    | 7am  |    6     |    500     |  100   |   5.0    |       120       | 13.062099727709821 |   -0.03689736923888576  |        40        |
+    | 7am  |    9     |    500     |  100   |   5.0    |       121       | 23.024674146701795 |  -0.053098976624194924  |        15        |
+    | 8am  |    2     |    500     |  100   |   5.0    |        80       | 17.850042710981093 |   -0.04453214370222366  |        13        |
+    | 8am  |    6     |    500     |  100   |   5.0    |        81       | 12.942697656478494 |   0.007933901577578919  |        19        |
+    | 9am  |    6     |    500     |  100   |   5.0    |        54       | 12.567781576115875 |    0.0909153339231181   |        11        |
+    | 12am |    5     |    500     |  100   |   5.0    |        27       | 17.21671993750567  |   0.09291386434744327   |        15        |
+    | 12am |    6     |    500     |  100   |   5.0    |       104       | 12.999320726828484 |   -0.1348130505809356   |        40        |
+    | 1pm  |    6     |    500     |  100   |   5.0    |        67       | 12.762791295913285 |   0.028545183911414716  |        24        |
+    | 4pm  |    1     |    500     |  100   |   5.0    |        54       | 14.380193869754692 |    0.2260140702499548   |        10        |
+    | 4pm  |    2     |    500     |  100   |   5.0    |        85       | 19.22874385678008  |    0.1646757530570065   |        16        |
+    | 4pm  |    7     |    500     |  100   |   5.0    |        72       | 17.277884038915342 |   -0.08825776920478888  |        22        |
+    | 4pm  |    9     |    500     |  100   |   5.0    |        93       | 24.54092914894115  |  0.00046152994549642987 |        14        |
+    | 5pm  |    1     |    500     |  100   |   5.0    |        54       | 14.474476050300543 | -0.00018715848820969588 |        14        |
+    | 5pm  |    2     |    500     |  100   |   5.0    |       107       | 19.883287335270897 |   0.10988931866385934   |        32        |
+    | 5pm  |    6     |    500     |  100   |   5.0    |       105       | 12.419208221977446 |   -0.09433623844682969  |        46        |
+    | 5pm  |    7     |    500     |  100   |   5.0    |        82       | 17.231847300618824 |   0.03972400321151402   |        12        |
+    | 5pm  |    9     |    500     |  100   |   5.0    |        98       | 23.928981914534443 |   -0.0358471618632544   |        19        |
+    | 6pm  |    1     |    500     |  100   |   5.0    |        55       |  15.5429032483822  |   0.47265437448894154   |        11        |
+    | 6pm  |    2     |    500     |  100   |   5.0    |       114       |  19.1815578754212  |   0.06047709119872064   |        27        |
+    | 6pm  |    6     |    500     |  100   |   5.0    |       120       |  12.3646782906035  |  -0.050349146278667156  |        31        |
+    | 6pm  |    7     |    500     |  100   |   5.0    |        62       | 17.638282520594082 |   0.023201055753263394  |        15        |
+    | 6pm  |    8     |    500     |  100   |   5.0    |        56       | 16.779824864912797 |    0.1317913627434077   |        21        |
+    | 6pm  |    9     |    500     |  100   |   5.0    |        93       | 24.091808199008295 |   0.05898514709501288   |        18        |
+    | 7pm  |    6     |    500     |  100   |   5.0    |       106       | 10.598324438124479 |   0.07562112815649023   |       168        |
+    | 8pm  |    6     |    500     |  100   |   5.0    |        76       | 13.065029159604101 |  -0.045240582963270534  |        12        |
+    | 10pm |    6     |    500     |  100   |   5.0    |        54       | 14.015215311579345 |    0.2029108770185149   |        12        |
+    '''
+
 
     drs = []
-    number = 0
-    for start_time in different_start_time:
-        for scenario in different_scenario:
-            print("start time " + str(start_time))
-            print("scenario " + str(scenario))
-            dr = get_data_ready(start_time=start_time,
-                                scenario=scenario,
-                                scenario_range=scenario_range,
-                                during_time=during_time,
-                                packet_loss_rate=different_packet_loss_rate[0],
-                                collision_distance=collision_distance)
-            dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
-            drs.append(dr)
-            number += 1
-        #     if number >= 2:
-        #         break
-        # if number >= 2:
-        #     break
-    show_dr_details(drs, my_saver)
-    # start_experiment(saver=my_saver, dr=dr, prediction_time=prediction_time, headway=different_headway[0])
+    dr = get_data_ready(start_time='7am',
+                        scenario='2',
+                        scenario_range=scenario_range,
+                        during_time=during_time,
+                        packet_loss_rate=default_packet_loss_rate,
+                        collision_distance=collision_distance)
+    dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
+    drs.append(dr)
+    dr = get_data_ready(start_time='7am',
+                        scenario='6',
+                        scenario_range=scenario_range,
+                        during_time=during_time,
+                        packet_loss_rate=default_packet_loss_rate,
+                        collision_distance=collision_distance)
+    dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
+    drs.append(dr)
+    dr = get_data_ready(start_time='7am',
+                        scenario='9',
+                        scenario_range=scenario_range,
+                        during_time=during_time,
+                        packet_loss_rate=default_packet_loss_rate,
+                        collision_distance=collision_distance)
+    dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
+    drs.append(dr)
+
+    dr = get_data_ready(start_time='8am',
+                        scenario='2',
+                        scenario_range=scenario_range,
+                        during_time=during_time,
+                        packet_loss_rate=default_packet_loss_rate,
+                        collision_distance=collision_distance)
+    dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
+    drs.append(dr)
+    dr = get_data_ready(start_time='8am',
+                        scenario='6',
+                        scenario_range=scenario_range,
+                        during_time=during_time,
+                        packet_loss_rate=default_packet_loss_rate,
+                        collision_distance=collision_distance)
+    dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
+    drs.append(dr)
+
+    dr = get_data_ready(start_time='9am',
+                        scenario='6',
+                        scenario_range=scenario_range,
+                        during_time=during_time,
+                        packet_loss_rate=default_packet_loss_rate,
+                        collision_distance=collision_distance)
+    dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
+    drs.append(dr)
+
+    dr = get_data_ready(start_time='12am',
+                        scenario='5',
+                        scenario_range=scenario_range,
+                        during_time=during_time,
+                        packet_loss_rate=default_packet_loss_rate,
+                        collision_distance=collision_distance)
+    dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
+    drs.append(dr)
+    dr = get_data_ready(start_time='12am',
+                        scenario='6',
+                        scenario_range=scenario_range,
+                        during_time=during_time,
+                        packet_loss_rate=default_packet_loss_rate,
+                        collision_distance=collision_distance)
+    dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
+    drs.append(dr)
+
+    dr = get_data_ready(start_time='1pm',
+                        scenario='6',
+                        scenario_range=scenario_range,
+                        during_time=during_time,
+                        packet_loss_rate=default_packet_loss_rate,
+                        collision_distance=collision_distance)
+    dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
+    drs.append(dr)
+
+    dr = get_data_ready(start_time='4pm',
+                        scenario='1',
+                        scenario_range=scenario_range,
+                        during_time=during_time,
+                        packet_loss_rate=default_packet_loss_rate,
+                        collision_distance=collision_distance)
+    dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
+    drs.append(dr)
+    dr = get_data_ready(start_time='4pm',
+                        scenario='2',
+                        scenario_range=scenario_range,
+                        during_time=during_time,
+                        packet_loss_rate=default_packet_loss_rate,
+                        collision_distance=collision_distance)
+    dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
+    drs.append(dr)
+    dr = get_data_ready(start_time='4pm',
+                        scenario='7',
+                        scenario_range=scenario_range,
+                        during_time=during_time,
+                        packet_loss_rate=default_packet_loss_rate,
+                        collision_distance=collision_distance)
+    dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
+    drs.append(dr)
+    dr = get_data_ready(start_time='4pm',
+                        scenario='9',
+                        scenario_range=scenario_range,
+                        during_time=during_time,
+                        packet_loss_rate=default_packet_loss_rate,
+                        collision_distance=collision_distance)
+    dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
+    drs.append(dr)
+
+    dr = get_data_ready(start_time='5pm',
+                        scenario='1',
+                        scenario_range=scenario_range,
+                        during_time=during_time,
+                        packet_loss_rate=default_packet_loss_rate,
+                        collision_distance=collision_distance)
+    dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
+    drs.append(dr)
+    dr = get_data_ready(start_time='5pm',
+                        scenario='2',
+                        scenario_range=scenario_range,
+                        during_time=during_time,
+                        packet_loss_rate=default_packet_loss_rate,
+                        collision_distance=collision_distance)
+    dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
+    drs.append(dr)
+    dr = get_data_ready(start_time='5pm',
+                        scenario='6',
+                        scenario_range=scenario_range,
+                        during_time=during_time,
+                        packet_loss_rate=default_packet_loss_rate,
+                        collision_distance=collision_distance)
+    dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
+    drs.append(dr)
+    dr = get_data_ready(start_time='5pm',
+                        scenario='7',
+                        scenario_range=scenario_range,
+                        during_time=during_time,
+                        packet_loss_rate=default_packet_loss_rate,
+                        collision_distance=collision_distance)
+    dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
+    drs.append(dr)
+    dr = get_data_ready(start_time='5pm',
+                        scenario='9',
+                        scenario_range=scenario_range,
+                        during_time=during_time,
+                        packet_loss_rate=default_packet_loss_rate,
+                        collision_distance=collision_distance)
+    dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
+    drs.append(dr)
+
+    dr = get_data_ready(start_time='6pm',
+                        scenario='1',
+                        scenario_range=scenario_range,
+                        during_time=during_time,
+                        packet_loss_rate=default_packet_loss_rate,
+                        collision_distance=collision_distance)
+    dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
+    drs.append(dr)
+    dr = get_data_ready(start_time='6pm',
+                        scenario='2',
+                        scenario_range=scenario_range,
+                        during_time=during_time,
+                        packet_loss_rate=default_packet_loss_rate,
+                        collision_distance=collision_distance)
+    dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
+    drs.append(dr)
+    dr = get_data_ready(start_time='6pm',
+                        scenario='6',
+                        scenario_range=scenario_range,
+                        during_time=during_time,
+                        packet_loss_rate=default_packet_loss_rate,
+                        collision_distance=collision_distance)
+    dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
+    drs.append(dr)
+    dr = get_data_ready(start_time='6pm',
+                        scenario='7',
+                        scenario_range=scenario_range,
+                        during_time=during_time,
+                        packet_loss_rate=default_packet_loss_rate,
+                        collision_distance=collision_distance)
+    dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
+    drs.append(dr)
+    dr = get_data_ready(start_time='6pm',
+                        scenario='8',
+                        scenario_range=scenario_range,
+                        during_time=during_time,
+                        packet_loss_rate=default_packet_loss_rate,
+                        collision_distance=collision_distance)
+    dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
+    drs.append(dr)
+    dr = get_data_ready(start_time='6pm',
+                        scenario='9',
+                        scenario_range=scenario_range,
+                        during_time=during_time,
+                        packet_loss_rate=default_packet_loss_rate,
+                        collision_distance=collision_distance)
+    dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
+    drs.append(dr)
+
+    dr = get_data_ready(start_time='7pm',
+                        scenario='6',
+                        scenario_range=scenario_range,
+                        during_time=during_time,
+                        packet_loss_rate=default_packet_loss_rate,
+                        collision_distance=collision_distance)
+    dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
+    drs.append(dr)
+
+    dr = get_data_ready(start_time='8pm',
+                        scenario='6',
+                        scenario_range=scenario_range,
+                        during_time=during_time,
+                        packet_loss_rate=default_packet_loss_rate,
+                        collision_distance=collision_distance)
+    dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
+    drs.append(dr)
+
+    dr = get_data_ready(start_time='10pm',
+                        scenario='6',
+                        scenario_range=scenario_range,
+                        during_time=during_time,
+                        packet_loss_rate=default_packet_loss_rate,
+                        collision_distance=collision_distance)
+    dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
+    drs.append(dr)
+
+
+
+    # show_dr_details(drs, my_saver)
+    # for dr in drs:
+    #     my_saver = result_save(type="experiment_different_scenario", start_time=dr.time,
+    #                            scenario=dr.scenario, packet_loss_rate=default_packet_loss_rate,
+    #                            headway=default_headway)
+    #
+    #     start_experiment(saver=my_saver, dr=dr, prediction_time=prediction_time, headway=default_headway)
+
+    pool = mp.Pool(processes=15)
+    jobs = []
+    for dr in drs:
+        my_saver = result_save(type="experiment_different_scenario", start_time=dr.time,
+                               scenario=dr.scenario, packet_loss_rate=default_packet_loss_rate,
+                               headway=default_headway)
+        jobs.append(pool.apply_async(start_experiment,
+                                     (my_saver, dr, prediction_time, default_headway)))
+
+    for job in jobs:
+        job.get()
+    pool.close()
 
 if __name__ == '__main__':
     main()

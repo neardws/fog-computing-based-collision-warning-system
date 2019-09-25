@@ -39,6 +39,7 @@ Three difference changeable parameters:
     headway
 '''
 
+
 class experiment:
     def __init__(self, hmm_model):
         self.hmm_model = hmm_model
@@ -62,6 +63,7 @@ class experiment:
     ''''
     The base algorithm of cloud 
     '''
+
     def cloud_base_algorithm(self):
 
         recall_tp = 0
@@ -74,7 +76,7 @@ class experiment:
 
         packets_in_seconds = self.dr.return_packet_in_seconds()
         for packets in packets_in_seconds:
-            self.saver.write("-" *64)
+            self.saver.write("-" * 64)
             self.saver.write("experiment time " + str(packets[-1].time))
             print("-" * 64)
             show_time()
@@ -137,7 +139,7 @@ class experiment:
                              'time': self.dr.time,
                              'scenario': self.dr.scenario,
                              'packet loss rate': self.dr.packet_loss_rate,
-                             'headway':self.headway,
+                             'headway': self.headway,
                              'recall_tp': recall_tp,
                              'precision_tp': precision_tp,
                              'FP': precision_fp,
@@ -435,7 +437,8 @@ def show_time():
 
 
 def show_dr_details(drs, saver):
-    table = PrettyTable(['time','scenario', 'scen_range',  'during',  'coll_dis', 'traffic_density', 'vehicle_speed', 'vehicle_acceleration', 'collision_number'])
+    table = PrettyTable(['time', 'scenario', 'scen_range', 'during', 'coll_dis', 'traffic_density', 'vehicle_speed',
+                         'vehicle_acceleration', 'collision_number'])
     for dr in drs:
         time = dr.time
         scenario = dr.scenario
@@ -464,7 +467,6 @@ def show_dr_details(drs, saver):
 
 
 def start_experiment(saver, dr, prediction_time, headway):
-
     hmm_type = 'discrete'
     status_number = 37
     train_number = 5000
@@ -476,7 +478,8 @@ def start_experiment(saver, dr, prediction_time, headway):
     my_hmm_model = hmm_model(type='discrete', le_model=pickle.load(le_model_file),
                              hmm_model=pickle.load(hmm_model_file))
 
-    my_node = node(scenario=dr.scenario, headway=headway, range=dr.scenario_range, hmm_model=my_hmm_model, prediction_time=prediction_time, collision_distance=dr.collision_distance)
+    my_node = node(scenario=dr.scenario, headway=headway, range=dr.scenario_range, hmm_model=my_hmm_model,
+                   prediction_time=prediction_time, collision_distance=dr.collision_distance)
 
     my_experiment = experiment(my_hmm_model)
     my_experiment.set_headway(headway)
@@ -493,6 +496,8 @@ def start_experiment(saver, dr, prediction_time, headway):
 '''
 TODO: fix the file path bug
 '''
+
+
 def get_hmm_model_file_path(type, status_number, train_number, accuracy):
     file_path = r'E:\NearXu\model\model_'
     if type == 'discrete':
@@ -504,6 +509,7 @@ def get_hmm_model_file_path(type, status_number, train_number, accuracy):
         file_path = file_path + str(status_number) + '_number_' + str(train_number) + '_' + str(accuracy) + '_hmm.pkl'
     return r'E:\NearXu\model\model_mu_statue_37_number_10000_0.01_hmm.pkl'
 
+
 def get_le_model_file_path(status_number, train_number, accuracy):
     file_path = r'E:\NearXu\model\model_mu_status_' + str(status_number) + '_number_' + str(train_number) + '_' + str(
         accuracy) + '_le.pkl'
@@ -512,7 +518,7 @@ def get_le_model_file_path(status_number, train_number, accuracy):
 
 def get_data_ready(start_time, scenario, scenario_range, during_time, packet_loss_rate, collision_distance):
     dr = data_ready(time=start_time, scenario=scenario, scenario_range=scenario_range,
-                    during_time=during_time, packet_loss_rate=packet_loss_rate,collision_distance=collision_distance)
+                    during_time=during_time, packet_loss_rate=packet_loss_rate, collision_distance=collision_distance)
     dr.set_vehicle_traces_and_collision_time_matrix_and_vehicle_id_array()
 
     print("-" * 64)
@@ -522,21 +528,37 @@ def get_data_ready(start_time, scenario, scenario_range, during_time, packet_los
     return dr
 
 
+'''
+Experiment
+Change the packet_loss_rate 
+'''
+
+
 def main():
-
-
-    different_start_time = ['6am', '7am', '8am', '9am', '10am', '11am', '12am', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', '9pm', '10pm', '11pm']
+    different_start_time = ['6am', '7am', '8am', '9am', '10am', '11am', '12am', '1pm', '2pm', '3pm', '4pm', '5pm',
+                            '6pm', '7pm', '8pm', '9pm', '10pm', '11pm']
     different_scenario = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
     different_headway = [1, 2, 4, 5, 10]
     different_packet_loss_rate = [0, 1.5, 3, 6, 12]
 
     start_time = different_start_time[0]
+
+    '''
+    default value
+    '''
     during_time = 100
     scenario_range = 500
     collision_distance = 5.0
     prediction_time = 1
+    default_packet_loss_rate = different_packet_loss_rate[2]
+    default_headway = different_headway[1]
 
-    my_saver = result_save(type="dr", start_time=start_time, scenario=different_scenario[0], packet_loss_rate=different_packet_loss_rate[2], headway=different_headway[1])
+    '''
+    change value
+    '''
+
+    my_saver = result_save(type="experiment_different_scenario", start_time=start_time, scenario=different_scenario[0],
+                           packet_loss_rate=default_packet_loss_rate, headway=default_headway)
 
     drs = []
     number = 0
@@ -558,7 +580,9 @@ def main():
         # if number >= 2:
         #     break
     show_dr_details(drs, my_saver)
-    # start_experiment(saver=my_saver, dr=dr, prediction_time=prediction_time, headway=different_headway[0])
+    for dr in drs:
+        start_experiment(saver=my_saver, dr=dr, prediction_time=prediction_time, headway=different_headway[0])
+
 
 if __name__ == '__main__':
     main()
