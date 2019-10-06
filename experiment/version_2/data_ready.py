@@ -60,7 +60,7 @@ class data_ready:
     according to the selected time in a range of 1AM to 11PM during one day
     '''
     def get_csv_file(self, time):
-        csv_file = r'E:\NearXu\trace\trace_'
+        csv_file = '/Users/near/NearXu/trace/trace_'
         dic_csv_file = {
             '1am': csv_file + '0.csv',   '2am': csv_file + '0.csv',
             '3am': csv_file + '0.csv',   '4am': csv_file + '0.csv',
@@ -266,9 +266,11 @@ class data_ready:
             self.packets_in_seconds.append(vehicles)
 
     def update_packet_in_seconds_by_packet_loss_rate(self, packet_loss_rate):
+        self.packet_loss_rate = packet_loss_rate
         for vehicles in self.packets_in_seconds:
             for vehicle in vehicles:
                 vehicle.update_packet_loss(packet_loss_rate)
+        return self
 
     def get_features_of_data_ready(self):
         # 需要统计的值

@@ -1,0 +1,24 @@
++------+----------+------------------+----------------------------------------------+--------------------+--------------------+
+| time | scenario | packet_loss_rate |                     type                     |     precision      |       recall       |
++------+----------+------------------+----------------------------------------------+--------------------+--------------------+
+| 7pm  |    6     |        0         |  result_threading_different_scenario_cloud   | 0.8844765342960289 | 0.5688854489164087 |
+| 7pm  |    6     |        0         |   result_threading_different_scenario_fog    | 0.9034123770965876 | 0.6044891640866873 |
+| 7pm  |    6     |        0         |  result_threading_different_scenario_fog_re  | 0.9255014326647565 | 0.6187739463601533 |
+| 7pm  |    6     |        0         | result_threading_different_scenario_fog_gvcw | 0.889281507656066  | 0.578544061302682  |
+| 7pm  |    6     |       1.5        |  result_threading_different_scenario_cloud   | 0.8903508771929824 | 0.5661354581673307 |
+| 7pm  |    6     |       1.5        |   result_threading_different_scenario_fog    | 0.9059674502712477 | 0.598804780876494  |
+| 7pm  |    6     |       1.5        |  result_threading_different_scenario_fog_re  | 0.9336885731201895 | 0.622336227308603  |
+| 7pm  |    6     |       1.5        | result_threading_different_scenario_fog_gvcw | 0.9026548672566371 |  0.56353591160221  |
+| 7pm  |    6     |        3         |  result_threading_different_scenario_cloud   | 0.8823915900131406 | 0.5554177005789909 |
+| 7pm  |    6     |        3         |   result_threading_different_scenario_fog    | 0.9020356234096693 | 0.586435070306038  |
+| 7pm  |    6     |        3         |  result_threading_different_scenario_fog_re  | 0.9289340101522843 |        0.6         |
+| 7pm  |    6     |        3         | result_threading_different_scenario_fog_gvcw | 0.8754838709677419 | 0.5561475409836065 |
+| 7pm  |    6     |       4.5        |  result_threading_different_scenario_cloud   | 0.8806896551724138 | 0.5509059534081104 |
+| 7pm  |    6     |       4.5        |   result_threading_different_scenario_fog    | 0.8997326203208557 | 0.5806729939603106 |
+| 7pm  |    6     |       4.5        |  result_threading_different_scenario_fog_re  | 0.9259259259259259 | 0.5993150684931506 |
+| 7pm  |    6     |       4.5        | result_threading_different_scenario_fog_gvcw | 0.8888130968622101 | 0.557791095890411  |
+| 7pm  |    6     |        6         |  result_threading_different_scenario_cloud   | 0.885861561119293  | 0.5313604240282686 |
+| 7pm  |    6     |        6         |   result_threading_different_scenario_fog    | 0.9081196581196581 | 0.5631625441696113 |
+| 7pm  |    6     |        6         |  result_threading_different_scenario_fog_re  | 0.9402135231316726 | 0.5773601398601399 |
+| 7pm  |    6     |        6         | result_threading_different_scenario_fog_gvcw | 0.8940493468795355 | 0.5384615384615384 |
++------+----------+------------------+----------------------------------------------+--------------------+--------------------+

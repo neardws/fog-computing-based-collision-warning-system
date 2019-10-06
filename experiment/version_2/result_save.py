@@ -5,7 +5,7 @@ class result_save:
         self.packet_loss_rate = packet_loss_rate
         self.headway = headway
         self.type = type
-        self.RESULT_PATH = r'E:\NearXu\result\dr_result'
+        self.RESULT_PATH = '/Users/near/NearXu/result/dr_result'
         self.result_name = self.RESULT_PATH + '_type_' + str(self.type) + '_time_' + str(self.start_time) + '_scenario_' + str(
             self.scenario) + '_plr_' \
                              '' + str(self.packet_loss_rate) + '_headway_' + str(self.headway) + '.txt'
