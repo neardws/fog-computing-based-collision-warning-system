@@ -77,4 +77,18 @@ http://kolntrace.project.citi-lab.fr/koln_bs-deployment-D1_fixed.log
 8 14375.0473347 13993.7252013  
 9 12663.8130341 12898.9996435  
 10 10531.1923073 12564.664139  
-  
+ 
+## Citing This Paper
+
+```bibtex
+@article{xu2020vehicular,
+  title={Vehicular fog computing enabled real-time collision warning via trajectory calibration},
+  author={Xu, Xincao and Liu, Kai and Xiao, Ke and Feng, Liang and Wu, Zhou and Guo, Songtao},
+  journal={Mobile Netw. Appl.},
+  volume={25},
+  number={6},
+  pages={2482-2494},
+  year={2020},
+  publisher={Springer}
+}
+```
